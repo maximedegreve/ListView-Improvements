@@ -1,104 +1,73 @@
-import { Box, Text, Link, StyledOcticon } from '@primer/react'
-import {
-    MarkGithubIcon,
-    CheckIcon,
-    CommentIcon,
-    MortarBoardIcon,
-} from '@primer/octicons-react'
-
-import MonaLoadingImage from './images/mona-loading.gif'
+import { Box, Text, Link, StyledOcticon, Checkbox } from '@primer/react'
+import { CommentIcon, MortarBoardIcon } from '@primer/octicons-react'
 
 function Playground() {
-    /*
-    WELCOME TO MONA's 😽🐙 PLAYGROUND
-    Delete everything in here or play with the existing Mona playground code to get familiar with Primer React.
-    Documentation: https://primer.style/react
-    Documentation colors: https://primer.style/primitives/colors
-  */
-
     return (
         <Box
             sx={{
                 bg: 'canvas.default',
-                width: '100%',
-                minHeight: '100vh',
-                display: 'flex',
-                flexDirection: 'column',
-                justifyContent: 'center',
-                alignItems: 'center',
-                p: 5,
+                p: 6,
             }}
         >
-            <MarkGithubIcon size={24} />
             <Box
                 sx={{
-                    maxWidth: 600,
+                    display: 'grid',
+                    gridTemplateColumns: '30px 1fr auto auto auto auto',
+                    bg: 'grey',
                     width: '100%',
-                    height: 300,
-                    bg: 'neutral.emphasisPlus',
-                    borderRadius: 2,
-                    p: 4,
-                    my: 6,
+                    maxWidth: 1400,
+                    mx: 'auto',
                 }}
             >
-                <CodeLine icon={CheckIcon} iconColor="success.fg">
-                    Mona's playground successfully initialised...
-                </CodeLine>
-                <CodeLine icon={CommentIcon} iconColor="accent.fg">
-                    Visit <Text color="text.warning">src/Playground.js</Text>{' '}
-                    and start building your own layouts using Primer.
-                </CodeLine>
-                <Box display="inline-block" ml={3} mt={2}>
-                    <img
-                        src={MonaLoadingImage}
-                        alt="mona"
-                        width={48}
-                        height={48}
-                    />
-                </Box>
+                <Row />
             </Box>
-            <Footer />
         </Box>
     )
 }
 
-function CodeLine({ icon, iconColor, children }) {
+function Row() {
     return (
-        <Box sx={{ display: 'flex', color: 'fg.onEmphasis', mb: 2 }}>
-            <Box sx={{ display: 'flex', mt: '2px', width: 20, minWidth: 20 }}>
-                <StyledOcticon
-                    icon={icon}
-                    size={16}
-                    sx={{ color: iconColor }}
-                />
-            </Box>
-            <Text
-                as="p"
-                sx={{ flex: 1, fontSize: 1, fontFamily: 'mono', ml: 2 }}
+        <Box sx={{ display: 'contents' }}>
+            <Box
+                sx={{
+                    gridColumn: 1,
+                    width: 32,
+                    height: 32,
+                    display: 'flex',
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                }}
             >
-                {children}
-            </Text>
-        </Box>
-    )
-}
-
-function Footer() {
-    return (
-        <Box sx={{ textAlign: 'center' }}>
-            <Box sx={{ mr: 2, display: 'inline-block' }}>
+                <Checkbox value="default" />
+            </Box>
+            <Box sx={{ gridColumn: 2, px: 5 }}>
+                ActionMenu: Selected items use checkboxes instead of checkmarks
+                #3838
+            </Box>
+            <Box sx={{ gridColumn: 3, px: 5 }}>
                 <StyledOcticon
                     icon={MortarBoardIcon}
                     size={16}
                     sx={{ mr: 1, color: 'attention.fg' }}
                 />
-                <Text sx={{ color: 'attention.fg' }}>Tip</Text>
+                124
             </Box>
-            <Text>
-                Before you get started check out our{' '}
-                <Link href="https://primer.style/react" target="_blank">
-                    Primer React Documentation
-                </Link>
-            </Text>
+            <Box sx={{ gridColumn: 4, px: 5 }}>
+                <StyledOcticon
+                    icon={MortarBoardIcon}
+                    size={16}
+                    sx={{ mr: 1, color: 'attention.fg' }}
+                />
+                1
+            </Box>
+            <Box sx={{ gridColumn: 5, px: 5 }}>
+                <StyledOcticon
+                    icon={MortarBoardIcon}
+                    size={16}
+                    sx={{ mr: 1, color: 'attention.fg' }}
+                />
+                145
+            </Box>
         </Box>
     )
 }
