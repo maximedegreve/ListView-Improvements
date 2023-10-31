@@ -5,8 +5,7 @@ import {
     useEffect,
     useCallback,
 } from 'react'
-import clsx from 'clsx'
-import { Box, Token, Tooltip, Link, Label as PrimerLabel } from '@primer/react'
+import { Box, Token, Tooltip, Label as PrimerLabel } from '@primer/react'
 
 export default function Labels({ labels }) {
     const [truncatedLabelCount, setTruncatedLabelCount] = useState(0)
@@ -17,6 +16,8 @@ export default function Labels({ labels }) {
     const recalculatedTruncatedLabelCount = useCallback(() => {
         if (labelRef?.current) {
             const childLabels = Array.from(labelRef.current.children)
+
+            console.log(childLabels)
             const baseOffset = labelRef.current.offsetTop
             const breakIndex = childLabels.findIndex(
                 (item) => item.offsetTop > baseOffset
@@ -55,52 +56,84 @@ export default function Labels({ labels }) {
         <Box
             sx={{
                 display: ['none', 'none', 'flex', 'flex', 'flex'],
-                flexShrink: 1,
+                justifyContent: 'flex-end',
                 alignItems: 'flex-start',
-
-                gap: 1,
+                columnGap: 2,
                 height: '100%',
+                maxHeight: 20,
                 position: 'relative',
             }}
         >
             <Box
                 sx={{
                     display: 'flex',
-                    flexShrink: 1,
                     alignItems: 'center',
-                    gap: 1,
+                    gap: 2,
+                    flexDirection: 'row',
                     flexWrap: 'wrap',
                     overflow: 'hidden',
-                    height: '100%',
                     justifyContent: 'flex-end',
+                    a: {
+                        display: 'inline-flex',
+                    },
                 }}
                 ref={labelRef}
             >
                 {labels.map((label, index) => {
                     const hidden = index > lastVisibleLabelIndex
-                    const { name, variant } = label
+                    const { name } = label
+                    const variants = [
+                        'default',
+                        'primary',
+                        'secondary',
+                        'accent',
+                        'success',
+                        'attention',
+                        'severe',
+                        'danger',
+                        'done',
+                        'sponsors',
+                    ]
+                    const pickedValue = pickValueFromArray(variants, name)
                     return (
-                        <Link key={index} muted>
-                            <PrimerLabel
-                                variant={variant}
-                                className={clsx({ 'sr-only': hidden })}
-                            >
-                                {name}
-                            </PrimerLabel>
-                        </Link>
+                        <PrimerLabel
+                            variant={pickedValue}
+                            sx={{
+                                visibility: hidden ? 'hidden' : 'visible',
+                            }}
+                        >
+                            {name}
+                        </PrimerLabel>
                     )
                 })}
             </Box>
             {truncatedLabelCount > 0 && (
-                <Tooltip
-                    align="right"
-                    direction="sw"
-                    text={labels.map((label) => label.name).join(', ')}
-                    sx={{ display: 'flex' }}
-                >
-                    <Token text={`+${truncatedLabelCount}`} />
-                </Tooltip>
+                <Box>
+                    <Tooltip
+                        align="right"
+                        direction="sw"
+                        text={labels.map((label) => label.name).join(', ')}
+                        sx={{ display: 'flex' }}
+                    >
+                        <Token text={`+${truncatedLabelCount}`} />
+                    </Tooltip>
+                </Box>
             )}
         </Box>
     )
+}
+
+function pickValueFromArray(arr, randomString) {
+    // Hash the string to an integer
+    let hash = 0
+    for (let i = 0; i < randomString.length; i++) {
+        const char = randomString.charCodeAt(i)
+        hash = (hash << 5) - hash + char
+        hash |= 0 // Convert to 32-bit integer
+    }
+
+    // Use the hash to pick an index
+    const index = Math.abs(hash) % arr.length
+
+    return arr[index]
 }

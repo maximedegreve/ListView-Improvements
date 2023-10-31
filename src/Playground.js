@@ -6,7 +6,11 @@ import {
     AvatarStack,
 } from '@primer/react'
 import Labels from './Labels'
-import { CommentIcon, GitPullRequestIcon } from '@primer/octicons-react'
+import {
+    CommentIcon,
+    GitPullRequestIcon,
+    IssueOpenedIcon,
+} from '@primer/octicons-react'
 
 function Playground() {
     return (
@@ -14,13 +18,20 @@ function Playground() {
             sx={{
                 bg: 'canvas.default',
                 p: 6,
+                minHeight: '100vh',
+                display: 'flex',
+                justifyContent: 'center',
+                alignItems: 'center',
             }}
         >
             <Box
                 sx={{
                     display: 'grid',
-                    gridTemplateColumns:
-                        'auto 1fr minmax(auto, 30%) auto auto auto auto',
+                    gridTemplateColumns: [
+                        'auto auto 1fr 0px auto auto auto auto',
+                        'auto auto 1fr 0px auto auto auto auto',
+                        'auto auto 1fr minmax(auto, 30%) auto auto auto auto',
+                    ],
                     bg: 'red',
                     width: '100%',
                     maxWidth: 1400,
@@ -34,35 +45,108 @@ function Playground() {
                 }}
             >
                 <Row
-                    title="ActionMenu: Selected items use checkboxes instead of checkmarks and update it even more
-                #3838"
-                    totalComments={15}
+                    title="AvatarStack disableExpand and rightAlign don't work together"
+                    hash={3884}
+                    totalComments={0}
+                    totalPullRequests={0}
+                    labels={[{ name: 'bug' }, { name: 'react' }]}
+                    avatars={[
+                        {
+                            alt: 'GitHub logo',
+                            src: 'https://avatars.githubusercontent.com/github',
+                        },
+                    ]}
+                />
+                <Row
+                    title="ActionMenu: Selected items use checkboxes instead of checkmarks"
+                    hash={3878}
+                    totalComments={10}
+                    totalPullRequests={0}
+                    labels={[
+                        { name: 'bug' },
+                        { name: 'component: ActionMenu' },
+                        { name: 'react' },
+                    ]}
+                    avatars={[
+                        {
+                            alt: 'GitHub logo',
+                            src: 'https://avatars.githubusercontent.com/github',
+                        },
+                    ]}
+                />
+
+                <Row
+                    title="TextInput action hover state is incorrect"
+                    hash={3867}
+                    totalComments={10}
+                    totalPullRequests={0}
+                    labels={[
+                        { name: 'bug' },
+                        { name: 'component: TextInput' },
+                        { name: 'react' },
+                    ]}
+                    avatars={[
+                        {
+                            alt: 'GitHub logo',
+                            src: 'https://avatars.githubusercontent.com/u/68850280?s=64&v=4',
+                        },
+                    ]}
+                />
+
+                <Row
+                    title="Data table pagination breaks when setting defaultPageIndex"
+                    hash={3856}
+                    totalComments={5}
                     totalPullRequests={1}
+                    labels={[
+                        { name: 'bug' },
+                        { name: 'component: DataTable' },
+                        { name: 'good first issue' },
+                        { name: 'react' },
+                        { name: 'size: sand' },
+                    ]}
+                    avatars={[
+                        {
+                            alt: 'GitHub logo',
+                            src: 'https://avatars.githubusercontent.com/u/431533?s=64&u=9e71f9aaba1bd41361ee043ef018165b723ffc3e&v=4',
+                        },
+                    ]}
                 />
                 <Row
-                    title="ActionMenu: Selected items use checkboxes instead of checkmarks
-                #3838"
-                    totalComments={1}
-                    totalPullRequests={14}
-                />
-                <Row
-                    title="ActionMenu: Selected items use checkboxes instead of checkmarks
-                #3838"
-                    totalComments={15}
+                    title="Release Tracking"
+                    hash={3856}
+                    totalComments={5}
                     totalPullRequests={1}
-                />
-                <Row
-                    title="ActionMenu: Selected items use checkboxes instead of checkmarks
-                #3838"
-                    totalComments={1}
-                    totalPullRequests={14}
+                    labels={[
+                        { name: 'bug' },
+                        { name: 'release' },
+                        { name: 'update' },
+                        { name: 'react' },
+                        { name: 'size: boulder' },
+                        { name: 'warning' },
+                        { name: 'deprecation' },
+                    ]}
+                    avatars={[
+                        {
+                            alt: 'GitHub logo',
+                            src: 'https://avatars.githubusercontent.com/u/1863771?s=64&u=36c77cc9be0a64a196b503ce5e7fc335912d2bfa&v=4',
+                        },
+                        {
+                            alt: 'GitHub logo',
+                            src: 'https://avatars.githubusercontent.com/u/980622?s=64&u=1c3bf339aa927382a4f123b7b3669f847b1535e4&v=4',
+                        },
+                        {
+                            alt: 'GitHub logo',
+                            src: 'https://avatars.githubusercontent.com/u/40274682?s=64&u=e86e9e13f63066ced355e03ed21e05f91915567a&v=4',
+                        },
+                    ]}
                 />
             </Box>
         </Box>
     )
 }
 
-function Row({ title, totalComments, totalPullRequests }) {
+function Row({ title, totalComments, totalPullRequests, labels, avatars }) {
     return (
         <Box
             sx={{
@@ -88,18 +172,32 @@ function Row({ title, totalComments, totalPullRequests }) {
                 sx={{
                     gridColumn: 1,
                     px: 3,
-                    py: 3,
+                    py: '14px',
                 }}
             >
-                <Box sx={{ pt: '2px' }}>
+                <Box>
                     <Checkbox value="default" />
                 </Box>
             </Box>
             <Box
                 sx={{
                     gridColumn: 2,
+                    pb: 3,
+                    pr: 2,
+                    pt: 2,
+                }}
+            >
+                <StyledOcticon
+                    icon={IssueOpenedIcon}
+                    size={16}
+                    sx={{ color: 'success.fg', mt: 2 }}
+                />
+            </Box>
+            <Box
+                sx={{
+                    gridColumn: 3,
                     pr: 3,
-                    py: 3,
+                    py: '12px',
                     fontWeight: 'semibold',
                     fontSize: 2,
                 }}
@@ -117,25 +215,12 @@ function Row({ title, totalComments, totalPullRequests }) {
                 </Box>
             </Box>
 
-            <Box sx={{ gridColumn: 3, pr: 4, py: 3 }}>
-                <Labels
-                    labels={[
-                        { name: 'boom' },
-                        { name: 'boom' },
-                        { name: 'boom' },
-                        { name: 'boom' },
-                        { name: 'boom' },
-                        { name: 'boom' },
-                        { name: 'boom' },
-                        { name: 'boom' },
-                        { name: 'boom' },
-                        { name: 'boom' },
-                    ]}
-                />
+            <Box sx={{ gridColumn: 4, pr: 5, py: 3 }}>
+                <Labels labels={labels || []} />
             </Box>
             <Box
                 sx={{
-                    gridColumn: 4,
+                    gridColumn: 5,
                     pr: 5,
                     py: 3,
                 }}
@@ -160,7 +245,7 @@ function Row({ title, totalComments, totalPullRequests }) {
             </Box>
             <Box
                 sx={{
-                    gridColumn: 5,
+                    gridColumn: 6,
                     pr: 5,
                     py: 3,
                 }}
@@ -183,27 +268,21 @@ function Row({ title, totalComments, totalPullRequests }) {
                     {totalPullRequests}
                 </Box>
             </Box>
-            <Box sx={{ gridColumn: 6, pr: 3, py: 3 }}>
+            <Box
+                sx={{
+                    gridColumn: 7,
+                    pr: 3,
+                    py: 3,
+                    pointerEvents: 'none',
+                }}
+            >
                 <AvatarStack
                     disableExpand={true}
+                    alignRight
                     size={{ narrow: 20, regular: 20, wide: 20 }}
                 >
-                    <Avatar
-                        alt="Primer logo"
-                        src="https://avatars.githubusercontent.com/primer"
-                    />
-                    <Avatar
-                        alt="GitHub logo"
-                        src="https://avatars.githubusercontent.com/github"
-                    />
-                    <Avatar
-                        alt="Atom logo"
-                        src="https://avatars.githubusercontent.com/atom"
-                    />
-                    <Avatar
-                        alt="GitHub Desktop logo"
-                        src="https://avatars.githubusercontent.com/desktop"
-                    />
+                    {avatars &&
+                        avatars.map((a) => <Avatar alt={a.alt} src={a.src} />)}
                 </AvatarStack>
             </Box>
         </Box>
