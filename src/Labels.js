@@ -52,11 +52,31 @@ export default function Labels({ labels, mobile }) {
         return null
     }
 
+    if (mobile) {
+        return (
+            <Box
+                sx={{
+                    display: 'flex',
+                    justifyContent: mobile ? 'flex-start' : 'flex-end',
+                    alignItems: 'flex-start',
+                    flexWrap: 'wrap',
+                    rowGap: 2,
+                    columnGap: 1,
+                    height: '100%',
+                }}
+            >
+                {labels.map((label, index) => {
+                    return <ColoredLabel name={label.name} />
+                })}
+            </Box>
+        )
+    }
+
     return (
         <Box
             sx={{
                 display: 'flex',
-                justifyContent: mobile ? 'flex-start' : 'flex-end',
+                justifyContent: 'flex-end',
                 alignItems: 'flex-start',
                 gap: 1,
                 height: '100%',
@@ -72,7 +92,7 @@ export default function Labels({ labels, mobile }) {
                     flexDirection: 'row',
                     flexWrap: 'wrap',
                     overflow: 'hidden',
-                    justifyContent: mobile ? 'flex-start' : 'flex-end',
+                    justifyContent: 'flex-end',
                     a: {
                         display: 'inline-flex',
                     },
@@ -81,36 +101,20 @@ export default function Labels({ labels, mobile }) {
             >
                 {labels.map((label, index) => {
                     const hidden = index > lastVisibleLabelIndex
-                    const { name } = label
-                    const variants = [
-                        'default',
-                        'primary',
-                        'secondary',
-                        'accent',
-                        'success',
-                        'attention',
-                        'severe',
-                        'danger',
-                        'done',
-                        'sponsors',
-                    ]
-                    const pickedValue = pickValueFromArray(variants, name)
                     return (
-                        <PrimerLabel
-                            variant={pickedValue}
+                        <ColoredLabel
+                            name={label.name}
                             sx={{
                                 visibility: hidden ? 'hidden' : 'visible',
                             }}
-                        >
-                            {name}
-                        </PrimerLabel>
+                        />
                     )
                 })}
             </Box>
             {truncatedLabelCount > 0 && (
                 <Box>
                     <Tooltip
-                        align={mobile ? 'left' : 'right'}
+                        align={'right'}
                         direction="sw"
                         text={labels.map((label) => label.name).join(', ')}
                         sx={{ display: 'flex' }}
@@ -120,6 +124,27 @@ export default function Labels({ labels, mobile }) {
                 </Box>
             )}
         </Box>
+    )
+}
+
+function ColoredLabel({ name, sx }) {
+    const variants = [
+        'default',
+        'primary',
+        'secondary',
+        'accent',
+        'success',
+        'attention',
+        'severe',
+        'danger',
+        'done',
+        'sponsors',
+    ]
+    const pickedValue = pickValueFromArray(variants, name)
+    return (
+        <PrimerLabel variant={pickedValue} sx={sx}>
+            {name}
+        </PrimerLabel>
     )
 }
 
