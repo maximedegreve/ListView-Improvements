@@ -17,7 +17,7 @@ function Playground() {
         <Box
             sx={{
                 bg: 'canvas.default',
-                p: 6,
+                p: 3,
                 minHeight: '100vh',
                 display: 'flex',
                 justifyContent: 'center',
@@ -28,9 +28,9 @@ function Playground() {
                 sx={{
                     display: 'grid',
                     gridTemplateColumns: [
-                        'auto auto 1fr 0px auto auto auto auto',
-                        'auto auto 1fr 0px auto auto auto auto',
-                        'auto auto 1fr minmax(auto, 30%) auto auto auto auto',
+                        'auto auto 1fr 0px auto',
+                        'auto auto 1fr 0px auto',
+                        'auto auto 1fr max(30%) auto auto auto auto',
                     ],
                     bg: 'red',
                     width: '100%',
@@ -146,7 +146,14 @@ function Playground() {
     )
 }
 
-function Row({ title, totalComments, totalPullRequests, labels, avatars }) {
+function Row({
+    title,
+    totalComments,
+    totalPullRequests,
+    labels,
+    avatars,
+    hash,
+}) {
     return (
         <Box
             sx={{
@@ -202,7 +209,19 @@ function Row({ title, totalComments, totalPullRequests, labels, avatars }) {
                     fontSize: 2,
                 }}
             >
-                {title}
+                {title}{' '}
+                <Box
+                    sx={{
+                        display: 'inline',
+                        color: 'fg.muted',
+                        fontWeight: 'normal',
+                    }}
+                >
+                    #{hash}
+                </Box>
+                <Box sx={{ display: ['block', 'block', 'none'], pt: 2, pb: 1 }}>
+                    <Labels mobile labels={labels || []} />
+                </Box>
                 <Box
                     sx={{
                         fontSize: 0,
@@ -215,7 +234,14 @@ function Row({ title, totalComments, totalPullRequests, labels, avatars }) {
                 </Box>
             </Box>
 
-            <Box sx={{ gridColumn: 4, pr: 5, py: 3 }}>
+            <Box
+                sx={{
+                    gridColumn: 4,
+                    pr: 5,
+                    py: 3,
+                    display: ['none', 'none', 'block'],
+                }}
+            >
                 <Labels labels={labels || []} />
             </Box>
             <Box
@@ -223,6 +249,7 @@ function Row({ title, totalComments, totalPullRequests, labels, avatars }) {
                     gridColumn: 5,
                     pr: 5,
                     py: 3,
+                    display: ['none', 'none', 'block'],
                 }}
             >
                 <Box
@@ -248,6 +275,7 @@ function Row({ title, totalComments, totalPullRequests, labels, avatars }) {
                     gridColumn: 6,
                     pr: 5,
                     py: 3,
+                    display: ['none', 'none', 'block'],
                 }}
             >
                 <Box

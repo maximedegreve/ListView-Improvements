@@ -7,8 +7,9 @@ import {
 } from 'react'
 import { Box, Token, Tooltip, Label as PrimerLabel } from '@primer/react'
 
-export default function Labels({ labels }) {
+export default function Labels({ labels, mobile }) {
     const [truncatedLabelCount, setTruncatedLabelCount] = useState(0)
+
     const lastVisibleLabelIndex = labels.length - truncatedLabelCount - 1
 
     const labelRef = useRef(null)
@@ -17,7 +18,6 @@ export default function Labels({ labels }) {
         if (labelRef?.current) {
             const childLabels = Array.from(labelRef.current.children)
 
-            console.log(childLabels)
             const baseOffset = labelRef.current.offsetTop
             const breakIndex = childLabels.findIndex(
                 (item) => item.offsetTop > baseOffset
@@ -55,10 +55,10 @@ export default function Labels({ labels }) {
     return (
         <Box
             sx={{
-                display: ['none', 'none', 'flex', 'flex', 'flex'],
-                justifyContent: 'flex-end',
+                display: 'flex',
+                justifyContent: mobile ? 'flex-start' : 'flex-end',
                 alignItems: 'flex-start',
-                columnGap: 2,
+                gap: 1,
                 height: '100%',
                 maxHeight: 20,
                 position: 'relative',
@@ -68,11 +68,11 @@ export default function Labels({ labels }) {
                 sx={{
                     display: 'flex',
                     alignItems: 'center',
-                    gap: 2,
+                    gap: 1,
                     flexDirection: 'row',
                     flexWrap: 'wrap',
                     overflow: 'hidden',
-                    justifyContent: 'flex-end',
+                    justifyContent: mobile ? 'flex-start' : 'flex-end',
                     a: {
                         display: 'inline-flex',
                     },
@@ -110,7 +110,7 @@ export default function Labels({ labels }) {
             {truncatedLabelCount > 0 && (
                 <Box>
                     <Tooltip
-                        align="right"
+                        align={mobile ? 'left' : 'right'}
                         direction="sw"
                         text={labels.map((label) => label.name).join(', ')}
                         sx={{ display: 'flex' }}
