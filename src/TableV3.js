@@ -16,14 +16,10 @@ function TableV2() {
     return (
         <Box
             sx={{
-                display: 'grid',
-                gridTemplateColumns: [
-                    'auto auto 1fr 0px auto',
-                    'auto auto 1fr 0px auto',
-                    'auto auto 1fr max(30%) auto auto auto auto',
-                ],
+                display: 'flex',
                 bg: 'red',
                 width: '100%',
+                flexDirection: 'column',
                 maxWidth: 1400,
                 mx: 'auto',
                 borderColor: 'border.default',
@@ -146,8 +142,9 @@ function Row({
     return (
         <Box
             sx={{
-                display: 'contents',
-
+                display: 'flex',
+                width: '100%',
+                bg: 'green',
                 '>div': {
                     bg: 'canvas.default',
                     overflow: 'hidden',
@@ -166,7 +163,6 @@ function Row({
         >
             <Box
                 sx={{
-                    gridColumn: 1,
                     px: 3,
                     py: '14px',
                 }}
@@ -177,7 +173,6 @@ function Row({
             </Box>
             <Box
                 sx={{
-                    gridColumn: 2,
                     pb: 3,
                     pr: 2,
                     pt: 2,
@@ -191,8 +186,8 @@ function Row({
             </Box>
             <Box
                 sx={{
-                    gridColumn: 3,
                     pr: 3,
+                    width: '100%',
                     py: '12px',
                     fontWeight: 'semibold',
                     fontSize: 2,
@@ -225,8 +220,7 @@ function Row({
 
             <Box
                 sx={{
-                    gridColumn: 4,
-                    pr: 5,
+                    pr: 3,
                     py: 3,
                     display: ['none', 'none', 'block'],
                 }}
@@ -234,15 +228,14 @@ function Row({
                 <Labels labels={labels || []} />
             </Box>
 
-            <Box
-                sx={{
-                    gridColumn: 5,
-                    pr: 5,
-                    py: 3,
-                    display: ['none', 'none', 'block'],
-                }}
-            >
-                {totalComments > 0 && (
+            {totalComments > 0 && (
+                <Box
+                    sx={{
+                        pr: 5,
+                        py: 3,
+                        display: ['none', 'none', 'block'],
+                    }}
+                >
                     <Box
                         sx={{
                             height: 20,
@@ -260,18 +253,17 @@ function Row({
                         />
                         {totalComments}
                     </Box>
-                )}
-            </Box>
-
-            <Box
-                sx={{
-                    gridColumn: 6,
-                    pr: 5,
-                    py: 3,
-                    display: ['none', 'none', 'block'],
-                }}
-            >
-                {totalPullRequests > 0 && (
+                </Box>
+            )}
+            {totalPullRequests > 0 && (
+                <Box
+                    sx={{
+                        gridColumn: 6,
+                        pr: 5,
+                        py: 3,
+                        display: ['none', 'none', 'block'],
+                    }}
+                >
                     <Box
                         sx={{
                             height: 20,
@@ -289,15 +281,14 @@ function Row({
                         />
                         {totalPullRequests}
                     </Box>
-                )}
-            </Box>
-
+                </Box>
+            )}
             <Box
                 sx={{
-                    gridColumn: 7,
-                    pr: 3,
+                    pr: 5,
                     py: 3,
                     pointerEvents: 'none',
+                    display: 'flex',
                 }}
             >
                 <AvatarStack
