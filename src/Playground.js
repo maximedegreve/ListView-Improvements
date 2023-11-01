@@ -20,11 +20,11 @@ function Playground() {
                 alignItems: 'center',
             }}
         >
-            <Box sx={{maxWidth: 1400, textAlign: 'left', pb: 3,  color: 'fg.muted', fontSize: 1, width: '100%'}}>Example 1: No gaps 👍</Box>
+            <Box sx={{maxWidth: 1400, textAlign: 'left', pb: 3,  color: 'fg.muted', fontSize: 1, width: '100%'}}>Example 1: No gaps 😍 (requires 0 values)</Box>
             <TableV1/>
-            <Box sx={{maxWidth: 1400, textAlign: 'left', pb: 3, pt: 8, color: 'fg.muted', fontSize: 1, width: '100%'}}>Example 2: Gaps 👎</Box>
+            <Box sx={{maxWidth: 1400, textAlign: 'left', pb: 3, pt: 8, color: 'fg.muted', fontSize: 1, width: '100%'}}>Example 2: Gaps ☹️ (hidden 0 values)</Box>
             <TableV2/>
-            <Box sx={{maxWidth: 1400, textAlign: 'left', pb: 3, pt: 8, color: 'fg.muted', fontSize: 1, width: '100%'}}>Example 3: No grid 👎</Box>
+            <Box sx={{maxWidth: 1400, textAlign: 'left', pb: 3, pt: 8, color: 'fg.muted', fontSize: 1, width: '100%'}}>Example 3: No grid ☹️ (hidden 0 values)</Box>
             <TableV3/>
         </Box>
     )

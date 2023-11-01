@@ -144,7 +144,6 @@ function Row({
             sx={{
                 display: 'flex',
                 width: '100%',
-                bg: 'green',
                 '>div': {
                     bg: 'canvas.default',
                     overflow: 'hidden',
@@ -174,7 +173,7 @@ function Row({
             <Box
                 sx={{
                     pb: 3,
-                    pr: 2,
+                    pr: 3,
                     pt: 2,
                 }}
             >
@@ -191,6 +190,7 @@ function Row({
                     py: '12px',
                     fontWeight: 'semibold',
                     fontSize: 2,
+                    flex: 1,
                 }}
             >
                 {title}{' '}
@@ -218,87 +218,87 @@ function Row({
                 </Box>
             </Box>
 
-            <Box
-                sx={{
-                    pr: 3,
-                    py: 3,
-                    display: ['none', 'none', 'block'],
-                }}
-            >
-                <Labels labels={labels || []} />
-            </Box>
+            <Box sx={{ display: 'flex', gap: 4, maxWidth: '50%' }}>
+                <Box
+                    sx={{
+                        py: 3,
+                        flex: 1,
+                        display: ['none', 'none', 'block'],
+                    }}
+                >
+                    <Labels labels={labels || []} />
+                </Box>
 
-            {totalComments > 0 && (
-                <Box
-                    sx={{
-                        pr: 5,
-                        py: 3,
-                        display: ['none', 'none', 'block'],
-                    }}
-                >
+                {totalComments > 0 && (
                     <Box
                         sx={{
-                            height: 20,
-                            fontSize: 0,
-                            display: 'flex',
-                            alignItems: 'center',
-                            color: 'fg.muted',
-                            fontWeight: 'semibold',
+                            py: 3,
+                            display: ['none', 'none', 'block'],
                         }}
                     >
-                        <StyledOcticon
-                            icon={CommentIcon}
-                            size={16}
-                            sx={{ mr: 2, color: 'fg.muted' }}
-                        />
-                        {totalComments}
+                        <Box
+                            sx={{
+                                height: 20,
+                                fontSize: 0,
+                                display: 'flex',
+                                alignItems: 'center',
+                                color: 'fg.muted',
+                                fontWeight: 'semibold',
+                            }}
+                        >
+                            <StyledOcticon
+                                icon={CommentIcon}
+                                size={16}
+                                sx={{ mr: 2, color: 'fg.muted' }}
+                            />
+                            {totalComments}
+                        </Box>
                     </Box>
-                </Box>
-            )}
-            {totalPullRequests > 0 && (
-                <Box
-                    sx={{
-                        gridColumn: 6,
-                        pr: 5,
-                        py: 3,
-                        display: ['none', 'none', 'block'],
-                    }}
-                >
+                )}
+                {totalPullRequests > 0 && (
                     <Box
                         sx={{
-                            height: 20,
-                            fontSize: 0,
-                            color: 'fg.muted',
-                            display: 'flex',
-                            alignItems: 'center',
-                            fontWeight: 'semibold',
+                            py: 3,
+                            display: ['none', 'none', 'block'],
                         }}
                     >
-                        <StyledOcticon
-                            icon={GitPullRequestIcon}
-                            size={16}
-                            sx={{ mr: 2, color: 'fg.muted' }}
-                        />
-                        {totalPullRequests}
+                        <Box
+                            sx={{
+                                height: 20,
+                                fontSize: 0,
+                                color: 'fg.muted',
+                                display: 'flex',
+                                alignItems: 'center',
+                                fontWeight: 'semibold',
+                            }}
+                        >
+                            <StyledOcticon
+                                icon={GitPullRequestIcon}
+                                size={16}
+                                sx={{ mr: 2, color: 'fg.muted' }}
+                            />
+                            {totalPullRequests}
+                        </Box>
                     </Box>
-                </Box>
-            )}
-            <Box
-                sx={{
-                    pr: 5,
-                    py: 3,
-                    pointerEvents: 'none',
-                    display: 'flex',
-                }}
-            >
-                <AvatarStack
-                    disableExpand={true}
-                    alignRight
-                    size={{ narrow: 20, regular: 20, wide: 20 }}
+                )}
+                <Box
+                    sx={{
+                        py: 3,
+                        pr: 3,
+                        pointerEvents: 'none',
+                    }}
                 >
-                    {avatars &&
-                        avatars.map((a) => <Avatar alt={a.alt} src={a.src} />)}
-                </AvatarStack>
+                    <AvatarStack
+                        disableExpand={true}
+                        alignRight={true}
+                        size={{ narrow: 20, regular: 20, wide: 20 }}
+                    >
+                        {avatars &&
+                            avatars.map((a) => (
+                                <Avatar alt={a.alt} src={a.src} />
+                            ))}
+                    </AvatarStack>
+                </Box>
             </Box>
         </Box>
     )

@@ -179,7 +179,7 @@ function Row({
                 sx={{
                     gridColumn: 2,
                     pb: 3,
-                    pr: 2,
+                    pr: 3,
                     pt: 2,
                 }}
             >
