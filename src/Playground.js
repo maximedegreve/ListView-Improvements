@@ -4,6 +4,7 @@ import {
 import TableV1 from './TableV1'
 import TableV2 from './TableV2'
 import TableV3 from './TableV3'
+import TableV4 from './TableV4'
 
 function Playground() {
     return (
@@ -26,6 +27,8 @@ function Playground() {
             <TableV2/>
             <Box sx={{maxWidth: 1400, textAlign: 'left', pb: 3, pt: 8, color: 'fg.muted', fontSize: 1, width: '100%'}}>Example 3: No grid ☹️ (hidden 0 values)</Box>
             <TableV3/>
+            <Box sx={{maxWidth: 1400, textAlign: 'left', pb: 3, pt: 8, color: 'fg.muted', fontSize: 1, width: '100%'}}>Example 4: No gaps 😍 (requires 0 values - faded)</Box>
+            <TableV4/>
         </Box>
     )
 }
