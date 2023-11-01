@@ -3,6 +3,7 @@ import {
     Avatar,
     StyledOcticon,
     Checkbox,
+    Link,
     AvatarStack,
 } from '@primer/react'
 import Labels from './Labels'
@@ -200,16 +201,18 @@ function Row({
                     fontSize: 2,
                 }}
             >
-                {title}{' '}
-                <Box
-                    sx={{
-                        display: 'inline',
-                        color: 'fg.muted',
-                        fontWeight: 'normal',
-                    }}
-                >
-                    #{hash}
-                </Box>
+                <Link sx={{ color: 'fg.default' }} href="https://github.com">
+                    {title}{' '}
+                    <Box
+                        sx={{
+                            display: 'inline',
+                            color: 'fg.muted',
+                            fontWeight: 'normal',
+                        }}
+                    >
+                        #{hash}
+                    </Box>
+                </Link>
                 <Box sx={{ display: ['block', 'block', 'none'], pt: 2, pb: 1 }}>
                     <Labels mobile labels={labels || []} />
                 </Box>

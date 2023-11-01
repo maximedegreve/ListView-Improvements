@@ -202,7 +202,7 @@ function Row({
                     fontSize: 2,
                 }}
             >
-                <Link sx={{ color: 'fg.default' }}>
+                <Link sx={{ color: 'fg.default' }} href="https://github.com">
                     {title}{' '}
                     <Box
                         sx={{
