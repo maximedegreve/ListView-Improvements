@@ -24,7 +24,7 @@ function Playground() {
         >
             <Box sx={{maxWidth: 1400, textAlign: 'left', pb: 3,  color: 'fg.muted', fontSize: 1, width: '100%'}}>Example 0: No gaps 😍 (requires 0 values) (subgrid css)</Box>
             <TableV0/>
-            <Box sx={{maxWidth: 1400, textAlign: 'left', pb: 3,  color: 'fg.muted', fontSize: 1, width: '100%'}}>Example 1: No gaps 😍 (requires 0 values)</Box>
+            <Box sx={{maxWidth: 1400, textAlign: 'left', pb: 3, pt: 8,  color: 'fg.muted', fontSize: 1, width: '100%'}}>Example 1: No gaps 😍 (requires 0 values)</Box>
             <TableV1/>
             <Box sx={{maxWidth: 1400, textAlign: 'left', pb: 3, pt: 8, color: 'fg.muted', fontSize: 1, width: '100%'}}>Example 2: Gaps ☹️ (hidden 0 values)</Box>
             <TableV2/>
