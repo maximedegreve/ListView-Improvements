@@ -145,11 +145,10 @@ function Row({
 }) {
     return (
         <Box
-         as="li"
             sx={{
-                gridColumn: 1,
-                gridTemplateColumns: "subgrid",
                 display: 'grid',
+                gridTemplateColumns: 'subgrid', 
+                gridColumn: "1/8",
                 '>div': {
                     bg: 'canvas.default',
                     overflow: 'hidden',
