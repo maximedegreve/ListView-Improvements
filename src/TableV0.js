@@ -152,7 +152,7 @@ function Row({
                 display: 'grid',
                 px: 3,
                 gridTemplateColumns: 'subgrid',
-                gridColumn: '1/6',
+                gridColumn: ['1/4','1/4','1/6'],
                 bg: 'canvas.default',
                 gap: 5,
                 ':not(:last-child)': {
