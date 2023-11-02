@@ -22,9 +22,9 @@ function TableV1() {
                 gridTemplateColumns: [
                     'auto auto 1fr 0px auto',
                     'auto auto 1fr 0px auto',
+                    'auto auto 1fr max(20%) auto auto auto auto',
                     'auto auto 1fr max(30%) auto auto auto auto',
                 ],
-                bg: 'red',
                 width: '100%',
                 maxWidth: 1400,
                 mx: 'auto',
@@ -150,20 +150,17 @@ function Row({
             as="li"
             sx={{
                 display: 'grid',
+                px: 3,
                 gridTemplateColumns: 'subgrid',
                 gridColumn: '1/8',
-                '>div': {
-                    bg: 'canvas.default',
-                    overflow: 'hidden',
-                },
-
-                ':not(:last-child) >div': {
+                bg: 'canvas.default',
+                gap: 3,
+                ":not(:last-child)": {
                     borderBottomColor: 'border.subtle',
                     borderBottomWidth: 1,
                     borderBottomStyle: 'solid',
                 },
-
-                ':hover >div': {
+                ':hover': {
                     bg: 'canvas.subtle',
                 },
             }}
@@ -171,7 +168,6 @@ function Row({
             <Box
                 sx={{
                     gridColumn: 1,
-                    px: 3,
                     py: '14px',
                 }}
             >
@@ -183,7 +179,6 @@ function Row({
                 sx={{
                     gridColumn: 2,
                     pb: 3,
-                    pr: 3,
                     pt: 2,
                 }}
             >
@@ -196,7 +191,6 @@ function Row({
             <Box
                 sx={{
                     gridColumn: 3,
-                    pr: 3,
                     py: '12px',
                     fontWeight: 'semibold',
                     fontSize: 2,
@@ -232,7 +226,6 @@ function Row({
             <Box
                 sx={{
                     gridColumn: 4,
-                    pr: 5,
                     py: 3,
                     display: ['none', 'none', 'block'],
                 }}
@@ -242,7 +235,6 @@ function Row({
             <Box
                 sx={{
                     gridColumn: 5,
-                    pr: 5,
                     py: 3,
                     display: ['none', 'none', 'block'],
                 }}
@@ -268,7 +260,6 @@ function Row({
             <Box
                 sx={{
                     gridColumn: 6,
-                    pr: 5,
                     py: 3,
                     display: ['none', 'none', 'block'],
                 }}
@@ -294,7 +285,6 @@ function Row({
             <Box
                 sx={{
                     gridColumn: 7,
-                    pr: 3,
                     py: 3,
                     pointerEvents: 'none',
                 }}
