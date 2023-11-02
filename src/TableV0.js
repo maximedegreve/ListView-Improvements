@@ -154,7 +154,7 @@ function Row({
                 gridTemplateColumns: 'subgrid',
                 gridColumn: '1/8',
                 bg: 'canvas.default',
-                gap: 3,
+                gap: 5,
                 ":not(:last-child)": {
                     borderBottomColor: 'border.subtle',
                     borderBottomWidth: 1,
