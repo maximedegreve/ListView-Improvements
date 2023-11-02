@@ -20,10 +20,10 @@ function TableV1() {
             sx={{
                 display: 'grid',
                 gridTemplateColumns: [
-                    'auto auto 1fr 0px auto',
-                    'auto auto 1fr 0px auto',
-                    'auto auto 1fr max(20%) auto auto auto auto',
-                    'auto auto 1fr max(30%) auto auto auto auto',
+                    'auto 1fr 0px auto',
+                    'auto 1fr 0px auto',
+                    '1fr max(20%) auto auto auto',
+                    '1fr max(30%) auto auto auto',
                 ],
                 width: '100%',
                 maxWidth: 1400,
@@ -152,10 +152,10 @@ function Row({
                 display: 'grid',
                 px: 3,
                 gridTemplateColumns: 'subgrid',
-                gridColumn: '1/8',
+                gridColumn: '1/6',
                 bg: 'canvas.default',
                 gap: 5,
-                ":not(:last-child)": {
+                ':not(:last-child)': {
                     borderBottomColor: 'border.subtle',
                     borderBottomWidth: 1,
                     borderBottomStyle: 'solid',
@@ -167,7 +167,13 @@ function Row({
         >
             <Box
                 sx={{
-                    gridColumn: 1,
+                    display: 'grid',
+                    gridTemplateColumns: 'auto auto 1fr',
+                    gap: 3,
+                }}
+            >
+                        <Box
+                sx={{
                     py: '14px',
                 }}
             >
@@ -175,57 +181,59 @@ function Row({
                     <Checkbox value="default" />
                 </Box>
             </Box>
-            <Box
-                sx={{
-                    gridColumn: 2,
-                    pb: 3,
-                    pt: 2,
-                }}
-            >
-                <StyledOcticon
-                    icon={IssueOpenedIcon}
-                    size={16}
-                    sx={{ color: 'success.fg', mt: 2 }}
-                />
-            </Box>
-            <Box
-                sx={{
-                    gridColumn: 3,
-                    py: '12px',
-                    fontWeight: 'semibold',
-                    fontSize: 2,
-                }}
-            >
-                <Link sx={{ color: 'fg.default' }} href="https://github.com">
-                    {title}{' '}
-                    <Box
-                        sx={{
-                            display: 'inline',
-                            color: 'fg.muted',
-                            fontWeight: 'normal',
-                        }}
-                    >
-                        #{hash}
-                    </Box>
-                </Link>
-                <Box sx={{ display: ['block', 'block', 'none'], pt: 2, pb: 1 }}>
-                    <Labels mobile labels={labels || []} />
-                </Box>
+
                 <Box
                     sx={{
-                        fontSize: 0,
-                        fontWeight: 'normal',
-                        color: 'fg.muted',
-                        pt: 1,
+                        pt: 2,
                     }}
                 >
-                    maximedegreve opened 2 days ago
+                    <StyledOcticon
+                        icon={IssueOpenedIcon}
+                        size={16}
+                        sx={{ color: 'success.fg', mt: 2 }}
+                    />
+                </Box>
+                <Box sx={{ py: '12px', fontWeight: 'semibold', fontSize: 2 }}>
+                    <Link
+                        sx={{ color: 'fg.default' }}
+                        href="https://github.com"
+                    >
+                        {title}{' '}
+                        <Box
+                            sx={{
+                                display: 'inline',
+                                color: 'fg.muted',
+                                fontWeight: 'normal',
+                            }}
+                        >
+                            #{hash}
+                        </Box>
+                    </Link>
+                    <Box
+                        sx={{
+                            display: ['block', 'block', 'none'],
+                            pt: 2,
+                            pb: 1,
+                        }}
+                    >
+                        <Labels mobile labels={labels || []} />
+                    </Box>
+                    <Box
+                        sx={{
+                            fontSize: 0,
+                            fontWeight: 'normal',
+                            color: 'fg.muted',
+                            pt: 1,
+                        }}
+                    >
+                        maximedegreve opened 2 days ago
+                    </Box>
                 </Box>
             </Box>
 
             <Box
                 sx={{
-                    gridColumn: 4,
+                    gridColumn: 2,
                     py: 3,
                     display: ['none', 'none', 'block'],
                 }}
@@ -234,7 +242,6 @@ function Row({
             </Box>
             <Box
                 sx={{
-                    gridColumn: 5,
                     py: 3,
                     display: ['none', 'none', 'block'],
                 }}
@@ -259,7 +266,6 @@ function Row({
             </Box>
             <Box
                 sx={{
-                    gridColumn: 6,
                     py: 3,
                     display: ['none', 'none', 'block'],
                 }}
@@ -284,7 +290,6 @@ function Row({
             </Box>
             <Box
                 sx={{
-                    gridColumn: 7,
                     py: 3,
                     pointerEvents: 'none',
                 }}
