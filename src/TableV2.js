@@ -15,6 +15,7 @@ import {
 function TableV2() {
     return (
         <Box
+            as="ul"
             sx={{
                 display: 'grid',
                 gridTemplateColumns: [
@@ -145,8 +146,11 @@ function Row({
 }) {
     return (
         <Box
+            as="li"
             sx={{
-                display: 'contents',
+                display: 'grid',
+                gridTemplateColumns: 'subgrid',
+                gridColumn: '1/8',
 
                 '>div': {
                     bg: 'canvas.default',
