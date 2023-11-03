@@ -28,7 +28,6 @@ function TableV1() {
                 width: '100%',
                 maxWidth: 1400,
                 mx: 'auto',
-                mt: 6,
                 borderColor: 'border.default',
                 borderRadius: 2,
                 borderWidth: 1,
