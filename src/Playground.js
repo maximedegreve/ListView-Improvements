@@ -1,4 +1,7 @@
-import { Box } from '@primer/react'
+import {
+    Box,
+    Link,
+} from '@primer/react'
 import TableV0 from './TableV0'
 import TableV0a from './TableV0a'
 import TableCompact from './TableCompact'
@@ -48,18 +51,7 @@ function Playground() {
                     width: '100%',
                 }}
             >
-                <b>This example has been chosen because:</b>
-                <br />
-                1. It aligns the most with our current experience.
-                <br />
-                2. The usage of css subgrid is proven to be more accessible then
-                using css display:contents.
-                <br />
-                3. Truncating the labels isn't ideal for everyone and we already
-                provide this experience in the compact mode.
-                <br />
-                4. Hiding 0 comments is prefered however the agreement is that
-                the empty cause friction.
+                This two examples have been chosen based on <Link href="https://docs.google.com/spreadsheets/d/1sRfFfJmXquH427z87iVoW_hb-wnGuDE9DpuyxKj6_sQ/edit#gid=0">customer feedback</Link> and <Link href="https://github.slack.com/archives/C01G0NX0X43/p1699008178196839">internal feedback</Link>.
             </Box>
 
             <Box

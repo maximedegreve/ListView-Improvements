@@ -277,6 +277,7 @@ function Row({
                         display: 'flex',
                         alignItems: 'center',
                         color: 'fg.muted',
+                        opacity: totalComments === 0  ? 0.5 : 1,
                         fontWeight: 'semibold',
                     }}
                 >
@@ -303,6 +304,7 @@ function Row({
                         display: 'flex',
                         alignItems: 'center',
                         fontWeight: 'semibold',
+                        opacity: totalPullRequests === 0  ? 0.5 : 1,
                     }}
                 >
                     <StyledOcticon
