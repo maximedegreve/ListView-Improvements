@@ -7,6 +7,7 @@ import {
     Link,
 } from '@primer/react'
 import Labels from './Labels'
+import StatusButton from './StatusButton'
 import {
     CommentIcon,
     GitPullRequestIcon,
@@ -154,7 +155,7 @@ function Row({
                 gridTemplateColumns: 'subgrid',
                 gridColumn: ['1/4', '1/4', '1/6'],
                 bg: 'canvas.default',
-                gap: 4,
+                gap: 3,
                 ':not(:last-child)': {
                     borderBottomColor: 'border.subtle',
                     borderBottomWidth: 1,
@@ -259,6 +260,7 @@ function Row({
                     display: ['none', 'none', 'flex'],
                     alignItems: 'center',
                     justifyContent: 'flex-end',
+                    px: 1,
                 }}
             >
                 <Labels labels={labels || []} />
@@ -268,50 +270,22 @@ function Row({
                     display: ['none', 'none', 'flex'],
                     alignItems: 'center',
                     justifyContent: 'flex-start',
+                    px: 1,
+
                 }}
             >
-                <Box
-                    sx={{
-                        height: 20,
-                        fontSize: 0,
-                        display: 'flex',
-                        alignItems: 'center',
-                        color: totalComments === 0  ? 'primer.fg.disabled' : 'fg.muted',
-                        fontWeight: 'semibold',
-                    }}
-                >
-                    <StyledOcticon
-                        icon={CommentIcon}
-                        size={16}
-                        sx={{ mr: 2, color: totalComments === 0  ? 'primer.fg.disabled' : 'fg.muted' }}
-                    />
-                    {totalComments}
-                </Box>
+                <StatusButton count={totalComments} icon={CommentIcon} />
             </Box>
             <Box
                 sx={{
                     display: ['none', 'none', 'flex'],
                     alignItems: 'center',
                     justifyContent: 'flex-start',
+                    px: 1,
+
                 }}
             >
-                <Box
-                    sx={{
-                        height: 20,
-                        fontSize: 0,
-                        color: totalPullRequests === 0  ? 'primer.fg.disabled' : 'fg.muted',
-                        display: 'flex',
-                        alignItems: 'center',
-                        fontWeight: 'semibold',
-                    }}
-                >
-                    <StyledOcticon
-                        icon={GitPullRequestIcon}
-                        size={16}
-                        sx={{ mr: 2, color: totalPullRequests === 0  ? 'primer.fg.disabled' : 'fg.muted' }}
-                    />
-                    {totalPullRequests}
-                </Box>
+                <StatusButton count={totalPullRequests} icon={GitPullRequestIcon} />
             </Box>
             <Box
                 sx={{
@@ -319,6 +293,7 @@ function Row({
                     display: ['none', 'none', 'flex'],
                     alignItems: 'center',
                     justifyContent: 'flex-end',
+                    pl: 1,
                 }}
             >
                 <AvatarStack
@@ -333,5 +308,6 @@ function Row({
         </Box>
     )
 }
+
 
 export default TableV1

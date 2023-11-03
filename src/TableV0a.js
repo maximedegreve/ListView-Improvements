@@ -7,6 +7,7 @@ import {
     Link,
 } from '@primer/react'
 import Labels from './Labels'
+import StatusButton from './StatusButton'
 import {
     CommentIcon,
     GitPullRequestIcon,
@@ -154,7 +155,7 @@ function Row({
                 gridTemplateColumns: 'subgrid',
                 gridColumn: ['1/3', '1/3', '1/5'],
                 bg: 'canvas.default',
-                gap: 5,
+                gap: 4,
                 ':not(:last-child)': {
                     borderBottomColor: 'border.subtle',
                     borderBottomWidth: 1,
@@ -235,23 +236,7 @@ function Row({
                     display: ['none', 'none', 'block'],
                 }}
             >
-                <Box
-                    sx={{
-                        height: 20,
-                        fontSize: 0,
-                        display: 'flex',
-                        alignItems: 'center',
-                        color: totalComments === 0  ? 'primer.fg.disabled' : 'fg.muted',
-                        fontWeight: 'semibold',
-                    }}
-                >
-                    <StyledOcticon
-                        icon={CommentIcon}
-                        size={16}
-                        sx={{ mr: 2, color:  totalComments === 0  ? 'primer.fg.disabled' : 'fg.muted' }}
-                    />
-                    {totalComments}
-                </Box>
+                <StatusButton count={totalComments} icon={CommentIcon} />
             </Box>
             <Box
                 sx={{
@@ -260,27 +245,15 @@ function Row({
                     display: ['none', 'none', 'block'],
                 }}
             >
-                <Box
-                    sx={{
-                        height: 20,
-                        fontSize: 0,
-                        color: totalPullRequests === 0  ? 'primer.fg.disabled' : 'fg.muted',
-                        display: 'flex',
-                        alignItems: 'center',
-                        fontWeight: 'semibold',
-                    }}
-                >
-                    <StyledOcticon
-                        icon={GitPullRequestIcon}
-                        size={16}
-                        sx={{ mr: 2, color: totalPullRequests === 0  ? 'primer.fg.disabled' : 'fg.muted' }}
-                    />
-                    {totalPullRequests}
-                </Box>
+                <StatusButton
+                    count={totalPullRequests}
+                    icon={GitPullRequestIcon}
+                />
             </Box>
             <Box
                 sx={{
                     py: 3,
+                    pl: 1,
                     pointerEvents: 'none',
                 }}
             >
