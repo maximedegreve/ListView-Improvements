@@ -32,7 +32,9 @@ function Playground() {
                 <b>This example has been chosen because:</b><br/>
                 1. It aligns the most with our current experience.<br/>
                 2. The usage of css subgrid is proven to be more accessible then using css display:contents.<br/>
-                3. Truncating the labels isn't ideal for everyone and we already provide this experience in the compact mode.</Box>
+                3. Truncating the labels isn't ideal for everyone and we already provide this experience in the compact mode.<br/>
+                4. Hiding 0 comments is prefered but not the gaps. There for we collapse the values and not the same values will align.
+                </Box>
             <TableV0a/>
 
             <TableCompact/>

@@ -180,7 +180,7 @@ function Row({
                     }}
                 >
                     <Box>
-                        <Checkbox value="default" sx={{mt: 0}} />
+                        <Checkbox value="default" sx={{ mt: 0 }} />
                     </Box>
                 </Box>
 
@@ -203,21 +203,45 @@ function Row({
                         fontSize: 1,
                     }}
                 >
-                    <Link
-                        sx={{ color: 'fg.default' }}
-                        href="https://github.com"
+                    <Box
+                        sx={{
+                            display: 'flex',
+                            alignItems: 'center',
+                        }}
                     >
-                        {title}{' '}
+                        <Link
+                            sx={{
+                                color: 'fg.default',
+                                whiteSpace: 'nowrap',
+                                overflow: 'hidden',
+                                textOverflow: 'ellipsis',
+                            }}
+                            href="https://github.com"
+                        >
+                            {title}{' '}
+                            <Box
+                                sx={{
+                                    display: 'inline',
+                                    color: 'fg.muted',
+                                    fontWeight: 'normal',
+                                }}
+                            >
+                                #{hash}
+                            </Box>
+                        </Link>
                         <Box
                             sx={{
-                                display: 'inline',
-                                color: 'fg.muted',
+                                fontSize: 0,
                                 fontWeight: 'normal',
+                                ml: 1,
+                                display: 'inline-block',
+                                color: 'fg.muted',
                             }}
                         >
-                            #{hash}
+                            {' '}
+                            · primer/react
                         </Box>
-                    </Link>
+                    </Box>
                     <Box
                         sx={{
                             display: ['block', 'block', 'none'],
