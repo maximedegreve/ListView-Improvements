@@ -276,14 +276,14 @@ function Row({
                         fontSize: 0,
                         display: 'flex',
                         alignItems: 'center',
-                        color: totalComments === 0  ? 'fg.muted' : 'fg.default',
+                        color: totalComments === 0  ? 'primer.fg.disabled' : 'fg.muted',
                         fontWeight: 'semibold',
                     }}
                 >
                     <StyledOcticon
                         icon={CommentIcon}
                         size={16}
-                        sx={{ mr: 2, color: totalComments === 0  ? 'fg.muted' : 'fg.default' }}
+                        sx={{ mr: 2, color: totalComments === 0  ? 'primer.fg.disabled' : 'fg.muted' }}
                     />
                     {totalComments}
                 </Box>
@@ -299,7 +299,7 @@ function Row({
                     sx={{
                         height: 20,
                         fontSize: 0,
-                        color: totalPullRequests === 0  ? 'fg.muted' : 'fg.default',
+                        color: totalPullRequests === 0  ? 'primer.fg.disabled' : 'fg.muted',
                         display: 'flex',
                         alignItems: 'center',
                         fontWeight: 'semibold',
@@ -308,7 +308,7 @@ function Row({
                     <StyledOcticon
                         icon={GitPullRequestIcon}
                         size={16}
-                        sx={{ mr: 2, color: totalPullRequests === 0  ? 'fg.muted' : 'fg.default' }}
+                        sx={{ mr: 2, color: totalPullRequests === 0  ? 'primer.fg.disabled' : 'fg.muted' }}
                     />
                     {totalPullRequests}
                 </Box>
