@@ -5,6 +5,7 @@ export default function StatusButton({ count, icon }) {
         <Box
             as="button"
             disabled={count === 0}
+            onClick={() => alert("clicked")}
             sx={{
                 fontSize: 0,
                 color: count === 0 ? 'primer.fg.disabled' : 'fg.muted',
