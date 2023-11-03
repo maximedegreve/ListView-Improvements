@@ -152,7 +152,7 @@ function Row({
                 display: 'grid',
                 px: 3,
                 gridTemplateColumns: 'subgrid',
-                gridColumn: ['1/3','1/3','1/5'],
+                gridColumn: ['1/3', '1/3', '1/5'],
                 bg: 'canvas.default',
                 gap: 5,
                 ':not(:last-child)': {
@@ -165,12 +165,6 @@ function Row({
                 },
             }}
         >
-
-
-            {
-                /// Checkbox title, label
-            }
-        
             <Box
                 sx={{
                     display: 'grid',
@@ -178,17 +172,16 @@ function Row({
                     gap: 3,
                 }}
             >
-                        <Box
-                sx={{
-                    py: '14px',
-                }}
-            >
-                <Box>
-                    <Checkbox value="default" />
+                <Box
+                    sx={{
+                        py: '14px',
+                    }}
+                >
+                    <Box>
+                        <Checkbox value="default" />
+                    </Box>
                 </Box>
-            </Box>
 
-      
                 <Box
                     sx={{
                         pt: 2,
@@ -201,9 +194,7 @@ function Row({
                     />
                 </Box>
 
-
-    
-                <Box sx={{ py: '12px', fontWeight: 'semibold', fontSize: 2}}>
+                <Box sx={{ py: '12px', fontWeight: 'semibold', fontSize: 2 }}>
                     <Link
                         sx={{ color: 'fg.default' }}
                         href="https://github.com"
@@ -236,13 +227,7 @@ function Row({
                         maximedegreve opened 2 days ago
                     </Box>
                 </Box>
-
             </Box>
-
-            {
-                // Comments 
-            }
-
             <Box
                 sx={{
                     gridColumn: 2,
@@ -250,31 +235,24 @@ function Row({
                     display: ['none', 'none', 'block'],
                 }}
             >
-                {totalComments > 0 && totalPullRequests !== 0 && ( <Box
+                <Box
                     sx={{
                         height: 20,
                         fontSize: 0,
                         display: 'flex',
                         alignItems: 'center',
-                        color: 'fg.muted',
+                        color: totalComments === 0  ? 'fg.muted' : 'fg.default',
                         fontWeight: 'semibold',
                     }}
                 >
                     <StyledOcticon
                         icon={CommentIcon}
                         size={16}
-                        sx={{ mr: 2, color: 'fg.muted' }}
+                        sx={{ mr: 2, color:  totalComments === 0  ? 'fg.muted' : 'fg.default' }}
                     />
                     {totalComments}
-                </Box>)}
-                
+                </Box>
             </Box>
-
-            {
-                // Pull requests 
-            }
-
-
             <Box
                 sx={{
                     gridColumn: 3,
@@ -282,12 +260,11 @@ function Row({
                     display: ['none', 'none', 'block'],
                 }}
             >
-             {totalPullRequests > 0 && ( 
                 <Box
                     sx={{
                         height: 20,
                         fontSize: 0,
-                        color: 'fg.muted',
+                        color: totalPullRequests === 0  ? 'fg.muted' : 'fg.default',
                         display: 'flex',
                         alignItems: 'center',
                         fontWeight: 'semibold',
@@ -296,38 +273,11 @@ function Row({
                     <StyledOcticon
                         icon={GitPullRequestIcon}
                         size={16}
-                        sx={{ mr: 2, color: 'fg.muted' }}
+                        sx={{ mr: 2, color: totalPullRequests === 0  ? 'fg.muted' : 'fg.default' }}
                     />
                     {totalPullRequests}
-                </Box>)}
-
-
-                {totalComments > 0 && totalPullRequests === 0 && ( <Box
-                    sx={{
-                        height: 20,
-                        fontSize: 0,
-                        display: 'flex',
-                        alignItems: 'center',
-                        color: 'fg.muted',
-                        fontWeight: 'semibold',
-                    }}
-                >
-                    <StyledOcticon
-                        icon={CommentIcon}
-                        size={16}
-                        sx={{ mr: 2, color: 'fg.muted' }}
-                    />
-                    {totalComments}
-                </Box>)}
-
-
+                </Box>
             </Box>
-
-
-            {
-                // Avatars 
-            }
-
             <Box
                 sx={{
                     py: 3,

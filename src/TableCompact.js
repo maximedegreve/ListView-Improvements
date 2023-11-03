@@ -276,15 +276,14 @@ function Row({
                         fontSize: 0,
                         display: 'flex',
                         alignItems: 'center',
-                        color: 'fg.muted',
-                        opacity: totalComments === 0  ? 0.5 : 1,
+                        color: totalComments === 0  ? 'fg.muted' : 'fg.default',
                         fontWeight: 'semibold',
                     }}
                 >
                     <StyledOcticon
                         icon={CommentIcon}
                         size={16}
-                        sx={{ mr: 2, color: 'fg.muted' }}
+                        sx={{ mr: 2, color: totalComments === 0  ? 'fg.muted' : 'fg.default' }}
                     />
                     {totalComments}
                 </Box>
@@ -300,17 +299,16 @@ function Row({
                     sx={{
                         height: 20,
                         fontSize: 0,
-                        color: 'fg.muted',
+                        color: totalPullRequests === 0  ? 'fg.muted' : 'fg.default',
                         display: 'flex',
                         alignItems: 'center',
                         fontWeight: 'semibold',
-                        opacity: totalPullRequests === 0  ? 0.5 : 1,
                     }}
                 >
                     <StyledOcticon
                         icon={GitPullRequestIcon}
                         size={16}
-                        sx={{ mr: 2, color: 'fg.muted' }}
+                        sx={{ mr: 2, color: totalPullRequests === 0  ? 'fg.muted' : 'fg.default' }}
                     />
                     {totalPullRequests}
                 </Box>
