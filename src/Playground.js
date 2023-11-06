@@ -6,6 +6,7 @@ import TableV0 from './TableV0'
 import TableV0a from './TableV0a'
 import TableCompact from './TableCompact'
 import TableV0b from './TableV0b'
+import TableV0aNoLabels from './TableV0aNoLabels'
 import TableV1 from './TableV1'
 import TableV2 from './TableV2'
 import TableV3 from './TableV3'
@@ -86,6 +87,24 @@ function Playground() {
             </Box>
 
             <TableCompact />
+
+            <Box
+                sx={{
+                    maxWidth: 1400,
+                    textAlign: 'left',
+                    pb: 3,
+                    color: 'fg.default',
+                    fontSize: 1,
+                    fontWeight: 'semibold',
+                    width: '100%',
+                    pt: 5,
+                }}
+            >
+                Default (No labels) (for Mario)
+            </Box>
+
+            <TableV0aNoLabels />
+
 
             <Box
                 sx={{
