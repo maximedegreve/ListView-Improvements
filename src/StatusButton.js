@@ -24,7 +24,6 @@ export default function StatusButton({ count, icon, label }) {
                 ':hover:enabled': {
                     bg: 'actionListItem.default.hoverBg',
                     cursor: 'pointer',
-                    color: 'fg.default',
                 },
                 px: 2,
                 py: 1,

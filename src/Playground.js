@@ -3,8 +3,8 @@ import {
     Link,
 } from '@primer/react'
 import TableV0 from './TableV0'
-import TableV0a from './TableV0a'
-import TableCompact from './TableCompact'
+import TableV0a from './Final'
+import Final from './Final'
 import TableV0b from './TableV0b'
 import TableV0aNoLabels from './TableV0aNoLabels'
 import TableV1 from './TableV1'
@@ -55,55 +55,9 @@ function Playground() {
                 This two examples have been chosen based on <Link href="https://docs.google.com/spreadsheets/d/1sRfFfJmXquH427z87iVoW_hb-wnGuDE9DpuyxKj6_sQ/edit#gid=0">customer feedback</Link> and <Link href="https://github.slack.com/archives/C01G0NX0X43/p1699008178196839">internal feedback</Link>.
             </Box>
 
-            <Box
-                sx={{
-                    maxWidth: 1400,
-                    textAlign: 'left',
-                    pb: 3,
-                    color: 'fg.default',
-                    fontSize: 1,
-                    fontWeight: 'semibold',
-                    width: '100%',
-                }}
-            >
-                Default
-            </Box>
 
-            <TableV0a />
 
-            <Box
-                sx={{
-                    maxWidth: 1400,
-                    textAlign: 'left',
-                    pb: 3,
-                    pt: 5,
-                    color: 'fg.default',
-                    fontSize: 1,
-                    fontWeight: 'semibold',
-                    width: '100%',
-                }}
-            >
-                Compact
-            </Box>
-
-            <TableCompact />
-
-            <Box
-                sx={{
-                    maxWidth: 1400,
-                    textAlign: 'left',
-                    pb: 3,
-                    color: 'fg.default',
-                    fontSize: 1,
-                    fontWeight: 'semibold',
-                    width: '100%',
-                    pt: 5,
-                }}
-            >
-                Default (No labels) (for Mario)
-            </Box>
-
-            <TableV0aNoLabels />
+            <Final />
 
 
             <Box
@@ -128,6 +82,22 @@ function Playground() {
                     pb: 3,
                     color: 'fg.muted',
                     fontSize: 1,
+                    width: '100%',
+                }}
+            >
+                Example 0y: No labels
+            </Box>
+            <TableV0aNoLabels />
+
+
+            <Box
+                sx={{
+                    maxWidth: 1400,
+                    textAlign: 'left',
+                    pb: 3,
+                    color: 'fg.muted',
+                    fontSize: 1,
+                    pt: 8,
                     width: '100%',
                 }}
             >
