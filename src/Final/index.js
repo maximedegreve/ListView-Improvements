@@ -63,6 +63,7 @@ console.log(fetchedData)
                     if (selectedMode === 0) {
                         return (
                             <Default
+                                state={item.state}
                                 title={item.title}
                                 hash={item.number}
                                 totalComments={item.comments}
@@ -73,6 +74,7 @@ console.log(fetchedData)
                         )
                     } else {
                         return (<Compact
+                            state={item.state}
                             title={item.title}
                             hash={item.number}
                             totalComments={item.comments}

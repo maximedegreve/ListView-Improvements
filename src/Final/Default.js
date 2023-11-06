@@ -2,18 +2,17 @@
 import {
     Box,
     Avatar,
-    StyledOcticon,
     Checkbox,
     AvatarStack,
     Link,
 } from '@primer/react'
 import Labels from '../Labels'
 import StatusButton from '../StatusButton'
+import StateIcon from './StateIcon'
 
 import {
     CommentIcon,
     GitPullRequestIcon,
-    IssueOpenedIcon,
 } from '@primer/octicons-react'
 
 function Row({
@@ -23,6 +22,7 @@ function Row({
     labels,
     avatars,
     hash,
+    state,
 }) {
     return (
         <Box
@@ -64,13 +64,10 @@ function Row({
                 <Box
                     sx={{
                         pt: 2,
+                        mt: 1,
                     }}
                 >
-                    <StyledOcticon
-                        icon={IssueOpenedIcon}
-                        size={16}
-                        sx={{ color: 'success.fg', mt: 2 }}
-                    />
+                     <StateIcon state={state} />
                 </Box>
 
                 <Box sx={{ py: '12px', fontWeight: 'semibold', fontSize: 2 }}>
