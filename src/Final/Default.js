@@ -136,7 +136,7 @@ function Row({
                 sx={{
                     py: 3,
                     pl: 1,
-                    pr: 1,
+                    pr: 2,
                     pointerEvents: 'none',
                     mt: '3px'
                 }}
