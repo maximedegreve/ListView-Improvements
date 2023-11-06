@@ -93,10 +93,7 @@ function TableV0a() {
                 totalPullRequests={1}
                 labels={[
                     { name: 'bug' },
-                    { name: 'component: DataTable' },
-                    { name: 'good first issue' },
-                    { name: 'react' },
-                    { name: 'size: sand' },
+
                 ]}
                 avatars={[
                     {

@@ -93,10 +93,6 @@ function TableV1() {
                 totalPullRequests={1}
                 labels={[
                     { name: 'bug' },
-                    { name: 'component: DataTable' },
-                    { name: 'good first issue' },
-                    { name: 'react' },
-                    { name: 'size: sand' },
                 ]}
                 avatars={[
                     {
@@ -171,6 +167,8 @@ function Row({
                     display: 'grid',
                     gridTemplateColumns: 'auto auto 1fr',
                     gap: 3,
+                    maxWidth: '100%',
+                    overflow: 'hidden',
                 }}
             >
                 <Box
@@ -201,12 +199,15 @@ function Row({
                         py: '12px',
                         fontWeight: 'regular',
                         fontSize: 1,
+                        maxWidth: '100%',
+                        minWidth: 0,
                     }}
                 >
                     <Box
                         sx={{
                             display: 'flex',
                             alignItems: 'center',
+                            maxWidth: '100%',
                         }}
                     >
                         <Link
@@ -214,7 +215,9 @@ function Row({
                                 color: 'fg.default',
                                 whiteSpace: 'nowrap',
                                 overflow: 'hidden',
+                                display: 'block',
                                 textOverflow: 'ellipsis',
+                                maxWidth: '100%',
                             }}
                             href="https://github.com"
                         >
@@ -236,20 +239,17 @@ function Row({
                                 ml: 1,
                                 display: 'inline-block',
                                 color: 'fg.muted',
+                                whiteSpace: 'nowrap',
+                                overflow: 'hidden',
+                                display: 'block',
+                                textOverflow: 'ellipsis',
+                                maxWidth: '100%',
                             }}
                         >
                             {' '}
                             · primer/react
                         </Box>
-                    </Box>
-                    <Box
-                        sx={{
-                            display: ['block', 'block', 'none'],
-                            pt: 2,
-                            pb: 1,
-                        }}
-                    >
-                        <Labels mobile labels={labels || []} />
+                        
                     </Box>
                 </Box>
             </Box>
