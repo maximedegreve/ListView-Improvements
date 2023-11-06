@@ -9,7 +9,7 @@ export default function StatusButton({ count, icon, label }) {
             sx={{
                 fontSize: 0,
                 color: 'fg.muted',
-                opacity: count === 0 ? 0.5 : 1,
+                opacity: count === 0 ? 0.3 : 1,
                 display: 'flex',
                 alignItems: 'center',
                 fontWeight: 'semibold',
