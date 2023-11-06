@@ -1,19 +1,10 @@
+import { Box, Avatar, Checkbox, AvatarStack, Link } from '@primer/react'
+import { CommentIcon, GitPullRequestIcon } from '@primer/octicons-react'
 
-import {
-    Box,
-    Avatar,
-    Checkbox,
-    AvatarStack,
-    Link,
-} from '@primer/react'
 import Labels from '../Labels'
 import StatusButton from '../StatusButton'
 import StateIcon from './StateIcon'
-
-import {
-    CommentIcon,
-    GitPullRequestIcon,
-} from '@primer/octicons-react'
+import EmptyAvatar from './EmptyAvatar'
 
 function Row({
     title,
@@ -67,7 +58,7 @@ function Row({
                         mt: 1,
                     }}
                 >
-                     <StateIcon state={state} />
+                    <StateIcon state={state} />
                 </Box>
 
                 <Box sx={{ py: '12px', fontWeight: 'semibold', fontSize: 2 }}>
@@ -145,21 +136,27 @@ function Row({
                 sx={{
                     py: 3,
                     pl: 1,
+                    pr: 1,
                     pointerEvents: 'none',
+                    mt: '3px'
                 }}
             >
-                <AvatarStack
-                    disableExpand={true}
-                    alignRight
-                    size={{ narrow: 20, regular: 20, wide: 20 }}
-                >
-                    {avatars &&
-                        avatars.map((a) => <Avatar alt={a.login} src={a.avatar_url} />)}
-                </AvatarStack>
+                {avatars.length === 0 ? (
+                    <EmptyAvatar size={20} />
+                ) : (
+                    <AvatarStack
+                        disableExpand={true}
+                        alignRight
+                        size={{ narrow: 20, regular: 20, wide: 20 }}
+                    >
+                        {avatars.map((a) => (
+                            <Avatar alt={a.login} src={a.avatar_url} />
+                        ))}
+                    </AvatarStack>
+                )}
             </Box>
         </Box>
     )
 }
-
 
 export default Row

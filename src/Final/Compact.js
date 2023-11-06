@@ -1,18 +1,10 @@
-import {
-    Box,
-    Avatar,
-    Checkbox,
-    AvatarStack,
-    Link,
-} from '@primer/react'
+import { Box, Avatar, Checkbox, AvatarStack, Link } from '@primer/react'
+import { CommentIcon, GitPullRequestIcon } from '@primer/octicons-react'
+
 import Labels from '../Labels'
 import StatusButton from '../StatusButton'
 import StateIcon from './StateIcon'
-
-import {
-    CommentIcon,
-    GitPullRequestIcon,
-} from '@primer/octicons-react'
+import EmptyAvatar from './EmptyAvatar'
 
 function Row({
     title,
@@ -125,7 +117,6 @@ function Row({
                             {' '}
                             · primer/react
                         </Box>
-                        
                     </Box>
                 </Box>
             </Box>
@@ -141,17 +132,7 @@ function Row({
             >
                 <Labels labels={labels || []} />
             </Box>
-            <Box
-                sx={{
-                    display: ['none', 'none', 'flex'],
-                    alignItems: 'center',
-                    justifyContent: 'flex-start',
-                    px: 1,
 
-                }}
-            >
-                <StatusButton count={totalComments} icon={CommentIcon} label={`${totalComments} ${totalComments === 1 ? "comment" : "comments"}`} />
-            </Box>
             <Box
                 sx={{
                     display: ['none', 'none', 'flex'],
@@ -160,8 +141,34 @@ function Row({
                     px: 1,
                 }}
             >
-                <StatusButton count={totalPullRequests} icon={GitPullRequestIcon} label={`${totalPullRequests} ${totalPullRequests === 1 ? "linked pull request" : "linked pull requests"}`} />
+                <StatusButton
+                    count={totalComments}
+                    icon={CommentIcon}
+                    label={`${totalComments} ${
+                        totalComments === 1 ? 'comment' : 'comments'
+                    }`}
+                />
             </Box>
+
+            <Box
+                sx={{
+                    display: ['none', 'none', 'flex'],
+                    alignItems: 'center',
+                    justifyContent: 'flex-start',
+                    px: 1,
+                }}
+            >
+                <StatusButton
+                    count={totalPullRequests}
+                    icon={GitPullRequestIcon}
+                    label={`${totalPullRequests} ${
+                        totalPullRequests === 1
+                            ? 'linked pull request'
+                            : 'linked pull requests'
+                    }`}
+                />
+            </Box>
+
             <Box
                 sx={{
                     pointerEvents: 'none',
@@ -169,21 +176,31 @@ function Row({
                     alignItems: 'center',
                     justifyContent: 'flex-end',
                     pl: 1,
-
                 }}
             >
-                <AvatarStack
-                    disableExpand={true}
-                    alignRight
-                    size={{ narrow: 20, regular: 20, wide: 20 }}
+                <Box
+                    sx={{
+                        pl: 1,
+                        pointerEvents: 'none',
+                    }}
                 >
-                    {avatars &&
-                        avatars.map((a) => <Avatar alt={a.login} src={a.avatar_url} />)}
-                </AvatarStack>
+                    {avatars.length === 0 ? (
+                        <EmptyAvatar size={20} />
+                    ) : (
+                        <AvatarStack
+                            disableExpand={true}
+                            alignRight
+                            size={{ narrow: 20, regular: 20, wide: 20 }}
+                        >
+                            {avatars.map((a) => (
+                                <Avatar alt={a.login} src={a.avatar_url} />
+                            ))}
+                        </AvatarStack>
+                    )}
+                </Box>
             </Box>
         </Box>
     )
 }
-
 
 export default Row
