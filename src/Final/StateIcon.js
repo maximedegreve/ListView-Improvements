@@ -4,7 +4,7 @@ import {
 } from '@primer/react'
 
 function StateIcon(state) {
-    if (state == 'open') {
+    if (state === 'open') {
         return (
             <StyledOcticon
                 icon={IssueClosedIcon}
