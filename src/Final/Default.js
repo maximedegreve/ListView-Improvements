@@ -157,7 +157,7 @@ function Row({
                     size={{ narrow: 20, regular: 20, wide: 20 }}
                 >
                     {avatars &&
-                        avatars.map((a) => <Avatar alt={a.alt} src={a.src} />)}
+                        avatars.map((a) => <Avatar alt={a.login} src={a.avatar_url} />)}
                 </AvatarStack>
             </Box>
         </Box>
