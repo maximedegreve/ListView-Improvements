@@ -219,7 +219,7 @@ function Final() {
     const [selectedMode, setSelectedMode] = useState(0)
     const [fetchedData, setFetchedData] = useState(null);
 
-
+console.log(fetchedData)
   useEffect(() => {
     fetch("https://api.github.com/repos/primer/react/issues", {
       method: "GET"

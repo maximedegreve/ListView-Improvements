@@ -3,7 +3,6 @@ import {
     Link,
 } from '@primer/react'
 import TableV0 from './TableV0'
-import TableV0a from './Final'
 import Final from './Final'
 import TableV0b from './TableV0b'
 import TableV0aNoLabels from './TableV0aNoLabels'
