@@ -1,14 +1,15 @@
-import { Box, StyledOcticon } from '@primer/react'
+import { Box, StyledOcticon, Tooltip } from '@primer/react'
 
-export default function StatusButton({ count, icon }) {
-    return (
+export default function StatusButton({ count, icon, label }) {
+    const button = (
         <Box
             as="button"
             disabled={count === 0}
-            onClick={() => alert("clicked")}
+            onClick={() => alert('clicked')}
             sx={{
                 fontSize: 0,
-                color: count === 0 ? 'primer.fg.disabled' : 'fg.muted',
+                color: 'fg.muted',
+                opacity: count === 0 ? 0.5 : 1,
                 display: 'flex',
                 alignItems: 'center',
                 fontWeight: 'semibold',
@@ -23,7 +24,7 @@ export default function StatusButton({ count, icon }) {
                 ':hover:enabled': {
                     bg: 'actionListItem.default.hoverBg',
                     cursor: 'pointer',
-                    color: 'fg.default'
+                    color: 'fg.default',
                 },
                 px: 2,
                 py: 1,
@@ -41,4 +42,9 @@ export default function StatusButton({ count, icon }) {
             {count}
         </Box>
     )
+
+    if (count === 0) {
+        return button
+    }
+    return <Tooltip aria-label={label}>{button}</Tooltip>
 }

@@ -274,7 +274,7 @@ function Row({
 
                 }}
             >
-                <StatusButton count={totalComments} icon={CommentIcon} />
+                <StatusButton count={totalComments} icon={CommentIcon} label={`${totalComments} ${totalComments === 1 ? "comment" : "comments"}`} />
             </Box>
             <Box
                 sx={{
@@ -285,7 +285,7 @@ function Row({
 
                 }}
             >
-                <StatusButton count={totalPullRequests} icon={GitPullRequestIcon} />
+                <StatusButton count={totalPullRequests} icon={GitPullRequestIcon} label={`${totalPullRequests} ${totalPullRequests === 1 ? "linked pull request" : "linked pull requests"}`} />
             </Box>
             <Box
                 sx={{
