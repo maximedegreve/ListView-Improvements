@@ -31,7 +31,7 @@ function Row({
                 gridTemplateColumns: 'subgrid',
                 gridColumn: ['1/4', '1/4', '1/6'],
                 bg: 'canvas.default',
-                gap: 3,
+                gap: 2,
                 ':not(:last-child)': {
                     borderBottomColor: 'border.subtle',
                     borderBottomWidth: 1,
@@ -161,8 +161,6 @@ function Row({
                     alignItems: 'center',
                     justifyContent: 'flex-start',
                     px: 1,
-
-
                 }}
             >
                 <StatusButton count={totalPullRequests} icon={GitPullRequestIcon} label={`${totalPullRequests} ${totalPullRequests === 1 ? "linked pull request" : "linked pull requests"}`} />
