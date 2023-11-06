@@ -36,7 +36,7 @@ export default function StatusButton({ count, icon, label }) {
                 size={16}
                 sx={{
                     mr: 2,
-                    color: count === 0 ? 'primer.fg.disabled' : 'fg.muted',
+                    color: 'fg.muted',
                 }}
             />
             {count}
