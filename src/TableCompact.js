@@ -241,7 +241,6 @@ function Row({
                                 color: 'fg.muted',
                                 whiteSpace: 'nowrap',
                                 overflow: 'hidden',
-                                display: 'block',
                                 textOverflow: 'ellipsis',
                                 maxWidth: '100%',
                             }}
