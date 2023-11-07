@@ -7,7 +7,7 @@ import {
 } from 'react'
 import { Box, Token, Tooltip, Label as PrimerLabel } from '@primer/react'
 
-export default function Labels({ labels, mobile }) {
+export default function Labels({ labels, mobile, leftAligned = false }) {
     const [truncatedLabelCount, setTruncatedLabelCount] = useState(0)
 
     const lastVisibleLabelIndex = labels.length - truncatedLabelCount - 1
@@ -57,7 +57,7 @@ export default function Labels({ labels, mobile }) {
             <Box
                 sx={{
                     display: 'flex',
-                    justifyContent: mobile ? 'flex-start' : 'flex-end',
+                    justifyContent: 'flex-start',
                     alignItems: 'flex-start',
                     flexWrap: 'wrap',
                     rowGap: 2,
@@ -76,7 +76,7 @@ export default function Labels({ labels, mobile }) {
         <Box
             sx={{
                 display: 'flex',
-                justifyContent: 'flex-end',
+                justifyContent: leftAligned ? 'flex-start' : 'flex-end',
                 alignItems: 'flex-start',
                 gap: 1,
                 height: '100%',
@@ -92,7 +92,8 @@ export default function Labels({ labels, mobile }) {
                     flexDirection: 'row',
                     flexWrap: 'wrap',
                     overflow: 'hidden',
-                    justifyContent: 'flex-end',
+                    justifyContent: leftAligned ? 'flex-start' : 'flex-end',
+
                     a: {
                         display: 'inline-flex',
                     },

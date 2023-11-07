@@ -107,12 +107,13 @@ function Row({
                             {repoName}
                         </Box>}
                         
-                        <Box sx={{display: 'flex'}}>
+                        <Box sx={{display: 'flex', overflow: 'hidden', maxWidth: '100%'}}>
                             <Link
                                 sx={{
                                     color: 'fg.default',
                                     whiteSpace: 'nowrap',
                                     display: 'block',
+                                    overflow: 'hidden',
                                     textOverflow: 'ellipsis',
                                     maxWidth: '100%',
                                 }}
@@ -137,7 +138,7 @@ function Row({
                                     px: 2,
                                 }}
                             >
-                                <Labels labels={labels || []} />
+                                <Labels leftAligned labels={labels || []} />
                             </Box>
                         </Box>
                     </Box>
