@@ -71,7 +71,7 @@ function Playground() {
                     width: '100%',
                 }}
             >
-                Other explorations
+                Old explorations
             </Box>
 
             <Box

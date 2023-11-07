@@ -126,7 +126,7 @@ function Row({
                     display: ['none', 'none', 'flex'],
                     alignItems: 'center',
                     justifyContent: 'flex-end',
-                    px: 1,
+                    px: 2,
                 }}
             >
                 <Labels labels={labels || []} />
@@ -174,12 +174,11 @@ function Row({
                     display: ['none', 'none', 'flex'],
                     alignItems: 'center',
                     justifyContent: 'flex-end',
-                    pl: 1,
+                    pl: 3,
                 }}
             >
                 <Box
                     sx={{
-                        pl: 1,
                         pointerEvents: 'none',
                     }}
                 >

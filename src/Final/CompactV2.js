@@ -22,7 +22,7 @@ function Row({
                 display: 'grid',
                 px: 3,
                 gridTemplateColumns: 'subgrid',
-                gridColumn: ['1/4', '1/4', '1/6'],
+                gridColumn: ['1/4', '1/4', '1/5'],
                 gap: 2,
                 ':not(:last-child)': {
                     borderBottomColor: 'border.subtle',
@@ -156,12 +156,11 @@ function Row({
                     display: ['none', 'none', 'flex'],
                     alignItems: 'center',
                     justifyContent: 'flex-end',
-                    pl: 1,
+                    pl: 3,
                 }}
             >
                 <Box
                     sx={{
-                        pl: 1,
                         pointerEvents: 'none',
                     }}
                 >
