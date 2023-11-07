@@ -13,7 +13,9 @@ function Row({
     labels,
     avatars,
     hash,
+    repoName,
     state,
+    showRepo,
 }) {
     return (
         <Box
@@ -61,6 +63,23 @@ function Row({
                 </Box>
 
                 <Box sx={{ py: '12px', fontWeight: 'semibold', fontSize: 2 }}>
+                    {showRepo && (
+                        <Box
+                            sx={{
+                                fontSize: 0,
+                                fontWeight: 'normal',
+                                display: 'block',
+                                color: 'fg.muted',
+                                pb: 1,
+                                whiteSpace: 'nowrap',
+                                overflow: 'hidden',
+                                textOverflow: 'ellipsis',
+                                maxWidth: '100%',
+                            }}
+                        >
+                            {repoName}
+                        </Box>
+                    )}
                     <Link
                         sx={{ color: 'fg.default' }}
                         href="https://github.com"
@@ -137,7 +156,7 @@ function Row({
                     pl: 1,
                     pr: 2,
                     pointerEvents: 'none',
-                    mt: '3px'
+                    mt: '3px',
                 }}
             >
                 {avatars.length === 0 ? (

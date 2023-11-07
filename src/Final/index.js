@@ -1,18 +1,32 @@
 import { useState, useEffect } from 'react'
-import { Box, SegmentedControl, FormControl, Select } from '@primer/react'
+import { Box, SegmentedControl} from '@primer/react'
+import { useControls } from 'leva'
+
 import Compact from './Compact'
 import CompactV2 from './CompactV2'
 import Default from './Default'
 
-const compactVersions = ['Version 1', 'Version 2']
-
-const defaultVersions = ['Version 1']
-
 function Final() {
     const [selectedMode, setSelectedMode] = useState(0)
     const [fetchedData, setFetchedData] = useState(null)
-    const [selectedCompactVersion, setSelectedCompactVersion] = useState(0)
-    const [selectedDefaultVersion, setSelectedDefaultVersion] = useState(0)
+
+    const { show_repo, compact_item, default_item, repo_name } = useControls({
+        show_repo: false,
+        repo_name: "maximedegreve/TinyFacesNFT-Vault",
+        compact_item: {
+            options: {
+                'Version 1': 1,
+                'Version 2': 2,
+            },
+        },
+        default_item: {
+            options: {
+                'Version 1': 1,
+            },
+        },
+    })
+
+    console.log(default_item)
 
     useEffect(() => {
         fetch('https://api.github.com/repos/primer/react/issues', {
@@ -26,8 +40,6 @@ function Final() {
             })
             .catch((error) => console.log(error))
     }, [])
-
-    console.log(selectedCompactVersion)
 
     return (
         <Box sx={{ width: '100%', maxWidth: 1400 }}>
@@ -45,64 +57,25 @@ function Final() {
                         </SegmentedControl.Button>
                     </SegmentedControl>
                 </Box>
-
-                {selectedMode === 0 && (
-                    <FormControl sx={{ display: 'flex', flexDirection: 'row' }}>
-                        <Select
-                            onChange={(e) => {
-                                setSelectedDefaultVersion(
-                                    parseInt(e.target.value)
-                                )
-                            }}
-                        >
-                            {defaultVersions.map((version, index) => (
-                                <Select.Option
-                                    selected={index === selectedDefaultVersion}
-                                    value={index}
-                                >
-                                    {version}
-                                </Select.Option>
-                            ))}
-                        </Select>
-                    </FormControl>
-                )}
-
-                {selectedMode === 1 && (
-                    <FormControl sx={{ display: 'flex', flexDirection: 'row' }}>
-                        <Select
-                            onChange={(e) => {
-                                setSelectedCompactVersion(
-                                    parseInt(e.target.value)
-                                )
-                            }}
-                        >
-                            {compactVersions.map((version, index) => (
-                                <Select.Option
-                                    selected={index === selectedCompactVersion}
-                                    value={index}
-                                >
-                                    {version}
-                                </Select.Option>
-                            ))}
-                        </Select>
-                    </FormControl>
-                )}
             </Box>
             <Box
                 as="ul"
                 sx={{
                     display: 'grid',
-                    gridTemplateColumns: [
-                        'auto 1fr auto',
-                        'auto 1fr auto',
+                    gridTemplateColumns:
                         selectedMode === 0
-                            ? '1fr auto auto auto'
-                            : '1fr auto auto',
-                        selectedMode === 0
-                            ? '1fr auto auto auto'
-                            : '1fr auto auto',
-                    ],
-
+                            ? [
+                                  'auto 1fr auto',
+                                  'auto 1fr auto',
+                                  '1fr auto auto auto',
+                                  '1fr auto auto auto',
+                              ]
+                            : [
+                                  'auto 1fr auto',
+                                  'auto 1fr auto',
+                                  '1fr auto auto auto',
+                                  '1fr auto auto auto',
+                              ],
                     mx: 'auto',
                     borderColor: 'border.default',
                     borderRadius: 2,
@@ -121,17 +94,21 @@ function Final() {
                                 totalComments={item.comments}
                                 totalPullRequests={item.pull_request ? 1 : 0}
                                 avatars={item.assignees}
+                                showRepo={show_repo}
+                                repoName={repo_name}
                                 labels={item.labels}
                             />
                         )
                     } else {
-                        if (selectedCompactVersion === 0) {
+                        if (compact_item === 1) {
                             return (
                                 <Compact
                                     state={item.state}
                                     title={item.title}
                                     hash={item.number}
                                     totalComments={item.comments}
+                                    showRepo={show_repo}
+                                    repoName={repo_name}
                                     totalPullRequests={
                                         item.pull_request ? 1 : 0
                                     }
@@ -145,7 +122,9 @@ function Final() {
                                     state={item.state}
                                     title={item.title}
                                     hash={item.number}
+                                    repoName={repo_name}
                                     totalComments={item.comments}
+                                    showRepo={show_repo}
                                     totalPullRequests={
                                         item.pull_request ? 1 : 0
                                     }

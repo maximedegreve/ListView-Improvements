@@ -1,5 +1,15 @@
-import { Box, Avatar, Checkbox, AvatarStack, Link } from '@primer/react'
-import { CommentIcon, GitPullRequestIcon } from '@primer/octicons-react'
+import {
+    Box,
+    Avatar,
+    Checkbox,
+    AvatarStack,
+    Link,
+} from '@primer/react'
+import {
+    CommentIcon,
+    GitPullRequestIcon,
+    RepoIcon,
+} from '@primer/octicons-react'
 
 import Labels from '../Labels'
 import StatusButton from '../StatusButton'
@@ -12,8 +22,10 @@ function Row({
     totalPullRequests,
     labels,
     avatars,
+    repoName,
     hash,
     state,
+    showRepo,
 }) {
     return (
         <Box
@@ -45,7 +57,8 @@ function Row({
                 <Box
                     sx={{
                         display: 'flex',
-                        alignItems: 'center',
+                        alignItems: 'flex-start',
+                        pt: 3
                     }}
                 >
                     <Box>
@@ -56,7 +69,8 @@ function Row({
                 <Box
                     sx={{
                         display: 'flex',
-                        alignItems: 'center',
+                        alignItems: 'flex-start',
+                        pt: 3
                     }}
                 >
                     <StateIcon state={state} />
@@ -73,46 +87,62 @@ function Row({
                     <Box
                         sx={{
                             display: 'flex',
-                            alignItems: 'center',
+                            alignItems: 'flex-start',
                             maxWidth: '100%',
+                            flexDirection: 'column',
                         }}
                     >
-                        <Link
+                        {showRepo && <Box
                             sx={{
-                                color: 'fg.default',
+                                fontSize: 0,
+                                fontWeight: 'normal',
+                                display: 'inline-block',
+                                color: 'fg.muted',
                                 whiteSpace: 'nowrap',
-                                display: 'block',
+                                overflow: 'hidden',
                                 textOverflow: 'ellipsis',
                                 maxWidth: '100%',
                             }}
-                            href="https://github.com"
                         >
-                            {title}{' '}
+                            {repoName}
+                        </Box>}
+                        
+                        <Box sx={{display: 'flex'}}>
+                            <Link
+                                sx={{
+                                    color: 'fg.default',
+                                    whiteSpace: 'nowrap',
+                                    display: 'block',
+                                    textOverflow: 'ellipsis',
+                                    maxWidth: '100%',
+                                }}
+                                href="https://github.com"
+                            >
+                                {title}{' '}
+                                <Box
+                                    sx={{
+                                        display: 'inline',
+                                        color: 'fg.muted',
+                                        fontWeight: 'normal',
+                                    }}
+                                >
+                                    #{hash}
+                                </Box>
+                            </Link>
                             <Box
                                 sx={{
-                                    display: 'inline',
-                                    color: 'fg.muted',
-                                    fontWeight: 'normal',
+                                    display: ['none', 'none', 'flex'],
+                                    alignItems: 'center',
+                                    justifyContent: 'flex-end',
+                                    px: 2,
                                 }}
                             >
-                                #{hash}
+                                <Labels labels={labels || []} />
                             </Box>
-                        </Link>
-                        <Box
-                sx={{
-                    display: ['none', 'none', 'flex'],
-                    alignItems: 'center',
-                    justifyContent: 'flex-end',
-                    px: 2,
-                }}
-            >
-                <Labels labels={labels || []} />
-            </Box>
+                        </Box>
                     </Box>
                 </Box>
             </Box>
-
-            
 
             <Box
                 sx={{

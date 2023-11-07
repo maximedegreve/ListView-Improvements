@@ -12,7 +12,6 @@ export default function StatusButton({ count, icon, label }) {
                 opacity: count === 0 ? 0.3 : 1,
                 display: 'flex',
                 alignItems: 'center',
-                fontWeight: 'semibold',
                 bg: 'transparent',
                 border: 0,
                 transition: 'background .12s ease-out',

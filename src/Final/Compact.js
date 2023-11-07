@@ -12,8 +12,10 @@ function Row({
     totalPullRequests,
     labels,
     avatars,
+    repoName,
     hash,
     state,
+    showRepo,
 }) {
     return (
         <Box
@@ -100,22 +102,24 @@ function Row({
                                 #{hash}
                             </Box>
                         </Link>
-                        <Box
-                            sx={{
-                                fontSize: 0,
-                                fontWeight: 'normal',
-                                ml: 1,
-                                display: 'inline-block',
-                                color: 'fg.muted',
-                                whiteSpace: 'nowrap',
-                                overflow: 'hidden',
-                                textOverflow: 'ellipsis',
-                                maxWidth: '100%',
-                            }}
-                        >
-                            {' '}
-                            · primer/react
-                        </Box>
+                        {showRepo && (
+                            <Box
+                                sx={{
+                                    fontSize: 0,
+                                    fontWeight: 'normal',
+                                    ml: 1,
+                                    display: 'inline-block',
+                                    color: 'fg.muted',
+                                    whiteSpace: 'nowrap',
+                                    overflow: 'hidden',
+                                    textOverflow: 'ellipsis',
+                                    maxWidth: '100%',
+                                }}
+                            >
+                                {' '}
+                                · {repoName}
+                            </Box>
+                        )}
                     </Box>
                 </Box>
             </Box>
