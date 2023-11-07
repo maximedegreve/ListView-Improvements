@@ -23,7 +23,6 @@ function Row({
                 px: 3,
                 gridTemplateColumns: 'subgrid',
                 gridColumn: ['1/3', '1/3', '1/5'],
-                bg: 'canvas.default',
                 gap: 4,
                 ':not(:last-child)': {
                     borderBottomColor: 'border.subtle',

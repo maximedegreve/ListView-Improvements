@@ -40,7 +40,6 @@ function Row({
                     gridTemplateColumns: 'auto auto 1fr',
                     gap: 3,
                     maxWidth: '100%',
-                    overflow: 'hidden',
                 }}
             >
                 <Box
@@ -82,7 +81,6 @@ function Row({
                             sx={{
                                 color: 'fg.default',
                                 whiteSpace: 'nowrap',
-                                overflow: 'hidden',
                                 display: 'block',
                                 textOverflow: 'ellipsis',
                                 maxWidth: '100%',
@@ -101,36 +99,20 @@ function Row({
                             </Box>
                         </Link>
                         <Box
-                            sx={{
-                                fontSize: 0,
-                                fontWeight: 'normal',
-                                ml: 1,
-                                display: 'inline-block',
-                                color: 'fg.muted',
-                                whiteSpace: 'nowrap',
-                                overflow: 'hidden',
-                                textOverflow: 'ellipsis',
-                                maxWidth: '100%',
-                            }}
-                        >
-                            {' '}
-                            · primer/react
-                        </Box>
-                    </Box>
-                </Box>
-            </Box>
-
-            <Box
                 sx={{
-                    gridColumn: 2,
                     display: ['none', 'none', 'flex'],
                     alignItems: 'center',
                     justifyContent: 'flex-end',
-                    px: 1,
+                    px: 2,
                 }}
             >
                 <Labels labels={labels || []} />
             </Box>
+                    </Box>
+                </Box>
+            </Box>
+
+            
 
             <Box
                 sx={{
