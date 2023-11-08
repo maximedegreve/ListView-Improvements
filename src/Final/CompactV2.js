@@ -109,7 +109,7 @@ function Row({
                         </Box>}
                         
                         <Box sx={{display: 'flex', overflow: 'hidden', maxWidth: '100%', width: '100%'}}>
-                            <Box>
+                            <Box sx={{display: 'flex', overflow: 'hidden'}}>
                             <Link
                                 sx={{
                                     color: 'fg.default',
@@ -139,7 +139,6 @@ function Row({
                                     alignItems: 'center',
                                     justifyContent: 'flex-start',
                                     px: 2,
-                                    width: '100%',
                                 }}
                             >
                                 <Labels labels={labels || []} />
