@@ -56,7 +56,6 @@ function Row({
 
                 <Box
                     sx={{
-                        pt: 2,
                         pt: '12px'
                     }}
                 >
