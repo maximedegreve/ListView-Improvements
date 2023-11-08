@@ -7,7 +7,7 @@ import {
 } from 'react'
 import { Box, Token, Tooltip, Label as PrimerLabel } from '@primer/react'
 
-export default function Labels({ labels, mobile, leftAligned = false }) {
+export default function Labels({ labels, mobile }) {
     const [truncatedLabelCount, setTruncatedLabelCount] = useState(0)
 
     const lastVisibleLabelIndex = labels.length - truncatedLabelCount - 1
@@ -72,13 +72,24 @@ export default function Labels({ labels, mobile, leftAligned = false }) {
         )
     }
 
+    var top = 0
+    var left = 0
+
+    if(labelRef.current?.children){
+        const childLabels = Array.from(labelRef.current.children)
+        top = childLabels[lastVisibleLabelIndex].offsetTop
+        left = childLabels[lastVisibleLabelIndex].offsetLeft + childLabels[lastVisibleLabelIndex].offsetWidth
+        console.log(top, left)
+    }
+  
+
+
     return (
         <Box
             sx={{
                 display: 'flex',
                 justifyContent: 'flex-start',
                 alignItems: 'flex-start',
-                gap: 1,
                 height: '100%',
                 maxHeight: 20,
                 position: 'relative',
@@ -93,7 +104,7 @@ export default function Labels({ labels, mobile, leftAligned = false }) {
                     flexWrap: 'wrap',
                     overflow: 'hidden',
                     justifyContent: 'flex-start',
-
+                    pr: '45px',
                     a: {
                         display: 'inline-flex',
                     },
@@ -113,7 +124,7 @@ export default function Labels({ labels, mobile, leftAligned = false }) {
                 })}
             </Box>
             {truncatedLabelCount > 0 && (
-                <Box>
+                <Box sx={{position: 'absolute', top: `${top}px`, left: `${left}px`, pl: 1 }}>
                     <Tooltip
                         align={'right'}
                         direction="sw"

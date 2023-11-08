@@ -133,7 +133,7 @@ function Row({
                                 </Box>
                             </Link>
                             </Box>
-                            <Box
+                            {labels && <Box
                                 sx={{
                                     display: ['none', 'none', 'flex'],
                                     alignItems: 'center',
@@ -142,8 +142,8 @@ function Row({
                                     width: '100%',
                                 }}
                             >
-                                <Labels leftAligned labels={labels || []} />
-                            </Box>
+                                <Labels labels={labels || []} />
+                            </Box>}
                         </Box>
                     </Box>
                 </Box>
