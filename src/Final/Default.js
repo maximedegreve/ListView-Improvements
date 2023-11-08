@@ -13,6 +13,7 @@ function Row({
     labels,
     avatars,
     hash,
+    user,
     repoName,
     state,
     showRepo,
@@ -114,7 +115,7 @@ function Row({
                             pt: labels?.length > 0 ? 0 : 1,
                         }}
                     >
-                        maximedegreve opened 2 days ago
+                        {user.login} opened 2 days ago
                     </Box>
                 </Box>
             </Box>

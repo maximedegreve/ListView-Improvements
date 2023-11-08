@@ -12,7 +12,7 @@ function Final() {
 
     const { show_repo, compact_item, default_item, repo_name } = useControls({
         show_repo: false,
-        repo_name: "maximedegreve/TinyFacesNFT-Vault",
+        repo_name: "primer/react",
         compact_item: {
             options: {
                 'Version 1': 1,
@@ -97,6 +97,7 @@ function Final() {
                                 showRepo={show_repo}
                                 repoName={repo_name}
                                 labels={item.labels}
+                                user={item.user}
                             />
                         )
                     } else {
