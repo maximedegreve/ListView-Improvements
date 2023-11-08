@@ -58,7 +58,7 @@ function Row({
                     sx={{
                         display: 'flex',
                         alignItems: 'flex-start',
-                        pt: 3
+                        pt: '14px'
                     }}
                 >
                     <Box>
@@ -70,7 +70,7 @@ function Row({
                     sx={{
                         display: 'flex',
                         alignItems: 'flex-start',
-                        pt: 3
+                        pt: '14px'
                     }}
                 >
                     <StateIcon state={state} />

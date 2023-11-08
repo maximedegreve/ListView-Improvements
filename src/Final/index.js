@@ -15,8 +15,8 @@ function Final() {
         repo_name: "primer/react",
         compact_item: {
             options: {
-                'Version 1': 1,
                 'Version 2': 2,
+                'Version 1': 1,
             },
         },
         default_item: {
