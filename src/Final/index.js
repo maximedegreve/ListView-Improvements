@@ -84,7 +84,7 @@ function Final() {
                     boxShadow: 'shadow.small',
                 }}
             >
-                {fetchedData?.filter((t) => t.title === "ActionMenu: Selected items use checkboxes instead of checkmarks").map((item) => {
+                {fetchedData?.map((item) => {
                     if (selectedMode === 0) {
                         return (
                             <Default
