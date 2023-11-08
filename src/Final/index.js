@@ -15,8 +15,8 @@ function Final() {
         repo_name: "maximedegreve/TinyFacesNFT-Vault",
         compact_item: {
             options: {
-                'Version 1': 1,
                 'Version 2': 2,
+                'Version 1': 1,
             },
         },
         default_item: {
@@ -84,7 +84,7 @@ function Final() {
                     boxShadow: 'shadow.small',
                 }}
             >
-                {fetchedData?.map((item) => {
+                {fetchedData?.filter((t) => t.title === "ActionMenu: Selected items use checkboxes instead of checkmarks").map((item) => {
                     if (selectedMode === 0) {
                         return (
                             <Default

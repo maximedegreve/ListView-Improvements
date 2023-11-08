@@ -8,10 +8,9 @@ import {
 import {
     CommentIcon,
     GitPullRequestIcon,
-    RepoIcon,
 } from '@primer/octicons-react'
 
-import Labels from '../Labels'
+import Labels from '../NewLabels'
 import StatusButton from '../StatusButton'
 import StateIcon from './StateIcon'
 import EmptyAvatar from './EmptyAvatar'
@@ -52,6 +51,7 @@ function Row({
                     gridTemplateColumns: 'auto auto 1fr',
                     gap: 3,
                     maxWidth: '100%',
+                    width: '100%',
                 }}
             >
                 <Box
@@ -81,6 +81,7 @@ function Row({
                         fontWeight: 'regular',
                         fontSize: 1,
                         maxWidth: '100%',
+                        width: '100%',
                         minWidth: 0,
                     }}
                 >
@@ -107,7 +108,8 @@ function Row({
                             {repoName}
                         </Box>}
                         
-                        <Box sx={{display: 'flex', overflow: 'hidden', maxWidth: '100%'}}>
+                        <Box sx={{display: 'flex', overflow: 'hidden', maxWidth: '100%', width: '100%'}}>
+                            <Box>
                             <Link
                                 sx={{
                                     color: 'fg.default',
@@ -130,12 +132,14 @@ function Row({
                                     #{hash}
                                 </Box>
                             </Link>
+                            </Box>
                             <Box
                                 sx={{
                                     display: ['none', 'none', 'flex'],
                                     alignItems: 'center',
                                     justifyContent: 'flex-end',
                                     px: 2,
+                                    width: '100%',
                                 }}
                             >
                                 <Labels leftAligned labels={labels || []} />
