@@ -46,7 +46,7 @@ function Row({
             >
                 <Box
                     sx={{
-                        py: '14px',
+                        pt: '15px'
                     }}
                 >
                     <Box>
@@ -57,7 +57,7 @@ function Row({
                 <Box
                     sx={{
                         pt: 2,
-                        mt: 1,
+                        pt: '12px'
                     }}
                 >
                     <StateIcon state={state} />
