@@ -137,7 +137,7 @@ function Row({
                                 sx={{
                                     display: ['none', 'none', 'flex'],
                                     alignItems: 'center',
-                                    justifyContent: 'flex-end',
+                                    justifyContent: 'flex-start',
                                     px: 2,
                                     width: '100%',
                                 }}

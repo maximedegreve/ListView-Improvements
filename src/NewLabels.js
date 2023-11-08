@@ -9,90 +9,44 @@ import { Box, Token, Tooltip, Label as PrimerLabel } from '@primer/react'
 
 export default function Labels({ labels, mobile, leftAligned = false }) {
     const [truncatedLabelCount, setTruncatedLabelCount] = useState(0)
-    const [dimensions, setDimensions] = useState({ width: 0, height: 0 })
-    const [parentDimensions, setParentDimensions] = useState({
-        width: 0,
-        height: 0,
-    })
+
+    const lastVisibleLabelIndex = labels.length - truncatedLabelCount - 1
 
     const labelRef = useRef(null)
-    const parentRef = useRef(null)
 
     const recalculatedTruncatedLabelCount = useCallback(() => {
-        if (labelRef.current && parentRef.current) {
-
-            console.log("parent width")
-
-            const parentWidth = parentDimensions.width
-            console.log(parentWidth)
-            let newTruncatedLabelCount = 0
-
+        if (labelRef?.current) {
             const childLabels = Array.from(labelRef.current.children)
-            for (let label of childLabels) {
-                console.log(`left: ${label.offsetLeft} width: ${label.offsetWidth}`)
-                const labelMaxX = label.offsetLeft + label.offsetWidth
-                if (labelMaxX > parentWidth) {
-                    newTruncatedLabelCount++
-                }
-            }
 
-            setTruncatedLabelCount(newTruncatedLabelCount)
-
-            if(newTruncatedLabelCount === childLabels.length) {
-                setDimensions({ width: 0, height: 0 })
-                return;
-            }
-
-
-            const lastVisibleLabelIndex = labels.length - newTruncatedLabelCount - 1
-console.log('last')
-            console.log(lastVisibleLabelIndex)
-            let widthSum = 0
-            let heightSum = 0
-            childLabels.forEach((child, index) => {
-                if (child.offsetHeight > heightSum) {
-                    heightSum = child.offsetHeight
-                }
-
-
-                if (index === lastVisibleLabelIndex ) {
-                    widthSum = child.offsetLeft + child.offsetWidth
-                    heightSum = 0 + child.offsetHeight
-                }
-            })
-
-            setDimensions({ width: widthSum, height: heightSum })
+            const baseOffset = labelRef.current.offsetTop
+            const breakIndex = childLabels.findIndex(
+                (item) => item.offsetTop > baseOffset
+            )
+            setTruncatedLabelCount(
+                breakIndex > 0 ? labels.length - breakIndex : 0
+            )
         }
-    }, [parentDimensions])
+    }, [labels.length])
 
     useEffect(() => {
         // recalculate the truncated label count when the window is resized
-        const curObserver = new ResizeObserver((entries) => {
-            console.log('WINDOW RESIZED')
-            console.log({
-                width: entries[0].contentRect.width,
-                height: entries[0].contentRect.height,
-            })
-            setParentDimensions({
-                width: entries[0].contentRect.width,
-                height: entries[0].contentRect.height,
-            })
+        const curObserver = new ResizeObserver(() => {
+            recalculatedTruncatedLabelCount()
         })
 
-        if (parentRef?.current) {
-            curObserver.observe(parentRef.current)
+        if (labelRef?.current) {
+            curObserver.observe(labelRef.current)
         }
 
         return () => {
             curObserver.disconnect()
         }
-    }, [setParentDimensions])
+    }, [recalculatedTruncatedLabelCount])
 
     // using this to synchronize the rendering of the labels and the + badge
     useLayoutEffect(() => {
-        console.log('useLayoutEffect')
         recalculatedTruncatedLabelCount()
-    }, [labels.length, recalculatedTruncatedLabelCount, parentDimensions])
+    }, [labels.length, recalculatedTruncatedLabelCount])
 
     if (labels.length === 0) {
         return null
@@ -112,7 +66,7 @@ console.log('last')
                 }}
             >
                 {labels.map((label, index) => {
-                    return <ColoredLabel name={label.name} key={index} />
+                    return <ColoredLabel name={label.name} />
                 })}
             </Box>
         )
@@ -122,45 +76,41 @@ console.log('last')
         <Box
             sx={{
                 display: 'flex',
-                alignItems: 'center',
+                justifyContent: 'flex-start',
+                alignItems: 'flex-start',
                 gap: 1,
                 height: '100%',
-                width: '100%',
-                flex: 1,
+                maxHeight: 20,
                 position: 'relative',
             }}
-            className="parent"
-            ref={parentRef}
         >
             <Box
-                className="labels-parent"
                 sx={{
                     display: 'flex',
                     alignItems: 'center',
-                    position: 'relative',
+                    gap: 1,
+                    flexDirection: 'row',
+                    flexWrap: 'wrap',
                     overflow: 'hidden',
-                    width: `${dimensions.width}px`,
-                    height: `${dimensions.height}px`,
+                    justifyContent: 'flex-start',
+
+                    a: {
+                        display: 'inline-flex',
+                    },
                 }}
+                ref={labelRef}
             >
-                <Box
-                    className="labels"
-                    sx={{
-                        whiteSpace: 'nowrap',
-                        position: 'absolute',
-                        top: 0,
-                        left: 0,
-                        bottom: 0,
-                        alignContent: 'center',
-                        display: 'flex',
-                        gap: 1,
-                    }}
-                    ref={labelRef}
-                >
-                    {labels.map((label, index) => (
-                        <ColoredLabel name={label.name} />
-                    ))}
-                </Box>
+                {labels.map((label, index) => {
+                    const hidden = index > lastVisibleLabelIndex
+                    return (
+                        <ColoredLabel
+                            name={label.name}
+                            sx={{
+                                visibility: hidden ? 'hidden' : 'visible',
+                            }}
+                        />
+                    )
+                })}
             </Box>
             {truncatedLabelCount > 0 && (
                 <Box>

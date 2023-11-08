@@ -15,8 +15,8 @@ function Final() {
         repo_name: "maximedegreve/TinyFacesNFT-Vault",
         compact_item: {
             options: {
-                'Version 2': 2,
                 'Version 1': 1,
+                'Version 2': 2,
             },
         },
         default_item: {
