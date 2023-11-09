@@ -1,19 +1,11 @@
-import {
-    Box,
-    Avatar,
-    Checkbox,
-    AvatarStack,
-    Link,
-} from '@primer/react'
-import {
-    CommentIcon,
-    GitPullRequestIcon,
-} from '@primer/octicons-react'
+import { Box, Avatar, Checkbox, AvatarStack, Link } from '@primer/react'
+import { CommentIcon, GitPullRequestIcon } from '@primer/octicons-react'
 
 import Labels from '../NewLabels'
 import StatusButton from '../StatusButton'
 import StateIcon from './StateIcon'
 import EmptyAvatar from './EmptyAvatar'
+import Branch from './Branch'
 
 function Row({
     title,
@@ -22,7 +14,9 @@ function Row({
     labels,
     avatars,
     repoName,
+    branch,
     hash,
+    showBranch,
     state,
     showRepo,
 }) {
@@ -59,7 +53,7 @@ function Row({
                     sx={{
                         display: 'flex',
                         alignItems: 'flex-start',
-                        pt: '14px'
+                        pt: '14px',
                     }}
                 >
                     <Box>
@@ -71,7 +65,7 @@ function Row({
                     sx={{
                         display: 'flex',
                         alignItems: 'flex-start',
-                        pt: '14px'
+                        pt: '14px',
                     }}
                 >
                     <StateIcon state={state} />
@@ -94,56 +88,81 @@ function Row({
                             flexDirection: 'column',
                         }}
                     >
-                        {showRepo && <Box
+                        {(showRepo || showBranch) && (
+                            <Box sx={{ display: 'flex', pb: 1 }}>
+                                {showRepo && (
+                                    <Box
+                                        sx={{
+                                            fontSize: 0,
+                                            fontWeight: 'normal',
+                                            display: 'block',
+                                            color: 'fg.muted',
+                                            whiteSpace: 'nowrap',
+                                            overflow: 'hidden',
+                                            textOverflow: 'ellipsis',
+                                            maxWidth: '100%',
+                                        }}
+                                    >
+                                        {repoName}
+                                    </Box>
+                                )}
+                                {branch && (
+                                    <Box
+                                        sx={{
+                                            pl: showRepo ? 1 : 0,
+                                            display: 'flex',
+                                        }}
+                                    >
+                                        <Branch>{branch}</Branch>
+                                    </Box>
+                                )}
+                            </Box>
+                        )}
+
+                        <Box
                             sx={{
-                                fontSize: 0,
-                                fontWeight: 'normal',
-                                display: 'inline-block',
-                                color: 'fg.muted',
-                                whiteSpace: 'nowrap',
+                                display: 'flex',
                                 overflow: 'hidden',
-                                textOverflow: 'ellipsis',
                                 maxWidth: '100%',
+                                width: '100%',
                             }}
                         >
-                            {repoName}
-                        </Box>}
-                        
-                        <Box sx={{display: 'flex', overflow: 'hidden', maxWidth: '100%', width: '100%'}}>
-                            <Box sx={{display: 'flex', overflow: 'hidden'}}>
-                            <Link
-                                sx={{
-                                    color: 'fg.default',
-                                    whiteSpace: 'nowrap',
-                                    display: 'block',
-                                    overflow: 'hidden',
-                                    textOverflow: 'ellipsis',
-                                    maxWidth: '100%',
-                                }}
-                                href="https://github.com"
-                            >
-                                {title}{' '}
+                            <Box sx={{ display: 'flex', overflow: 'hidden' }}>
+                                <Link
+                                    sx={{
+                                        color: 'fg.default',
+                                        whiteSpace: 'nowrap',
+                                        display: 'block',
+                                        overflow: 'hidden',
+                                        textOverflow: 'ellipsis',
+                                        maxWidth: '100%',
+                                    }}
+                                    href="https://github.com"
+                                >
+                                    {title}{' '}
+                                    <Box
+                                        sx={{
+                                            display: 'inline',
+                                            color: 'fg.muted',
+                                            fontWeight: 'normal',
+                                        }}
+                                    >
+                                        #{hash}
+                                    </Box>
+                                </Link>
+                            </Box>
+                            {labels && (
                                 <Box
                                     sx={{
-                                        display: 'inline',
-                                        color: 'fg.muted',
-                                        fontWeight: 'normal',
+                                        display: ['none', 'none', 'flex'],
+                                        alignItems: 'center',
+                                        justifyContent: 'flex-start',
+                                        px: 2,
                                     }}
                                 >
-                                    #{hash}
+                                    <Labels labels={labels || []} />
                                 </Box>
-                            </Link>
-                            </Box>
-                            {labels && <Box
-                                sx={{
-                                    display: ['none', 'none', 'flex'],
-                                    alignItems: 'center',
-                                    justifyContent: 'flex-start',
-                                    px: 2,
-                                }}
-                            >
-                                <Labels labels={labels || []} />
-                            </Box>}
+                            )}
                         </Box>
                     </Box>
                 </Box>
@@ -184,8 +203,6 @@ function Row({
                     }`}
                 />
             </Box>
-
-
 
             <Box
                 sx={{

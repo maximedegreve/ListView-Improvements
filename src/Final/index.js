@@ -11,24 +11,25 @@ function Final() {
     const [selectedMode, setSelectedMode] = useState(0)
     const [fetchedData, setFetchedData] = useState(null)
 
-    const { show_repo, compact_item, default_item, repo_name } = useControls({
-        show_repo: false,
-        repo_name: 'primer/react',
-        compact_item: {
-            options: {
-                'Version 2': 2,
-                'Version 1': 1,
+    const { show_repo, compact_item, default_item, repo_name, branch_name, show_branch } =
+        useControls({
+            show_repo: false,
+            repo_name: 'primer/react',
+            branch_name: 'feature/update-login',
+            show_branch: false,
+            compact_item: {
+                options: {
+                    'Version 2': 2,
+                    'Version 1': 1,
+                },
             },
-        },
-        default_item: {
-            options: {
-                'Version 1': 1,
-                'Version 2': 2,
+            default_item: {
+                options: {
+                    'Version 1': 1,
+                    'Version 2': 2,
+                },
             },
-        },
-    })
-
-    console.log(default_item)
+        })
 
     useEffect(() => {
         fetch('https://api.github.com/repos/primer/react/issues', {
@@ -94,6 +95,8 @@ function Final() {
                                     state={item.state}
                                     title={item.title}
                                     hash={item.number}
+                                    branch={branch_name}
+                                    showBranch={show_branch}
                                     totalComments={item.comments}
                                     totalPullRequests={
                                         item.pull_request ? 1 : 0
@@ -111,6 +114,8 @@ function Final() {
                                     state={item.state}
                                     title={item.title}
                                     hash={item.number}
+                                    branch={branch_name}
+                                    showBranch={show_branch}
                                     totalComments={item.comments}
                                     totalPullRequests={
                                         item.pull_request ? 1 : 0
@@ -130,6 +135,8 @@ function Final() {
                                     state={item.state}
                                     title={item.title}
                                     hash={item.number}
+                                    showBranch={show_branch}
+                                    branch={branch_name}
                                     totalComments={item.comments}
                                     showRepo={show_repo}
                                     repoName={repo_name}
@@ -146,7 +153,9 @@ function Final() {
                                     state={item.state}
                                     title={item.title}
                                     hash={item.number}
+                                    branch={branch_name}
                                     repoName={repo_name}
+                                    showBranch={show_branch}
                                     totalComments={item.comments}
                                     showRepo={show_repo}
                                     totalPullRequests={

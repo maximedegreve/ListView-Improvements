@@ -5,6 +5,7 @@ import Labels from '../Labels'
 import StatusButton from '../StatusButton'
 import StateIcon from './StateIcon'
 import EmptyAvatar from './EmptyAvatar'
+import Branch from './Branch'
 
 function Row({
     title,
@@ -13,7 +14,9 @@ function Row({
     labels,
     avatars,
     repoName,
+    showBranch,
     hash,
+    branch,
     state,
     showRepo,
 }) {
@@ -102,24 +105,39 @@ function Row({
                                 #{hash}
                             </Box>
                         </Link>
-                        {showRepo && (
-                            <Box
-                                sx={{
-                                    fontSize: 0,
-                                    fontWeight: 'normal',
-                                    ml: 1,
-                                    display: 'inline-block',
-                                    color: 'fg.muted',
-                                    whiteSpace: 'nowrap',
-                                    overflow: 'hidden',
-                                    textOverflow: 'ellipsis',
-                                    maxWidth: '100%',
-                                }}
-                            >
-                                {' '}
+                        {(showRepo || showBranch) && (
+                            <Box sx={{ display: 'flex' }}>
+                                {showRepo && (
+                                    <Box
+                                        sx={{
+                                            fontSize: 0,
+                                            fontWeight: 'normal',
+                                            display: 'block',
+                                            color: 'fg.muted',
+                                            pl: 1,
+                                            whiteSpace: 'nowrap',
+                                            overflow: 'hidden',
+                                            textOverflow: 'ellipsis',
+                                            maxWidth: '100%',
+                                        }}
+                                    >
+                                        {' '}
                                 · {repoName}
+                                    </Box>
+                                )}
+                                {branch && (
+                                    <Box
+                                        sx={{
+                                            pl: showRepo ? 1 : 0,
+                                            display: 'flex',
+                                        }}
+                                    >
+                                        <Branch>{branch}</Branch>
+                                    </Box>
+                                )}
                             </Box>
                         )}
+
                     </Box>
                 </Box>
             </Box>

@@ -5,6 +5,7 @@ import Labels from '../Labels'
 import StatusButton from '../StatusButton'
 import StateIcon from './StateIcon'
 import EmptyAvatar from './EmptyAvatar'
+import Branch from './Branch'
 
 function Row({
     title,
@@ -15,8 +16,10 @@ function Row({
     hash,
     user,
     repoName,
+    showBranch,
     state,
     showRepo,
+    branch,
 }) {
     return (
         <Box
@@ -46,7 +49,7 @@ function Row({
             >
                 <Box
                     sx={{
-                        pt: '15px'
+                        pt: '15px',
                     }}
                 >
                     <Box>
@@ -56,58 +59,71 @@ function Row({
 
                 <Box
                     sx={{
-                        pt: '12px'
+                        pt: '12px',
                     }}
                 >
                     <StateIcon state={state} />
                 </Box>
 
                 <Box sx={{ py: '12px', fontWeight: 'semibold', fontSize: 2 }}>
-                    {showRepo && (
-                        <Box
-                            sx={{
-                                fontSize: 0,
-                                fontWeight: 'normal',
-                                display: 'block',
-                                color: 'fg.muted',
-                                pb: 1,
-                                whiteSpace: 'nowrap',
-                                overflow: 'hidden',
-                                textOverflow: 'ellipsis',
-                                maxWidth: '100%',
-                            }}
-                        >
-                            {repoName}
-                        </Box>
-                    )}
-
+                    {(showRepo ||
+                        showBranch) && (
+                            <Box sx={{ display: 'flex', pb: 1 }}>
+                                {showRepo && (
+                                    <Box
+                                        sx={{
+                                            fontSize: 0,
+                                            fontWeight: 'normal',
+                                            display: 'block',
+                                            color: 'fg.muted',
+                                            whiteSpace: 'nowrap',
+                                            overflow: 'hidden',
+                                            textOverflow: 'ellipsis',
+                                            maxWidth: '100%',
+                                        }}
+                                    >
+                                        {repoName}
+                                    </Box>
+                                )}
+                                {branch && (
+                                    <Box
+                                        sx={{
+                                            pl: showRepo ? 1 : 0,
+                                            display: 'flex',
+                                        }}
+                                    >
+                                        <Branch>{branch}</Branch>
+                                    </Box>
+                                )}
+                            </Box>
+                        )}
                     <Box>
-                    <Link
-                        sx={{ color: 'fg.default', pr: 2 }}
-                        href="https://github.com"
-                    >
-                        {title}{' '}
-                        <Box
-                            sx={{
-                                display: 'inline',
-                                color: 'fg.muted',
-                                fontWeight: 'normal',
-                            }}
+                        <Link
+                            sx={{ color: 'fg.default', pr: 2 }}
+                            href="https://github.com"
                         >
-                            #{hash}
-                        </Box>
-                    </Link>
+                            {title}{' '}
+                            <Box
+                                sx={{
+                                    display: 'inline',
+                                    color: 'fg.muted',
+                                    fontWeight: 'normal',
+                                }}
+                            >
+                                #{hash}
+                            </Box>
+                        </Link>
 
-                    {labels?.length > 0 && (
-                        <Box
-                            sx={{
-                                display: 'inline-block',
-                                verticalAlign: 'text-top',
-                            }}
-                        >
-                            <Labels mobile labels={labels || []} />
-                        </Box>
-                    )}
+                        {labels?.length > 0 && (
+                            <Box
+                                sx={{
+                                    display: 'inline-block',
+                                    verticalAlign: 'text-top',
+                                }}
+                            >
+                                <Labels mobile labels={labels || []} />
+                            </Box>
+                        )}
                     </Box>
 
                     <Box
