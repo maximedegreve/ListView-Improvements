@@ -23,7 +23,13 @@ function Row({
     showBranch,
     state,
     showRepo,
+    selectable,
 }) {
+    let leadingColumns = selectable ? 3 : 2
+    leadingColumns += notifications ? 1 : 0
+
+    const gridTemplateColumns = `repeat(${leadingColumns}, auto) 1fr`
+
     return (
         <Box
             as="li"
@@ -47,26 +53,25 @@ function Row({
             <Box
                 sx={{
                     display: 'grid',
-                    gridTemplateColumns: notifications
-                    ? 'auto auto auto 1fr'
-                    : 'auto auto 1fr',
+                    gridTemplateColumns: gridTemplateColumns,
                     gap: 3,
                     maxWidth: '100%',
                     width: '100%',
                 }}
             >
-                <Box
-                    sx={{
-                        display: 'flex',
-                        alignItems: 'center',
-                        height: '100%',
-                    }}
-                >
-                    <Box>
-                        <Checkbox value="default" sx={{ mt: 0 }} />
+                {selectable && (
+                    <Box
+                        sx={{
+                            display: 'flex',
+                            alignItems: 'center',
+                            height: '100%',
+                        }}
+                    >
+                        <Box>
+                            <Checkbox value="default" sx={{ mt: 0 }} />
+                        </Box>
                     </Box>
-                </Box>
-
+                )}
 
                 {notifications && (
                     <Box
@@ -79,7 +84,6 @@ function Row({
                         <Notification unseen={unseen} />
                     </Box>
                 )}
-
 
                 <Box
                     sx={{
@@ -156,7 +160,8 @@ function Row({
                                         overflow: 'hidden',
                                         textOverflow: 'ellipsis',
                                         maxWidth: '100%',
-                                        textUnderlineOffset: 3
+                                        textUnderlineOffset: 3,
+                                        fontWeight: 'bold',
                                     }}
                                     href="https://github.com"
                                 >

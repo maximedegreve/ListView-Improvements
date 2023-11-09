@@ -21,6 +21,7 @@ function Final() {
         show_branch,
         show_labels,
         notifications,
+        selectable,
     } = useControls({
         show_repo: false,
         repo_name: 'primer/react',
@@ -28,6 +29,7 @@ function Final() {
         show_branch: false,
         show_labels: true,
         notifications: true,
+        selectable: true,
         compact_item: {
             options: {
                 'Version 2': 2,
@@ -101,6 +103,7 @@ function Final() {
                                     state={item.state}
                                     title={item.title}
                                     hash={item.number}
+                                    selectable={selectable}
                                     branch={branch_name}
                                     showBranch={show_branch}
                                     showLabels={show_labels}
@@ -123,6 +126,7 @@ function Final() {
                                     state={item.state}
                                     title={item.title}
                                     hash={item.number}
+                                    selectable={selectable}
                                     branch={branch_name}
                                     showBranch={show_branch}
                                     showLabels={show_labels}
@@ -147,6 +151,7 @@ function Final() {
                                     state={item.state}
                                     title={item.title}
                                     hash={item.number}
+                                    selectable={selectable}
                                     showBranch={show_branch}
                                     branch={branch_name}
                                     showLabels={show_labels}
@@ -168,6 +173,7 @@ function Final() {
                                     state={item.state}
                                     title={item.title}
                                     hash={item.number}
+                                    selectable={selectable}
                                     branch={branch_name}
                                     repoName={repo_name}
                                     notifications={notifications}

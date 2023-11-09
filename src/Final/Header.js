@@ -1,6 +1,6 @@
 import { Box, Checkbox } from '@primer/react'
 
-export default function Header({ children, totalItems }) {
+export default function Header({ children, totalItems, selectable }) {
     return (
         <Box
             sx={{
@@ -19,7 +19,7 @@ export default function Header({ children, totalItems }) {
                 borderBottomWidth: 0,
             }}
         >
-            <Box sx={{display: 'flex', alignItems: 'center', pr: 3}}><Checkbox /></Box>
+            {selectable && <Box sx={{display: 'flex', alignItems: 'center', pr: 3}}><Checkbox /></Box>}
             <Box sx={{flex: 1, display: 'flex', fontSize: 1, fontWeight: 'bold', alignItems: 'center'}}>{totalItems} items</Box>
             <Box>{children}</Box>
         </Box>

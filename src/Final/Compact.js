@@ -23,7 +23,13 @@ function Row({
     showRepo,
     notifications,
     unseen,
+    selectable,
 }) {
+    let leadingColumns = selectable ? 3 : 2
+    leadingColumns += notifications ? 1 : 0
+
+    const gridTemplateColumns = `repeat(${leadingColumns}, auto) 1fr`
+
     return (
         <Box
             as="li"
@@ -47,24 +53,24 @@ function Row({
             <Box
                 sx={{
                     display: 'grid',
-                    gridTemplateColumns: notifications
-                        ? 'auto auto auto 1fr'
-                        : 'auto auto 1fr',
+                    gridTemplateColumns: gridTemplateColumns,
                     gap: 3,
                     maxWidth: '100%',
                     overflow: 'hidden',
                 }}
             >
-                <Box
-                    sx={{
-                        display: 'flex',
-                        alignItems: 'center',
-                    }}
-                >
-                    <Box>
-                        <Checkbox value="default" sx={{ mt: 0 }} />
+                {selectable && (
+                    <Box
+                        sx={{
+                            display: 'flex',
+                            alignItems: 'center',
+                        }}
+                    >
+                        <Box>
+                            <Checkbox value="default" sx={{ mt: 0 }} />
+                        </Box>
                     </Box>
-                </Box>
+                )}
 
                 {notifications && (
                     <Box
@@ -110,6 +116,7 @@ function Row({
                                 display: 'block',
                                 textOverflow: 'ellipsis',
                                 maxWidth: '100%',
+                                fontWeight: 'bold',
                                 textUnderlineOffset: 3,
                             }}
                             href="https://github.com"
