@@ -99,7 +99,7 @@ function Row({
                             </Box>
                         )}
                     <Link
-                        sx={{ color: 'fg.default' }}
+                        sx={{ color: 'fg.default', textUnderlineOffset: 3 }}
                         href="https://github.com"
                     >
                         {title}{' '}

@@ -137,6 +137,7 @@ function Row({
                                         overflow: 'hidden',
                                         textOverflow: 'ellipsis',
                                         maxWidth: '100%',
+                                        textUnderlineOffset: 3
                                     }}
                                     href="https://github.com"
                                 >

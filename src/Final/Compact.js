@@ -92,6 +92,7 @@ function Row({
                                 display: 'block',
                                 textOverflow: 'ellipsis',
                                 maxWidth: '100%',
+                                textUnderlineOffset: 3,
                             }}
                             href="https://github.com"
                         >
