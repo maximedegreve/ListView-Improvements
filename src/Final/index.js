@@ -11,13 +11,14 @@ function Final() {
     const [selectedMode, setSelectedMode] = useState(0)
     const [fetchedData, setFetchedData] = useState(null)
 
-    const { show_repo, compact_item, default_item, repo_name, branch_name, show_branch, show_labels } =
+    const { show_repo, compact_item, default_item, repo_name, branch_name, show_branch, show_labels, notifications } =
         useControls({
             show_repo: false,
             repo_name: 'primer/react',
             branch_name: 'feature/update-login',
             show_branch: false,
             show_labels: true,
+            notifications: true,
             compact_item: {
                 options: {
                     'Version 2': 2,
@@ -66,20 +67,12 @@ function Final() {
                 as="ul"
                 sx={{
                     display: 'grid',
-                    gridTemplateColumns:
-                        selectedMode === 0
-                            ? [
-                                  'auto 1fr auto',
-                                  'auto 1fr auto',
-                                  '1fr auto auto auto',
-                                  '1fr auto auto auto',
-                              ]
-                            : [
-                                  'auto 1fr auto',
-                                  'auto 1fr auto',
-                                  '1fr auto auto auto',
-                                  '1fr auto auto auto',
-                              ],
+                    gridTemplateColumns:[
+                        'auto 1fr auto',
+                        'auto 1fr auto',
+                        '1fr auto auto auto',
+                        '1fr auto auto auto',
+                    ],
                     mx: 'auto',
                     borderColor: 'border.default',
                     borderRadius: 2,
@@ -96,7 +89,7 @@ function Final() {
                     }
                 }}
             >
-                {fetchedData?.map((item) => {
+                {fetchedData?.map((item, index) => {
                     if (selectedMode === 0) {
                         if (default_item === 1) {
                             return (
@@ -111,6 +104,8 @@ function Final() {
                                     totalPullRequests={
                                         item.pull_request ? 1 : 0
                                     }
+                                    notifications={notifications}
+                                    unseen={index < 6}
                                     avatars={item.assignees}
                                     showRepo={show_repo}
                                     repoName={repo_name}
@@ -132,6 +127,8 @@ function Final() {
                                         item.pull_request ? 1 : 0
                                     }
                                     avatars={item.assignees}
+                                    notifications={notifications}
+                                    unseen={index < 6}
                                     showRepo={show_repo}
                                     repoName={repo_name}
                                     labels={item.labels}
@@ -150,6 +147,8 @@ function Final() {
                                     branch={branch_name}
                                     showLabels={show_labels}
                                     totalComments={item.comments}
+                                    notifications={notifications}
+                                    unseen={index < 6}
                                     showRepo={show_repo}
                                     repoName={repo_name}
                                     totalPullRequests={
@@ -167,6 +166,8 @@ function Final() {
                                     hash={item.number}
                                     branch={branch_name}
                                     repoName={repo_name}
+                                    notifications={notifications}
+                                    unseen={index < 6}
                                     showBranch={show_branch}
                                     showLabels={show_labels}
                                     totalComments={item.comments}

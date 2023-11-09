@@ -6,6 +6,7 @@ import StatusButton from '../StatusButton'
 import StateIcon from './StateIcon'
 import EmptyAvatar from './EmptyAvatar'
 import Branch from './Branch'
+import Notification from './Notification'
 
 function Row({
     title,
@@ -15,6 +16,8 @@ function Row({
     avatars,
     branch,
     showLabels,
+    notifications,
+    unseen,
     hash,
     user,
     showBranch,
@@ -44,7 +47,9 @@ function Row({
             <Box
                 sx={{
                     display: 'grid',
-                    gridTemplateColumns: 'auto auto 1fr',
+                    gridTemplateColumns: notifications
+                        ? 'auto auto auto 1fr'
+                        : 'auto auto 1fr',
                     gap: 3,
                 }}
             >
@@ -58,6 +63,16 @@ function Row({
                     </Box>
                 </Box>
 
+                {notifications && (
+                    <Box
+                        sx={{
+                            pt: '21px',
+                        }}
+                    >
+                        <Notification unseen={unseen} />
+                    </Box>
+                )}
+
                 <Box
                     sx={{
                         pt: '12px',
@@ -67,37 +82,36 @@ function Row({
                 </Box>
 
                 <Box sx={{ py: '12px', fontWeight: 'bold', fontSize: 2 }}>
-                {(showRepo ||
-                        showBranch) && (
-                            <Box sx={{ display: 'flex', pb: 1 }}>
-                                {showRepo && (
-                                    <Box
-                                        sx={{
-                                            fontSize: 0,
-                                            fontWeight: 'normal',
-                                            display: 'block',
-                                            color: 'fg.muted',
-                                            whiteSpace: 'nowrap',
-                                            overflow: 'hidden',
-                                            textOverflow: 'ellipsis',
-                                            maxWidth: '100%',
-                                        }}
-                                    >
-                                        {repoName}
-                                    </Box>
-                                )}
-                                {showBranch && (
-                                    <Box
-                                        sx={{
-                                            pl: showRepo ? 1 : 0,
-                                            display: 'flex',
-                                        }}
-                                    >
-                                        <Branch>{branch}</Branch>
-                                    </Box>
-                                )}
-                            </Box>
-                        )}
+                    {(showRepo || showBranch) && (
+                        <Box sx={{ display: 'flex', pb: 1 }}>
+                            {showRepo && (
+                                <Box
+                                    sx={{
+                                        fontSize: 0,
+                                        fontWeight: 'normal',
+                                        display: 'block',
+                                        color: 'fg.muted',
+                                        whiteSpace: 'nowrap',
+                                        overflow: 'hidden',
+                                        textOverflow: 'ellipsis',
+                                        maxWidth: '100%',
+                                    }}
+                                >
+                                    {repoName}
+                                </Box>
+                            )}
+                            {showBranch && (
+                                <Box
+                                    sx={{
+                                        pl: showRepo ? 1 : 0,
+                                        display: 'flex',
+                                    }}
+                                >
+                                    <Branch>{branch}</Branch>
+                                </Box>
+                            )}
+                        </Box>
+                    )}
                     <Link
                         sx={{ color: 'fg.default', textUnderlineOffset: 3 }}
                         href="https://github.com"

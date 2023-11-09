@@ -6,6 +6,7 @@ import StatusButton from '../StatusButton'
 import StateIcon from './StateIcon'
 import EmptyAvatar from './EmptyAvatar'
 import Branch from './Branch'
+import Notification from './Notification'
 
 function Row({
     title,
@@ -15,6 +16,8 @@ function Row({
     avatars,
     repoName,
     branch,
+    notifications,
+    unseen,
     hash,
     showLabels,
     showBranch,
@@ -44,7 +47,9 @@ function Row({
             <Box
                 sx={{
                     display: 'grid',
-                    gridTemplateColumns: 'auto auto 1fr',
+                    gridTemplateColumns: notifications
+                    ? 'auto auto auto 1fr'
+                    : 'auto auto 1fr',
                     gap: 3,
                     maxWidth: '100%',
                     width: '100%',
@@ -61,6 +66,20 @@ function Row({
                         <Checkbox value="default" sx={{ mt: 0 }} />
                     </Box>
                 </Box>
+
+
+                {notifications && (
+                    <Box
+                        sx={{
+                            display: 'flex',
+                            justifyContent: 'center',
+                            alignItems: 'center',
+                        }}
+                    >
+                        <Notification unseen={unseen} />
+                    </Box>
+                )}
+
 
                 <Box
                     sx={{
