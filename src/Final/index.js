@@ -59,7 +59,7 @@ function Final() {
 
     return (
         <Box sx={{ width: '100%', maxWidth: 1400 }}>
-            <Header notifications={notifications} checkbox={true} totalItems={fetchedData?.length || 0 }>
+            <Header notifications={notifications} checkbox={true} totalItems={fetchedData?.length || 0 } selectable={selectable}>
                 <SegmentedControl
                     aria-label="Mode"
                     onChange={(index) => setSelectedMode(index)}
