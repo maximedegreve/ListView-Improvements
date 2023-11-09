@@ -1,4 +1,4 @@
-import { Box, StyledOcticon } from '@primer/react'
+import { Box } from '@primer/react'
 
 export default function Branch({ children }) {
     return (
