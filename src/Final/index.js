@@ -86,6 +86,14 @@ function Final() {
                     borderWidth: 1,
                     borderStyle: 'solid',
                     boxShadow: 'shadow.small',
+                    "li:first-child": {
+                        borderTopLeftRadius: 2,
+                        borderTopRightRadius: 2,
+                    },
+                    "li:last-child": {
+                        borderBottomLeftRadius: 2,
+                        borderBottomRightRadius: 2,
+                    }
                 }}
             >
                 {fetchedData?.map((item) => {
