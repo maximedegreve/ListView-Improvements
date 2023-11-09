@@ -126,10 +126,10 @@ function Row({
                                         · {repoName}
                                     </Box>
                                 )}
-                                {branch && (
+                                {showBranch && (
                                     <Box
                                         sx={{
-                                            pl: showRepo ? 1 : 0,
+                                            pl: 1,
                                             display: 'flex',
                                         }}
                                     >
