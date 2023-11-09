@@ -1,10 +1,11 @@
 import { useState, useEffect } from 'react'
-import { Box, SegmentedControl} from '@primer/react'
+import { Box, SegmentedControl } from '@primer/react'
 import { useControls } from 'leva'
 
 import Compact from './Compact'
 import CompactV2 from './CompactV2'
 import Default from './Default'
+import DefaultV2 from './DefaultV2'
 
 function Final() {
     const [selectedMode, setSelectedMode] = useState(0)
@@ -12,7 +13,7 @@ function Final() {
 
     const { show_repo, compact_item, default_item, repo_name } = useControls({
         show_repo: false,
-        repo_name: "primer/react",
+        repo_name: 'primer/react',
         compact_item: {
             options: {
                 'Version 2': 2,
@@ -22,6 +23,7 @@ function Final() {
         default_item: {
             options: {
                 'Version 1': 1,
+                'Version 2': 2,
             },
         },
     })
@@ -86,20 +88,41 @@ function Final() {
             >
                 {fetchedData?.map((item) => {
                     if (selectedMode === 0) {
-                        return (
-                            <Default
-                                state={item.state}
-                                title={item.title}
-                                hash={item.number}
-                                totalComments={item.comments}
-                                totalPullRequests={item.pull_request ? 1 : 0}
-                                avatars={item.assignees}
-                                showRepo={show_repo}
-                                repoName={repo_name}
-                                labels={item.labels}
-                                user={item.user}
-                            />
-                        )
+                        if (default_item === 1) {
+                            return (
+                                <Default
+                                    state={item.state}
+                                    title={item.title}
+                                    hash={item.number}
+                                    totalComments={item.comments}
+                                    totalPullRequests={
+                                        item.pull_request ? 1 : 0
+                                    }
+                                    avatars={item.assignees}
+                                    showRepo={show_repo}
+                                    repoName={repo_name}
+                                    labels={item.labels}
+                                    user={item.user}
+                                />
+                            )
+                        } else {
+                            return (
+                                <DefaultV2
+                                    state={item.state}
+                                    title={item.title}
+                                    hash={item.number}
+                                    totalComments={item.comments}
+                                    totalPullRequests={
+                                        item.pull_request ? 1 : 0
+                                    }
+                                    avatars={item.assignees}
+                                    showRepo={show_repo}
+                                    repoName={repo_name}
+                                    labels={item.labels}
+                                    user={item.user}
+                                />
+                            )
+                        }
                     } else {
                         if (compact_item === 1) {
                             return (
