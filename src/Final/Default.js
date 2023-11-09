@@ -66,7 +66,7 @@ function Row({
                     <StateIcon state={state} />
                 </Box>
 
-                <Box sx={{ py: '12px', fontWeight: 'semibold', fontSize: 2 }}>
+                <Box sx={{ py: '12px', fontWeight: 'bold', fontSize: 2 }}>
                 {(showRepo ||
                         showBranch) && (
                             <Box sx={{ display: 'flex', pb: 1 }}>

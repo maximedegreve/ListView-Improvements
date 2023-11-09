@@ -11,6 +11,7 @@ export default function Branch({ children }) {
                 whiteSpace: 'nowrap',
                 fontFamily: 'monospace',
                 fontSize: '11px',
+                fontWeight: 'semibold',
                 borderRadius: 1,
                 lineHeight: '20px',
                 px: 1,
