@@ -15,6 +15,7 @@ function Row({
     avatars,
     repoName,
     showBranch,
+    showLabels,
     hash,
     branch,
     state,
@@ -122,7 +123,7 @@ function Row({
                                         }}
                                     >
                                         {' '}
-                                · {repoName}
+                                        · {repoName}
                                     </Box>
                                 )}
                                 {branch && (
@@ -137,22 +138,23 @@ function Row({
                                 )}
                             </Box>
                         )}
-
                     </Box>
                 </Box>
             </Box>
 
-            <Box
-                sx={{
-                    gridColumn: 2,
-                    display: ['none', 'none', 'flex'],
-                    alignItems: 'center',
-                    justifyContent: 'flex-end',
-                    px: 2,
-                }}
-            >
-                <Labels labels={labels || []} />
-            </Box>
+            {showLabels && (
+                <Box
+                    sx={{
+                        gridColumn: 2,
+                        display: ['none', 'none', 'flex'],
+                        alignItems: 'center',
+                        justifyContent: 'flex-end',
+                        px: 2,
+                    }}
+                >
+                    <Labels labels={labels || []} />
+                </Box>
+            )}
 
             <Box
                 sx={{

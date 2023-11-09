@@ -11,12 +11,13 @@ function Final() {
     const [selectedMode, setSelectedMode] = useState(0)
     const [fetchedData, setFetchedData] = useState(null)
 
-    const { show_repo, compact_item, default_item, repo_name, branch_name, show_branch } =
+    const { show_repo, compact_item, default_item, repo_name, branch_name, show_branch, show_labels } =
         useControls({
             show_repo: false,
             repo_name: 'primer/react',
             branch_name: 'feature/update-login',
             show_branch: false,
+            show_labels: true,
             compact_item: {
                 options: {
                     'Version 2': 2,
@@ -97,6 +98,7 @@ function Final() {
                                     hash={item.number}
                                     branch={branch_name}
                                     showBranch={show_branch}
+                                    showLabels={show_labels}
                                     totalComments={item.comments}
                                     totalPullRequests={
                                         item.pull_request ? 1 : 0
@@ -116,6 +118,7 @@ function Final() {
                                     hash={item.number}
                                     branch={branch_name}
                                     showBranch={show_branch}
+                                    showLabels={show_labels}
                                     totalComments={item.comments}
                                     totalPullRequests={
                                         item.pull_request ? 1 : 0
@@ -137,6 +140,7 @@ function Final() {
                                     hash={item.number}
                                     showBranch={show_branch}
                                     branch={branch_name}
+                                    showLabels={show_labels}
                                     totalComments={item.comments}
                                     showRepo={show_repo}
                                     repoName={repo_name}
@@ -156,6 +160,7 @@ function Final() {
                                     branch={branch_name}
                                     repoName={repo_name}
                                     showBranch={show_branch}
+                                    showLabels={show_labels}
                                     totalComments={item.comments}
                                     showRepo={show_repo}
                                     totalPullRequests={

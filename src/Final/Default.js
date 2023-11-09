@@ -14,6 +14,7 @@ function Row({
     labels,
     avatars,
     branch,
+    showLabels,
     hash,
     user,
     showBranch,
@@ -113,7 +114,7 @@ function Row({
                         </Box>
                     </Link>
 
-                    {labels?.length > 0 && (
+                    {showLabels && labels?.length > 0 && (
                         <Box
                             sx={{
                                 py: 2,
@@ -128,7 +129,7 @@ function Row({
                             fontSize: 0,
                             fontWeight: 'normal',
                             color: 'fg.muted',
-                            pt: labels?.length > 0 ? 0 : 1,
+                            pt: showLabels && labels?.length > 0 ? 0 : 1,
                         }}
                     >
                         {user.login} opened 2 days ago

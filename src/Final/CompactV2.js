@@ -16,6 +16,7 @@ function Row({
     repoName,
     branch,
     hash,
+    showLabels,
     showBranch,
     state,
     showRepo,
@@ -151,7 +152,7 @@ function Row({
                                     </Box>
                                 </Link>
                             </Box>
-                            {labels && (
+                            {showLabels && labels && (
                                 <Box
                                     sx={{
                                         display: ['none', 'none', 'flex'],

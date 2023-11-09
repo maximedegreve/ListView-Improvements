@@ -16,6 +16,7 @@ function Row({
     hash,
     user,
     repoName,
+    showLabels,
     showBranch,
     state,
     showRepo,
@@ -114,7 +115,7 @@ function Row({
                             </Box>
                         </Link>
 
-                        {labels?.length > 0 && (
+                        {showLabels && labels?.length > 0 && (
                             <Box
                                 sx={{
                                     display: 'inline-block',
