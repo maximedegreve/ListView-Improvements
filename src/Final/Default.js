@@ -74,7 +74,11 @@ function Row({
                         gap: [0, 0, 3],
                         justifyContent: ['flex-end', 'flex-end', 'flex-start'],
                         alignItems: ['center', 'center', 'flex-start'],
-                        flexDirection: ['column-reverse', 'column-reverse', 'row'],
+                        flexDirection: [
+                            'column-reverse',
+                            'column-reverse',
+                            'row',
+                        ],
                     }}
                 >
                     {notifications && (
@@ -143,22 +147,74 @@ function Row({
                         </Box>
                     </Link>
 
-                    {showLabels && labels?.length > 0 && (
+                    <Box
+                        sx={{
+                            display:
+                                totalComments > 0 ||
+                                (showLabels && labels?.length > 0) ||
+                                totalPullRequests > 0
+                                    ? 'flex'
+                                    : 'none',
+                            columnGap: 1,
+                            rowGap: 2,
+                            py: 2,
+                            flexWrap: 'wrap',
+                        }}
+                    >
+                        {showLabels && labels?.length > 0 && (
+                            <Labels mobile labels={labels || []} />
+                        )}
+
                         <Box
                             sx={{
-                                py: 2,
+                                display:
+                                    totalComments > 0
+                                        ? ['flex', 'flex', 'none']
+                                        : 'none',
                             }}
                         >
-                            <Labels mobile labels={labels || []} />
+                            <StatusButton
+                                count={totalComments}
+                                icon={CommentIcon}
+                                isMobile={true}
+                                label={`${totalComments} ${
+                                    totalComments === 1 ? 'comment' : 'comments'
+                                }`}
+                            />
                         </Box>
-                    )}
+
+                        <Box
+                            sx={{
+                                display:
+                                    totalPullRequests > 0
+                                        ? ['flex', 'flex', 'none']
+                                        : 'none',
+                            }}
+                        >
+                            <StatusButton
+                                count={totalPullRequests}
+                                icon={GitPullRequestIcon}
+                                isMobile={true}
+                                label={`${totalPullRequests} ${
+                                    totalPullRequests === 1
+                                        ? 'linked pull request'
+                                        : 'linked pull requests'
+                                }`}
+                            />
+                        </Box>
+                    </Box>
 
                     <Box
                         sx={{
                             fontSize: 0,
                             fontWeight: 'normal',
                             color: 'fg.muted',
-                            pt: showLabels && labels?.length > 0 ? 0 : 1,
+                            pt:
+                                totalComments > 0 ||
+                                (showLabels && labels?.length > 0) ||
+                                totalPullRequests > 0
+                                    ? 0
+                                    : 1,
                         }}
                     >
                         {user.login} opened 2 days ago

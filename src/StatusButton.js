@@ -1,6 +1,6 @@
 import { Box, StyledOcticon, Tooltip } from '@primer/react'
 
-export default function StatusButton({ count, icon, label }) {
+export default function StatusButton({ count, icon, label, isMobile }) {
     const button = (
         <Box
             as="button"
@@ -13,9 +13,9 @@ export default function StatusButton({ count, icon, label }) {
                 display: 'flex',
                 alignItems: 'center',
                 bg: 'transparent',
-                border: 0,
+                border: isMobile ? 1 : 0,
+                borderStyle: 'solid',
                 transition: 'background .12s ease-out',
-
                 '&:active:not([disabled])': {
                     bg: 'actionListItem.default.active',
                     borderColor: 'btn.activeBorder',
@@ -24,19 +24,35 @@ export default function StatusButton({ count, icon, label }) {
                     bg: 'actionListItem.default.hoverBg',
                     cursor: 'pointer',
                 },
-                px: 2,
-                py: 1,
-                borderRadius: 2,
+                px: ['7px', '7px', 2],
+                fontWeight: isMobile ? 'bold' : 'regular',
+                py: isMobile ? 0 : 1,
+                height: isMobile ? 20 : 'auto',
+                borderRadius: isMobile ? 3 : 2,
             }}
         >
-            <StyledOcticon
-                icon={icon}
-                size={16}
-                sx={{
-                    mr: 2,
-                    color: 'fg.muted',
-                }}
-            />
+            <Box sx={{ display: isMobile ? 'flex' : 'none' }}>
+                <StyledOcticon
+                    icon={icon}
+                    size={13}
+                    sx={{
+                        mr: 1,
+                        color: 'fg.muted',
+                    }}
+                />
+            </Box>
+
+            <Box sx={{ display: isMobile ? 'none' : 'flex' }}>
+                <StyledOcticon
+                    icon={icon}
+                    size={16}
+                    sx={{
+                        mr: 2,
+                        color: 'fg.muted',
+                    }}
+                />
+            </Box>
+
             {count}
         </Box>
     )

@@ -184,14 +184,7 @@ function Row({
                             #{hash}
                         </Box>
                     </Link>
-                    {labels && <Box
-                        sx={{
-                            py: 2,
-                        }}
-                    >
-                        <Labels mobile labels={labels || []} />
-                    </Box>}
-                    
+
                     <Box
                         sx={{
                             fontSize: 0,

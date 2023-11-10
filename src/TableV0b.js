@@ -152,7 +152,7 @@ function Row({
                 display: 'grid',
                 px: 3,
                 gridTemplateColumns: 'subgrid',
-                gridColumn: ['1/3','1/3','1/5'],
+                gridColumn: ['1/3', '1/3', '1/5'],
                 bg: 'canvas.default',
                 gap: 5,
                 ':not(:last-child)': {
@@ -165,12 +165,10 @@ function Row({
                 },
             }}
         >
-
-
             {
                 /// Checkbox title, label
             }
-        
+
             <Box
                 sx={{
                     display: 'grid',
@@ -178,17 +176,16 @@ function Row({
                     gap: 3,
                 }}
             >
-                        <Box
-                sx={{
-                    py: '14px',
-                }}
-            >
-                <Box>
-                    <Checkbox value="default" />
+                <Box
+                    sx={{
+                        py: '14px',
+                    }}
+                >
+                    <Box>
+                        <Checkbox value="default" />
+                    </Box>
                 </Box>
-            </Box>
 
-      
                 <Box
                     sx={{
                         pt: 2,
@@ -201,9 +198,7 @@ function Row({
                     />
                 </Box>
 
-
-    
-                <Box sx={{ py: '12px', fontWeight: 'semibold', fontSize: 2}}>
+                <Box sx={{ py: '12px', fontWeight: 'semibold', fontSize: 2 }}>
                     <Link
                         sx={{ color: 'fg.default' }}
                         href="https://github.com"
@@ -221,7 +216,12 @@ function Row({
                     </Link>
                     <Box
                         sx={{
-                            py: 2,
+                            display: ['flex', 'flex', 'none'],
+                            rowGap: 2,
+                            pt: 2,
+                            pb: 1,
+                            columnGap: 1,
+                            flexWrap: 'wrap',
                         }}
                     >
                         <Labels mobile labels={labels || []} />
@@ -236,11 +236,10 @@ function Row({
                         maximedegreve opened 2 days ago
                     </Box>
                 </Box>
-
             </Box>
 
             {
-                // Comments 
+                // Comments
             }
 
             <Box
@@ -250,30 +249,30 @@ function Row({
                     display: ['none', 'none', 'block'],
                 }}
             >
-                {totalComments > 0 && ( <Box
-                    sx={{
-                        height: 20,
-                        fontSize: 0,
-                        display: 'flex',
-                        alignItems: 'center',
-                        color: 'fg.muted',
-                        fontWeight: 'semibold',
-                    }}
-                >
-                    <StyledOcticon
-                        icon={CommentIcon}
-                        size={16}
-                        sx={{ mr: 2, color: 'fg.muted' }}
-                    />
-                    {totalComments}
-                </Box>)}
-                
+                {totalComments > 0 && (
+                    <Box
+                        sx={{
+                            height: 20,
+                            fontSize: 0,
+                            display: 'flex',
+                            alignItems: 'center',
+                            color: 'fg.muted',
+                            fontWeight: 'semibold',
+                        }}
+                    >
+                        <StyledOcticon
+                            icon={CommentIcon}
+                            size={16}
+                            sx={{ mr: 2, color: 'fg.muted' }}
+                        />
+                        {totalComments}
+                    </Box>
+                )}
             </Box>
 
             {
-                // Pull requests 
+                // Pull requests
             }
-
 
             <Box
                 sx={{
@@ -282,29 +281,29 @@ function Row({
                     display: ['none', 'none', 'block'],
                 }}
             >
-             {totalPullRequests > 0 && ( 
-                <Box
-                    sx={{
-                        height: 20,
-                        fontSize: 0,
-                        color: 'fg.muted',
-                        display: 'flex',
-                        alignItems: 'center',
-                        fontWeight: 'semibold',
-                    }}
-                >
-                    <StyledOcticon
-                        icon={GitPullRequestIcon}
-                        size={16}
-                        sx={{ mr: 2, color: 'fg.muted' }}
-                    />
-                    {totalPullRequests}
-                </Box>)}
+                {totalPullRequests > 0 && (
+                    <Box
+                        sx={{
+                            height: 20,
+                            fontSize: 0,
+                            color: 'fg.muted',
+                            display: 'flex',
+                            alignItems: 'center',
+                            fontWeight: 'semibold',
+                        }}
+                    >
+                        <StyledOcticon
+                            icon={GitPullRequestIcon}
+                            size={16}
+                            sx={{ mr: 2, color: 'fg.muted' }}
+                        />
+                        {totalPullRequests}
+                    </Box>
+                )}
             </Box>
 
-
             {
-                // Avatars 
+                // Avatars
             }
 
             <Box

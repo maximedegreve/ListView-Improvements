@@ -53,23 +53,9 @@ export default function Labels({ labels, mobile, leftAligned = false }) {
     }
 
     if (mobile) {
-        return (
-            <Box
-                sx={{
-                    display: 'flex',
-                    justifyContent: 'flex-start',
-                    alignItems: 'flex-start',
-                    flexWrap: 'wrap',
-                    rowGap: 2,
-                    columnGap: 1,
-                    height: '100%',
-                }}
-            >
-                {labels.map((label, index) => {
-                    return <ColoredLabel name={label.name} />
-                })}
-            </Box>
-        )
+        return labels.map((label, index) => {
+            return <ColoredLabel key={index} name={label.name} />
+        })
     }
 
     return (

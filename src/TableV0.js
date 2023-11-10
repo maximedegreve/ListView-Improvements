@@ -152,7 +152,7 @@ function Row({
                 display: 'grid',
                 px: 3,
                 gridTemplateColumns: 'subgrid',
-                gridColumn: ['1/4','1/4','1/6'],
+                gridColumn: ['1/4', '1/4', '1/6'],
                 bg: 'canvas.default',
                 gap: 5,
                 ':not(:last-child)': {
@@ -172,15 +172,15 @@ function Row({
                     gap: 3,
                 }}
             >
-                        <Box
-                sx={{
-                    py: '14px',
-                }}
-            >
-                <Box>
-                    <Checkbox value="default" />
+                <Box
+                    sx={{
+                        py: '14px',
+                    }}
+                >
+                    <Box>
+                        <Checkbox value="default" />
+                    </Box>
                 </Box>
-            </Box>
 
                 <Box
                     sx={{
@@ -211,9 +211,12 @@ function Row({
                     </Link>
                     <Box
                         sx={{
-                            display: ['block', 'block', 'none'],
+                            display: ['flex', 'flex', 'none'],
+                            rowGap: 2,
                             pt: 2,
                             pb: 1,
+                            columnGap: 1,
+                            flexWrap: 'wrap',
                         }}
                     >
                         <Labels mobile labels={labels || []} />

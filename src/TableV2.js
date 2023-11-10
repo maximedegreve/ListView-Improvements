@@ -212,7 +212,16 @@ function Row({
                 >
                     #{hash}
                 </Box>
-                <Box sx={{ display: ['block', 'block', 'none'], pt: 2, pb: 1 }}>
+                <Box
+                    sx={{
+                        display: ['flex', 'flex', 'none'],
+                        rowGap: 2,
+                        pt: 2,
+                        pb: 1,
+                        columnGap: 1,
+                        flexWrap: 'wrap',
+                    }}
+                >
                     <Labels mobile labels={labels || []} />
                 </Box>
                 <Box
