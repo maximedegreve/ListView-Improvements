@@ -7,6 +7,7 @@ import StateIcon from './StateIcon'
 import EmptyAvatar from './EmptyAvatar'
 import Branch from './Branch'
 import Notification from './Notification'
+import IssueType from './IssueType'
 
 function Row({
     title,
@@ -17,6 +18,7 @@ function Row({
     repoName,
     showBranch,
     showLabels,
+    showType,
     hash,
     branch,
     state,
@@ -108,6 +110,8 @@ function Row({
                             maxWidth: '100%',
                         }}
                     >
+                        {showType && <IssueType>Feature</IssueType>}
+
                         <Link
                             sx={{
                                 color: 'fg.default',

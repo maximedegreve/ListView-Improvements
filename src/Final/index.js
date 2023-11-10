@@ -19,6 +19,7 @@ function Final() {
         repo_name,
         branch_name,
         show_branch,
+        show_type,
         show_labels,
         notifications,
         selectable,
@@ -29,6 +30,7 @@ function Final() {
         show_branch: false,
         show_labels: true,
         notifications: true,
+        show_type: false,
         selectable: true,
         compact_item: {
             options: {
@@ -59,7 +61,12 @@ function Final() {
 
     return (
         <Box sx={{ width: '100%', maxWidth: 1400 }}>
-            <Header notifications={notifications} checkbox={true} totalItems={fetchedData?.length || 0 } selectable={selectable}>
+            <Header
+                notifications={notifications}
+                checkbox={true}
+                totalItems={fetchedData?.length || 0}
+                selectable={selectable}
+            >
                 <SegmentedControl
                     aria-label="Mode"
                     onChange={(index) => setSelectedMode(index)}
@@ -103,6 +110,7 @@ function Final() {
                                     state={item.state}
                                     title={item.title}
                                     hash={item.number}
+                                    showType={show_type}
                                     selectable={selectable}
                                     branch={branch_name}
                                     showBranch={show_branch}
@@ -128,6 +136,7 @@ function Final() {
                                     hash={item.number}
                                     selectable={selectable}
                                     branch={branch_name}
+                                    showType={show_type}
                                     showBranch={show_branch}
                                     showLabels={show_labels}
                                     totalComments={item.comments}
@@ -154,6 +163,7 @@ function Final() {
                                     selectable={selectable}
                                     showBranch={show_branch}
                                     branch={branch_name}
+                                    showType={show_type}
                                     showLabels={show_labels}
                                     totalComments={item.comments}
                                     notifications={notifications}
@@ -172,6 +182,7 @@ function Final() {
                                 <CompactV2
                                     state={item.state}
                                     title={item.title}
+                                    showType={show_type}
                                     hash={item.number}
                                     selectable={selectable}
                                     branch={branch_name}

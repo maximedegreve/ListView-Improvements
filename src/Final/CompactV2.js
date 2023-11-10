@@ -7,12 +7,14 @@ import StateIcon from './StateIcon'
 import EmptyAvatar from './EmptyAvatar'
 import Branch from './Branch'
 import Notification from './Notification'
+import IssueType from './IssueType'
 
 function Row({
     title,
     totalComments,
     totalPullRequests,
     labels,
+    showType,
     avatars,
     repoName,
     branch,
@@ -152,6 +154,8 @@ function Row({
                             }}
                         >
                             <Box sx={{ display: 'flex', overflow: 'hidden' }}>
+                                {showType && <IssueType>Feature</IssueType>}
+
                                 <Link
                                     sx={{
                                         color: 'fg.default',

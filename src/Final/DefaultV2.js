@@ -7,6 +7,7 @@ import StateIcon from './StateIcon'
 import EmptyAvatar from './EmptyAvatar'
 import Branch from './Branch'
 import Notification from './Notification'
+import IssueType from './IssueType'
 
 function Row({
     title,
@@ -16,6 +17,7 @@ function Row({
     avatars,
     hash,
     user,
+    showType,
     notifications,
     unseen,
     repoName,
@@ -132,6 +134,7 @@ function Row({
                         </Box>
                     )}
                     <Box>
+                        {showType && <IssueType>Feature</IssueType>}
                         <Link
                             sx={{
                                 color: 'fg.default',

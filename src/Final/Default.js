@@ -7,6 +7,7 @@ import StateIcon from './StateIcon'
 import EmptyAvatar from './EmptyAvatar'
 import Branch from './Branch'
 import Notification from './Notification'
+import IssueType from './IssueType'
 
 function Row({
     title,
@@ -21,6 +22,7 @@ function Row({
     hash,
     user,
     showBranch,
+    showType,
     repoName,
     selectable,
     state,
@@ -134,6 +136,8 @@ function Row({
                             )}
                         </Box>
                     )}
+
+                    {showType && <IssueType>Feature</IssueType>}
                     <Link
                         sx={{ color: 'fg.default', textUnderlineOffset: 3 }}
                         href="https://github.com"
