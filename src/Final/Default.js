@@ -26,7 +26,7 @@ function Row({
     state,
     showRepo,
 }) {
-    let leadingColumns = selectable ? 3 : 2
+    let leadingColumns = selectable ? 2 : 1
 
     const gridTemplateColumns = `repeat(${leadingColumns}, auto) 1fr`
 
@@ -150,10 +150,27 @@ function Row({
                     <Box
                         sx={{
                             display:
-                                totalComments > 0 ||
+                                showLabels && labels?.length > 0
+                                    ? ['none', 'none', 'flex']
+                                    : 'none',
+                            columnGap: 1,
+                            rowGap: 2,
+                            py: 2,
+                            flexWrap: 'wrap',
+                        }}
+                    >
+                        {showLabels && labels?.length > 0 && (
+                            <Labels mobile labels={labels || []} />
+                        )}
+                    </Box>
+
+                    <Box
+                        sx={{
+                            display:
                                 (showLabels && labels?.length > 0) ||
+                                totalComments > 0 ||
                                 totalPullRequests > 0
-                                    ? 'flex'
+                                    ? ['flex', 'flex', 'none']
                                     : 'none',
                             columnGap: 1,
                             rowGap: 2,
