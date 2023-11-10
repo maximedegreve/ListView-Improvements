@@ -13,11 +13,8 @@ export default function IssueType({ children, type }) {
                     mr: 1,
                     color: 'fg.muted',
                     alignItems: 'center',
-                    verticalAlign: 'text-top',
                     fontWeight: 'bold',
                     fontSize: 1,
-                    lineHeight: 1,
-                    height: '18px',
                     borderRadius: 3,
                 }}
             >
