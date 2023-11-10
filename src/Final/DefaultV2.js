@@ -27,7 +27,6 @@ function Row({
     branch,
 }) {
     let leadingColumns = selectable ? 3 : 2
-    leadingColumns += notifications ? 1 : 0
 
     const gridTemplateColumns = `repeat(${leadingColumns}, auto) 1fr`
 
@@ -69,22 +68,36 @@ function Row({
                     </Box>
                 )}
 
-                {notifications && (
-                    <Box
-                        sx={{
-                            pt: '21px',
-                        }}
-                    >
-                        <Notification unseen={unseen} />
-                    </Box>
-                )}
-
                 <Box
                     sx={{
-                        pt: '12px',
+                        display: 'flex',
+                        gap: [0, 0, 3],
+                        justifyContent: ['flex-end', 'flex-end', 'flex-start'],
+                        alignItems: ['center', 'center', 'flex-start'],
+                        flexDirection: [
+                            'column-reverse',
+                            'column-reverse',
+                            'row',
+                        ],
                     }}
                 >
-                    <StateIcon state={state} />
+                    {notifications && (
+                        <Box
+                            sx={{
+                                pt: [2, 2, '21px'],
+                            }}
+                        >
+                            <Notification unseen={unseen} />
+                        </Box>
+                    )}
+
+                    <Box
+                        sx={{
+                            pt: '12px',
+                        }}
+                    >
+                        <StateIcon state={state} />
+                    </Box>
                 </Box>
 
                 <Box sx={{ py: '12px', fontWeight: 'bold', fontSize: 2 }}>
