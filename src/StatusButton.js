@@ -13,8 +13,9 @@ export default function StatusButton({ count, icon, label, isMobile }) {
                 display: 'flex',
                 alignItems: 'center',
                 bg: 'transparent',
-                border: isMobile ? 1 : 0,
+                borderWidth: isMobile ? 1 : 0,
                 borderStyle: 'solid',
+                borderColor: 'border.subtle',
                 transition: 'background .12s ease-out',
                 '&:active:not([disabled])': {
                     bg: 'actionListItem.default.active',
