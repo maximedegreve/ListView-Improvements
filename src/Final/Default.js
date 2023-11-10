@@ -23,7 +23,7 @@ function Row({
     hash,
     user,
     showBranch,
-    showType,
+    issueType,
     repoName,
     selectable,
     state,
@@ -142,7 +142,7 @@ function Row({
                         </Box>
                     )}
 
-                    {showType && <IssueType>Feature</IssueType>}
+                    <IssueType type={issueType}>Feature</IssueType>
                     <Link
                         sx={{ color: 'fg.default', textUnderlineOffset: 3 }}
                         href="https://github.com"

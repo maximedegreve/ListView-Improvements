@@ -18,7 +18,7 @@ function Row({
     avatars,
     hash,
     user,
-    showType,
+    issueType,
     notificationsType,
     unseen,
     repoName,
@@ -139,7 +139,7 @@ function Row({
                         </Box>
                     )}
                     <Box>
-                        {showType && <IssueType>Feature</IssueType>}
+                        <IssueType type={issueType}>Feature</IssueType>
                         <Link
                             sx={{
                                 color: 'fg.default',

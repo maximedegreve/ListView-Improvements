@@ -19,7 +19,7 @@ function Final() {
         repo_name,
         branch_name,
         show_branch,
-        show_type,
+        issue_type,
         show_labels,
         notifications_type,
         selectable,
@@ -36,7 +36,13 @@ function Final() {
                 bar: 'bar',
             },
         },
-        show_type: false,
+        issue_type: {
+            options: {
+                none: 'none',
+                label: 'label',
+                custom: 'custom',
+            },
+        },
         selectable: true,
         compact_item: {
             options: {
@@ -115,7 +121,7 @@ function Final() {
                                     state={item.state}
                                     title={item.title}
                                     hash={item.number}
-                                    showType={show_type}
+                                    issueType={issue_type}
                                     selectable={selectable}
                                     branch={branch_name}
                                     showBranch={show_branch}
@@ -141,7 +147,7 @@ function Final() {
                                     hash={item.number}
                                     selectable={selectable}
                                     branch={branch_name}
-                                    showType={show_type}
+                                    issueType={issue_type}
                                     showBranch={show_branch}
                                     showLabels={show_labels}
                                     totalComments={item.comments}
@@ -168,7 +174,7 @@ function Final() {
                                     selectable={selectable}
                                     showBranch={show_branch}
                                     branch={branch_name}
-                                    showType={show_type}
+                                    issueType={issue_type}
                                     showLabels={show_labels}
                                     totalComments={item.comments}
                                     notificationsType={notifications_type}
@@ -187,7 +193,7 @@ function Final() {
                                 <CompactV2
                                     state={item.state}
                                     title={item.title}
-                                    showType={show_type}
+                                    issueType={issue_type}
                                     hash={item.number}
                                     selectable={selectable}
                                     branch={branch_name}

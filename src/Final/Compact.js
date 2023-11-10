@@ -19,7 +19,7 @@ function Row({
     repoName,
     showBranch,
     showLabels,
-    showType,
+    issueType,
     hash,
     branch,
     state,
@@ -114,7 +114,7 @@ function Row({
                             maxWidth: '100%',
                         }}
                     >
-                        {showType && <IssueType>Feature</IssueType>}
+                        <IssueType type={issueType}>Feature</IssueType>
 
                         <Link
                             sx={{

@@ -1,6 +1,31 @@
 import { Box } from '@primer/react'
 
-export default function IssueType({ children }) {
+export default function IssueType({ children, type }) {
+    if (type === 'none') {
+        return null
+    }
+
+    if (type === 'custom') {
+        return (
+            <Box
+                sx={{
+                    display: 'inline-flex',
+                    mr: 1,
+                    color: 'fg.muted',
+                    alignItems: 'center',
+                    verticalAlign: 'text-top',
+                    fontWeight: 'bold',
+                    fontSize: 1,
+                    lineHeight: 1,
+                    height: '18px',
+                    borderRadius: 3,
+                }}
+            >
+                [{children}]
+            </Box>
+        )
+    }
+
     return (
         <Box
             sx={{

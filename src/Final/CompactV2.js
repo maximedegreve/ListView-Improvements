@@ -15,7 +15,7 @@ function Row({
     totalComments,
     totalPullRequests,
     labels,
-    showType,
+    issueType,
     avatars,
     repoName,
     branch,
@@ -158,7 +158,7 @@ function Row({
                             }}
                         >
                             <Box sx={{ display: 'flex', overflow: 'hidden' }}>
-                                {showType && <IssueType>Feature</IssueType>}
+                                <IssueType type={issueType}>Feature</IssueType>
 
                                 <Link
                                     sx={{
