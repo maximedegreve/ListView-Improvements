@@ -1,6 +1,6 @@
 import { Box } from '@primer/react'
 
-export default function IssueType({ children, type }) {
+export default function IssueType({ children, type, compact }) {
     if (type === 'none') {
         return null
     }
@@ -14,7 +14,7 @@ export default function IssueType({ children, type }) {
                     color: 'fg.muted',
                     alignItems: 'center',
                     fontWeight: 'bold',
-                    fontSize: 1,
+                    fontSize: compact ? 1 : 2,
                     borderRadius: 3,
                 }}
             >

@@ -158,7 +158,9 @@ function Row({
                             }}
                         >
                             <Box sx={{ display: 'flex', overflow: 'hidden' }}>
-                                <IssueType type={issueType}>Feature</IssueType>
+                                <IssueType type={issueType} compact>
+                                    Feature
+                                </IssueType>
 
                                 <Link
                                     sx={{

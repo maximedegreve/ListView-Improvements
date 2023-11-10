@@ -114,7 +114,9 @@ function Row({
                             maxWidth: '100%',
                         }}
                     >
-                        <IssueType type={issueType}>Feature</IssueType>
+                        <IssueType type={issueType} compact>
+                            Feature
+                        </IssueType>
 
                         <Link
                             sx={{
