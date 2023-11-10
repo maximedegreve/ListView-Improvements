@@ -7,6 +7,7 @@ import StateIcon from './StateIcon'
 import EmptyAvatar from './EmptyAvatar'
 import Branch from './Branch'
 import Notification from './Notification'
+import NotificationBar from './NotificationBar'
 import IssueType from './IssueType'
 
 function Row({
@@ -18,7 +19,7 @@ function Row({
     hash,
     user,
     showType,
-    notifications,
+    notificationsType,
     unseen,
     repoName,
     showLabels,
@@ -83,7 +84,7 @@ function Row({
                         ],
                     }}
                 >
-                    {notifications && (
+                    {notificationsType === 'dot' && (
                         <Box
                             sx={{
                                 pt: [2, 2, '21px'],
@@ -91,6 +92,10 @@ function Row({
                         >
                             <Notification unseen={unseen} />
                         </Box>
+                    )}
+
+                    {notificationsType === 'bar' && (
+                        <NotificationBar unseen={unseen} />
                     )}
 
                     <Box

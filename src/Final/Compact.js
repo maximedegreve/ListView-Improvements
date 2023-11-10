@@ -7,6 +7,7 @@ import StateIcon from './StateIcon'
 import EmptyAvatar from './EmptyAvatar'
 import Branch from './Branch'
 import Notification from './Notification'
+import NotificationBar from './NotificationBar'
 import IssueType from './IssueType'
 
 function Row({
@@ -23,12 +24,12 @@ function Row({
     branch,
     state,
     showRepo,
-    notifications,
+    notificationsType,
     unseen,
     selectable,
 }) {
     let leadingColumns = selectable ? 3 : 2
-    leadingColumns += notifications ? 1 : 0
+    leadingColumns += notificationsType !== 'none' ? 1 : 0
 
     const gridTemplateColumns = `repeat(${leadingColumns}, auto) 1fr`
 
@@ -61,6 +62,9 @@ function Row({
                     overflow: 'hidden',
                 }}
             >
+                {notificationsType === 'bar' && (
+                    <NotificationBar unseen={unseen} />
+                )}
                 {selectable && (
                     <Box
                         sx={{
@@ -74,7 +78,7 @@ function Row({
                     </Box>
                 )}
 
-                {notifications && (
+                {notificationsType === 'dot' && (
                     <Box
                         sx={{
                             display: 'flex',

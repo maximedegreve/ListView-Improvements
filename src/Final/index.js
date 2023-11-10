@@ -21,7 +21,7 @@ function Final() {
         show_branch,
         show_type,
         show_labels,
-        notifications,
+        notifications_type,
         selectable,
     } = useControls({
         show_repo: false,
@@ -29,7 +29,13 @@ function Final() {
         branch_name: 'feature/update-login',
         show_branch: false,
         show_labels: true,
-        notifications: true,
+        notifications_type: {
+            options: {
+                none: 'none',
+                dot: 'dot',
+                bar: 'bar',
+            },
+        },
         show_type: false,
         selectable: true,
         compact_item: {
@@ -62,7 +68,6 @@ function Final() {
     return (
         <Box sx={{ width: '100%', maxWidth: 1400 }}>
             <Header
-                notifications={notifications}
                 checkbox={true}
                 totalItems={fetchedData?.length || 0}
                 selectable={selectable}
@@ -119,7 +124,7 @@ function Final() {
                                     totalPullRequests={
                                         item.pull_request ? 1 : 0
                                     }
-                                    notifications={notifications}
+                                    notificationsType={notifications_type}
                                     unseen={index < 6}
                                     avatars={item.assignees}
                                     showRepo={show_repo}
@@ -144,7 +149,7 @@ function Final() {
                                         item.pull_request ? 1 : 0
                                     }
                                     avatars={item.assignees}
-                                    notifications={notifications}
+                                    notificationsType={notifications_type}
                                     unseen={index < 6}
                                     showRepo={show_repo}
                                     repoName={repo_name}
@@ -166,7 +171,7 @@ function Final() {
                                     showType={show_type}
                                     showLabels={show_labels}
                                     totalComments={item.comments}
-                                    notifications={notifications}
+                                    notificationsType={notifications_type}
                                     unseen={index < 6}
                                     showRepo={show_repo}
                                     repoName={repo_name}
@@ -187,7 +192,7 @@ function Final() {
                                     selectable={selectable}
                                     branch={branch_name}
                                     repoName={repo_name}
-                                    notifications={notifications}
+                                    notificationsType={notifications_type}
                                     unseen={index < 6}
                                     showBranch={show_branch}
                                     showLabels={show_labels}

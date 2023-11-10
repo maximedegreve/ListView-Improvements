@@ -7,6 +7,7 @@ import StateIcon from './StateIcon'
 import EmptyAvatar from './EmptyAvatar'
 import Branch from './Branch'
 import Notification from './Notification'
+import NotificationBar from './NotificationBar'
 import IssueType from './IssueType'
 
 function Row({
@@ -17,7 +18,7 @@ function Row({
     avatars,
     branch,
     showLabels,
-    notifications,
+    notificationsType,
     unseen,
     hash,
     user,
@@ -38,6 +39,7 @@ function Row({
             sx={{
                 display: 'grid',
                 px: 3,
+                position: 'relative',
                 gridTemplateColumns: 'subgrid',
                 gridColumn: ['1/3', '1/3', '1/5'],
                 gap: [3, 3, 5],
@@ -58,6 +60,9 @@ function Row({
                     gap: 3,
                 }}
             >
+                {notificationsType === 'bar' && (
+                    <NotificationBar unseen={unseen} />
+                )}
                 {selectable && (
                     <Box
                         sx={{
@@ -83,7 +88,7 @@ function Row({
                         ],
                     }}
                 >
-                    {notifications && (
+                    {notificationsType === 'dot' && (
                         <Box
                             sx={{
                                 display: !unseen
