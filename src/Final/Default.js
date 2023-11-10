@@ -38,7 +38,7 @@ function Row({
                 px: 3,
                 gridTemplateColumns: 'subgrid',
                 gridColumn: ['1/3', '1/3', '1/5'],
-                gap: 5,
+                gap: [3, 3, 5],
                 ':not(:last-child)': {
                     borderBottomColor: 'border.subtle',
                     borderBottomWidth: 1,
