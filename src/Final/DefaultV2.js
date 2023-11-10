@@ -152,16 +152,63 @@ function Row({
                             </Box>
                         </Link>
 
-                        {showLabels && labels?.length > 0 && (
+                        <Box
+                            sx={{
+                                display:
+                                    totalComments > 0 ||
+                                    (showLabels && labels?.length > 0) ||
+                                    totalPullRequests > 0
+                                        ? 'inline-flex'
+                                        : 'none',
+                                columnGap: 1,
+                                rowGap: 2,
+                                flexWrap: 'wrap',
+                            }}
+                        >
+                            {showLabels && labels?.length > 0 && (
+                                <Labels mobile labels={labels || []} />
+                            )}
+
                             <Box
                                 sx={{
-                                    display: 'inline-block',
-                                    verticalAlign: 'text-top',
+                                    display:
+                                        totalComments > 0
+                                            ? ['flex', 'flex', 'none']
+                                            : 'none',
                                 }}
                             >
-                                <Labels mobile labels={labels || []} />
+                                <StatusButton
+                                    count={totalComments}
+                                    icon={CommentIcon}
+                                    isMobile={true}
+                                    label={`${totalComments} ${
+                                        totalComments === 1
+                                            ? 'comment'
+                                            : 'comments'
+                                    }`}
+                                />
                             </Box>
-                        )}
+
+                            <Box
+                                sx={{
+                                    display:
+                                        totalPullRequests > 0
+                                            ? ['flex', 'flex', 'none']
+                                            : 'none',
+                                }}
+                            >
+                                <StatusButton
+                                    count={totalPullRequests}
+                                    icon={GitPullRequestIcon}
+                                    isMobile={true}
+                                    label={`${totalPullRequests} ${
+                                        totalPullRequests === 1
+                                            ? 'linked pull request'
+                                            : 'linked pull requests'
+                                    }`}
+                                />
+                            </Box>
+                        </Box>
                     </Box>
 
                     <Box
