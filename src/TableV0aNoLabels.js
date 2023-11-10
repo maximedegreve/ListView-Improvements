@@ -6,7 +6,6 @@ import {
     AvatarStack,
     Link,
 } from '@primer/react'
-import Labels from './Labels'
 import StatusButton from './StatusButton'
 import {
     CommentIcon,
