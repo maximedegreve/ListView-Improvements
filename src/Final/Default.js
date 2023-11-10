@@ -84,6 +84,9 @@ function Row({
                     {notifications && (
                         <Box
                             sx={{
+                                display: !unseen
+                                    ? ['none', 'none', 'flex']
+                                    : 'flex',
                                 pt: [2, 2, '21px'],
                             }}
                         >
