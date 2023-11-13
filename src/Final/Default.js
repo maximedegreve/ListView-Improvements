@@ -31,7 +31,7 @@ function Row({
 }) {
     let leadingColumns = selectable ? 2 : 1
 
-    const gridTemplateColumns = `repeat(${leadingColumns}, auto) 1fr`
+    const gridTemplateColumns = `repeat(${leadingColumns}, auto) minmax(50px, 1fr)`
 
     return (
         <Box

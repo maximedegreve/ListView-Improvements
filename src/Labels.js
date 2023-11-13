@@ -129,8 +129,24 @@ function ColoredLabel({ name, sx }) {
     ]
     const pickedValue = pickValueFromArray(variants, name)
     return (
-        <PrimerLabel variant={pickedValue} sx={sx}>
-            {name}
+        <PrimerLabel
+            variant={pickedValue}
+            sx={{
+                ...sx,
+                maxWidth: '100%',
+            }}
+        >
+            <Box
+                sx={{
+                    textOverflow: 'ellipsis',
+                    overflow: 'hidden',
+                    whiteSpace: 'nowrap',
+                    maxWidth: '100%',
+                    display: 'inline-block',
+                }}
+            >
+                {name}
+            </Box>
         </PrimerLabel>
     )
 }

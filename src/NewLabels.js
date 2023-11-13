@@ -75,14 +75,14 @@ export default function Labels({ labels, mobile }) {
     var top = 0
     var left = 0
 
-    if(labelRef.current?.children){
+    if (labelRef.current?.children) {
         const childLabels = Array.from(labelRef.current.children)
         top = childLabels[lastVisibleLabelIndex].offsetTop
-        left = childLabels[lastVisibleLabelIndex].offsetLeft + childLabels[lastVisibleLabelIndex].offsetWidth
+        left =
+            childLabels[lastVisibleLabelIndex].offsetLeft +
+            childLabels[lastVisibleLabelIndex].offsetWidth
         console.log(top, left)
     }
-  
-
 
     return (
         <Box
@@ -124,7 +124,14 @@ export default function Labels({ labels, mobile }) {
                 })}
             </Box>
             {truncatedLabelCount > 0 && (
-                <Box sx={{position: 'absolute', top: `${top}px`, left: `${left}px`, pl: 1 }}>
+                <Box
+                    sx={{
+                        position: 'absolute',
+                        top: `${top}px`,
+                        left: `${left}px`,
+                        pl: 1,
+                    }}
+                >
                     <Tooltip
                         align={'right'}
                         direction="sw"
@@ -154,8 +161,24 @@ function ColoredLabel({ name, sx }) {
     ]
     const pickedValue = pickValueFromArray(variants, name)
     return (
-        <PrimerLabel variant={pickedValue} sx={sx}>
-            {name}
+        <PrimerLabel
+            variant={pickedValue}
+            sx={{
+                ...sx,
+                maxWidth: '100%',
+            }}
+        >
+            <Box
+                sx={{
+                    textOverflow: 'ellipsis',
+                    overflow: 'hidden',
+                    whiteSpace: 'nowrap',
+                    maxWidth: '100%',
+                    display: 'inline-block',
+                }}
+            >
+                {name}
+            </Box>
         </PrimerLabel>
     )
 }
