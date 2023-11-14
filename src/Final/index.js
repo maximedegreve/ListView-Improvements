@@ -95,8 +95,8 @@ function Final() {
                 sx={{
                     display: 'grid',
                     gridTemplateColumns: [
-                        'auto 1fr auto',
-                        'auto 1fr auto',
+                        '1fr auto',
+                        '1fr auto',
                         '1fr auto auto auto',
                         '1fr auto auto auto',
                     ],

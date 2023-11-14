@@ -171,7 +171,7 @@ function Row({
                                         textOverflow: 'ellipsis',
                                         maxWidth: '100%',
                                         textUnderlineOffset: 3,
-                                        fontWeight: 'bold',
+                                        fontWeight: 'semibold',
                                     }}
                                     href="https://github.com"
                                 >
