@@ -79,7 +79,7 @@ function Row({
                     </Box>
                 )}
 
-                {notificationsType === 'bar' && (
+                {notificationsType === 'dot' && (
                     <Box
                         sx={{
                             display: 'flex',
