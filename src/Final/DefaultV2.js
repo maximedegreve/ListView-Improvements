@@ -108,7 +108,13 @@ function Row({
                     </Box>
                 </Box>
 
-                <Box sx={{ py: '12px', fontWeight: 'bold', fontSize: 2 }}>
+                <Box
+                    sx={{
+                        py: '12px',
+                        fontWeight: 'bold',
+                        fontSize: 2,
+                    }}
+                >
                     {(showRepo || showBranch) && (
                         <Box sx={{ display: 'flex', pb: 1 }}>
                             {showRepo && (
@@ -122,6 +128,7 @@ function Row({
                                         overflow: 'hidden',
                                         textOverflow: 'ellipsis',
                                         maxWidth: '100%',
+                                        lineHeight: '24px',
                                     }}
                                 >
                                     {repoName}
@@ -139,7 +146,7 @@ function Row({
                             )}
                         </Box>
                     )}
-                    <Box>
+                    <Box sx={{ display: 'inline', lineHeight: '26px' }}>
                         <IssueType type={issueType}>Feature</IssueType>
                         <Link
                             sx={{
@@ -170,6 +177,7 @@ function Row({
                                         ? 'inline-flex'
                                         : 'none',
                                 columnGap: 1,
+                                verticalAlign: 'middle',
                                 rowGap: 2,
                                 flexWrap: 'wrap',
                             }}
