@@ -52,8 +52,8 @@ function Final() {
         },
         default_item: {
             options: {
-                'Version 1': 1,
                 'Version 2': 2,
+                'Version 1': 1,
             },
         },
     })

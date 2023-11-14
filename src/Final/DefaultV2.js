@@ -180,6 +180,7 @@ function Row({
                                 verticalAlign: 'middle',
                                 rowGap: 2,
                                 flexWrap: 'wrap',
+                                pb: '1px',
                             }}
                         >
                             {showLabels && labels?.length > 0 && (
