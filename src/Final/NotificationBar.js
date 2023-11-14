@@ -11,8 +11,8 @@ export default function NotificationBar({ unseen }) {
                 width: 3,
                 bg: 'accent.fg',
                 left: 0,
-                bottom: 0,
-                top: 0,
+                bottom: -0.5,
+                top: -0.5,
             }}
         ></Box>
     )
