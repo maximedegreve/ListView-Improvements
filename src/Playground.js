@@ -1,7 +1,4 @@
-import {
-    Box,
-    Link,
-} from '@primer/react'
+import { Box, Link } from '@primer/react'
 import TableV0 from './TableV0'
 import Final from './Final'
 import TableV0b from './TableV0b'
@@ -51,13 +48,18 @@ function Playground() {
                     width: '100%',
                 }}
             >
-                This two examples have been chosen based on <Link href="https://docs.google.com/spreadsheets/d/1sRfFfJmXquH427z87iVoW_hb-wnGuDE9DpuyxKj6_sQ/edit#gid=0">customer feedback</Link> and <Link href="https://github.slack.com/archives/C01G0NX0X43/p1699008178196839">internal feedback</Link>.
+                This two examples have been chosen based on{' '}
+                <Link href="https://docs.google.com/spreadsheets/d/1sRfFfJmXquH427z87iVoW_hb-wnGuDE9DpuyxKj6_sQ/edit#gid=0">
+                    customer feedback
+                </Link>{' '}
+                and{' '}
+                <Link href="https://github.slack.com/archives/C01G0NX0X43/p1699008178196839">
+                    internal feedback
+                </Link>
+                .
             </Box>
 
-
-
             <Final />
-
 
             <Box
                 sx={{
@@ -87,7 +89,6 @@ function Playground() {
                 Example 0y: No labels
             </Box>
             <TableV0aNoLabels />
-
 
             <Box
                 sx={{
