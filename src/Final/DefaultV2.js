@@ -128,7 +128,6 @@ function Row({
                                         overflow: 'hidden',
                                         textOverflow: 'ellipsis',
                                         maxWidth: '100%',
-                                        lineHeight: '24px',
                                     }}
                                 >
                                     {repoName}
