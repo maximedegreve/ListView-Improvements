@@ -7,6 +7,7 @@ import TableV1 from './TableV1'
 import TableV2 from './TableV2'
 import TableV3 from './TableV3'
 import TableV4 from './TableV4'
+import API from './API'
 
 function Playground() {
     return (
@@ -22,6 +23,7 @@ function Playground() {
                 alignItems: 'center',
             }}
         >
+            <API />
             <Box
                 sx={{
                     maxWidth: 1400,
