@@ -119,7 +119,7 @@ function Row({
                         }}
                     >
                         {(showRepo || showBranch) && (
-                            <Box sx={{ display: 'flex', pb: 1 }}>
+                            <Box sx={{ display: 'flex', pb: 0 }}>
                                 {showRepo && (
                                     <Box
                                         sx={{
