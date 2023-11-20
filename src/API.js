@@ -55,6 +55,13 @@ function ListView({ metaDataColumns, children }) {
         }, {})
     }
 
+    const getTemplateAreas = () => {
+        return metaDataColumns.map((breakpoint) => {
+            const areas = breakpoint.map((col) => col.name).join(' ')
+            return `"title ${areas}"`
+        })
+    }
+
     return (
         <Box
             as="ul"
@@ -70,7 +77,7 @@ function ListView({ metaDataColumns, children }) {
                 flexDirection: 'column',
                 justifyContent: 'center',
                 alignItems: 'center',
-                gridTemplateAreas: '"title meta-1 meta-2 meta-3"',
+                gridTemplateAreas: getTemplateAreas(),
                 gridTemplateColumns: metaDataColumns.map(
                     (breakpoint) =>
                         `1fr ${breakpoint
