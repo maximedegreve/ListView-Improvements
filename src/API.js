@@ -6,7 +6,7 @@ function Playground() {
         <ListView
             metaDataColumns={[
                 [],
-                [],
+                [{ name: 'react-node', width: 'min(200px)' }],
                 [
                     { name: 'meta-1', width: 'auto' },
                     { name: 'meta-3', width: 'auto' },
@@ -27,7 +27,17 @@ function Playground() {
                 title="Deep fried shack"
             />
             <ListViewItem
-                metaData={{ 'meta-1': '🍧', 'meta-2': '🍦' }}
+                metaData={{
+                    'meta-1': '🍧',
+                    'meta-2': '🍦',
+                    'react-node': (
+                        <>
+                            <Box sx={{ bg: 'red', width: '100%' }}>
+                                react-node
+                            </Box>
+                        </>
+                    ),
+                }}
                 title="Shaving coldness"
             />
         </ListView>
@@ -35,31 +45,21 @@ function Playground() {
 }
 
 function ListView({ metaDataColumns, children }) {
-    const generateDisplayArray = () => {
-        const names = metaDataColumns
-            .map((breakpoint) => breakpoint.map((col) => col.name))
-            .flat()
-        const uniqueNames = [...new Set(names)]
+    const getColumnStyles = () => {
+        const uniqueNames = new Set(
+            metaDataColumns.flatMap((breakpoint) =>
+                breakpoint.map((col) => col.name)
+            )
+        )
 
-        let displays = {}
-        for (var i = 0; i < uniqueNames.length; i++) {
-            const name = uniqueNames[i]
-
-            const displayValues = metaDataColumns
-                .map((breakpoint) => {
-                    const match = breakpoint.find((b) => b.name === name)
-                    return match ? 'flex' : 'none'
-                })
-                .flat()
-
+        return Array.from(uniqueNames).reduce((displays, name) => {
             displays[`li .${name}`] = {
-                display: displayValues,
+                display: metaDataColumns.flatMap((breakpoint) =>
+                    breakpoint.some((b) => b.name === name) ? 'flex' : 'none'
+                ),
             }
-        }
-
-        console.log(displays)
-
-        return displays
+            return displays
+        }, {})
     }
 
     return (
@@ -95,7 +95,7 @@ function ListView({ metaDataColumns, children }) {
                 'li .meta-data': {
                     display: 'none',
                 },
-                ...generateDisplayArray(),
+                ...getColumnStyles(),
             }}
         >
             {children}
