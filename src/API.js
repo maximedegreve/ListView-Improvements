@@ -7,15 +7,8 @@ function Playground() {
             metaDataColumns={[
                 [],
                 [{ name: 'react-node', width: 'min(200px)' }],
-                [
-                    { name: 'meta-1', width: 'auto' },
-                    { name: 'meta-3', width: 'auto' },
-                ],
-                [
-                    { name: 'meta-1', width: 'auto' },
-                    { name: 'meta-2', width: 'auto' },
-                    { name: 'meta-3', width: 'auto' },
-                ],
+                [{ name: 'meta-1' }, { name: 'meta-3' }],
+                [{ name: 'meta-1' }, { name: 'meta-2' }, { name: 'meta-3' }],
             ]}
         >
             <ListViewItem
