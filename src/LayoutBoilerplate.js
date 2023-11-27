@@ -73,7 +73,7 @@ function Playground() {
                         </Box>
                     </Box>
                 </PageLayout.Pane>
-                <PageLayout.Header>
+                <PageLayout.Header sx={{ bg: 'canvas.subtle' }}>
                     <Box
                         sx={{
                             px: 3,
