@@ -12,6 +12,7 @@ import LayoutBoilerplate from './LayoutBoilerplate'
 
 function Playground() {
     return <LayoutBoilerplate />
+    /*
     return (
         <Box
             sx={{
@@ -181,6 +182,7 @@ function Playground() {
             </Box>
             <TableV4 />
         </Box>
+        */
     )
 }
 

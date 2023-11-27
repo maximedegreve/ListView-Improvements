@@ -15,7 +15,7 @@ import {
     UnderlineNav2 as UnderlineNav,
 } from '@primer/react'
 
-import { Dialog, Button as Button2 } from '@primer/react/drafts'
+import { Dialog } from '@primer/react/drafts'
 import {
     PersonIcon,
     TagIcon,
@@ -193,12 +193,17 @@ function Playground() {
                             </Box>
                         </Box>
                         <Box sx={{ px: [3, 3, 4] }}>
-                            <Box sx={{ display: 'flex' }}>
+                            <Box
+                                sx={{
+                                    display: 'flex',
+                                }}
+                            >
                                 <Box>
                                     <Button
                                         sx={{
                                             borderBottomRightRadius: 0,
                                             borderTopRightRadius: 0,
+                                            boxShadow: 'none',
                                         }}
                                         leadingVisual={FilterIcon}
                                         trailingVisual={() => (
