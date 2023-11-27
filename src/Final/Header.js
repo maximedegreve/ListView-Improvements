@@ -1,5 +1,7 @@
 import { Box, Checkbox, Octicon } from '@primer/react'
 import { ChevronDownIcon } from '@primer/octicons-react'
+import { SectionFilterLink } from './SectionFilterLink'
+import { SectionFilters } from './SectionFilters'
 
 export default function Header({ children, totalItems, selectable }) {
     return (
@@ -21,7 +23,7 @@ export default function Header({ children, totalItems, selectable }) {
             }}
         >
             {selectable && (
-                <Box sx={{ display: 'flex', alignItems: 'center', pr: 3 }}>
+                <Box sx={{ display: 'flex', alignItems: 'center', pr: 2 }}>
                     <Checkbox />
                 </Box>
             )}
@@ -34,7 +36,12 @@ export default function Header({ children, totalItems, selectable }) {
                     alignItems: 'center',
                 }}
             >
-                {totalItems} items
+                <SectionFilters
+                    links={[
+                        <SectionFilterLink count={2} title="Open" />,
+                        <SectionFilterLink count={6} title="Closed" />,
+                    ]}
+                ></SectionFilters>
             </Box>
             <Box sx={{ display: 'flex', gap: 3, pr: 3 }}>
                 <FilterButton>Author</FilterButton>
