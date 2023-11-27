@@ -8,11 +8,8 @@ import TableV2 from './TableV2'
 import TableV3 from './TableV3'
 import TableV4 from './TableV4'
 import API from './API'
-import LayoutBoilerplate from './LayoutBoilerplate'
 
 function Playground() {
-    return <LayoutBoilerplate />
-    /*
     return (
         <Box
             sx={{
@@ -182,8 +179,7 @@ function Playground() {
             </Box>
             <TableV4 />
         </Box>
-        
-    )*/
+    )
 }
 
 export default Playground

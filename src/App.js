@@ -1,15 +1,15 @@
 import { ThemeProvider, BaseStyles } from '@primer/react'
 import { Leva } from 'leva'
 
-import Playground from './Playground'
 import ColorModeSwitcher from './ColorModeSwitcher'
+import LayoutBoilerplate from './LayoutBoilerplate'
 
 function App() {
     return (
         <ThemeProvider colorMode="dark">
             <BaseStyles>
                 <Leva hideTitleBar />
-                <Playground />
+                <LayoutBoilerplate />
                 <ColorModeSwitcher />
             </BaseStyles>
         </ThemeProvider>
