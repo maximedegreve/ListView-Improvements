@@ -16,20 +16,14 @@ function Playground() {
                 title="Delicious fruits"
             />
             <ListViewItem
-                metaData={{ 'meta-1': '🥓', 'meta-3': '🍗' }}
+                metaData={{ 'meta-1': '🥓', 'meta-2': '🥓', 'meta-3': '🍗' }}
                 title="Deep fried shack"
             />
             <ListViewItem
                 metaData={{
                     'meta-1': '🍧',
                     'meta-2': '🍦',
-                    'react-node': (
-                        <>
-                            <Box sx={{ bg: 'red', width: '100%' }}>
-                                react-node
-                            </Box>
-                        </>
-                    ),
+                    'meta-3': '🍦',
                 }}
                 title="Shaving coldness"
             />

@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { Box, SegmentedControl } from '@primer/react'
 import { useControls } from 'leva'
+import { RowsIcon, ThreeBarsIcon } from '@primer/octicons-react'
 
 import Compact from './Compact'
 import CompactV2 from './CompactV2'
@@ -82,12 +83,15 @@ function Final() {
                     aria-label="Mode"
                     onChange={(index) => setSelectedMode(index)}
                 >
-                    <SegmentedControl.Button selected={selectedMode === 0}>
-                        Default
-                    </SegmentedControl.Button>
-                    <SegmentedControl.Button selected={selectedMode === 1}>
-                        Compact
-                    </SegmentedControl.Button>
+                    <SegmentedControl.IconButton
+                        selected={selectedMode === 0}
+                        icon={RowsIcon}
+                    />
+
+                    <SegmentedControl.IconButton
+                        selected={selectedMode === 1}
+                        icon={ThreeBarsIcon}
+                    />
                 </SegmentedControl>
             </Header>
             <Box
