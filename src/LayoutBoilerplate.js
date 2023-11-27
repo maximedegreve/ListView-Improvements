@@ -224,7 +224,7 @@ function Playground() {
                                                 borderTopLeftRadius: 0,
                                                 borderLeft: 0,
                                             }}
-                                            value="author:@me is:issue"
+                                            value="assignee:@me is:issue"
                                             block
                                             leadingVisual={SearchIcon}
                                             placeholder="Search or filter"
