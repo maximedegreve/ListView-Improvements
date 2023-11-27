@@ -47,6 +47,7 @@ export const SectionFilterLink = ({
                 lineHeight: '30px',
                 display: 'flex',
                 textDecoration: 'none',
+                cursor: 'pointer',
                 whiteSpace: 'nowrap',
                 alignItems: 'center',
                 transition: 'background .12s ease-out',

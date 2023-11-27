@@ -38,7 +38,7 @@ export default function Header({ children, totalItems, selectable }) {
             >
                 <SectionFilters
                     links={[
-                        <SectionFilterLink count={2} title="Open" />,
+                        <SectionFilterLink isSelected count={2} title="Open" />,
                         <SectionFilterLink count={6} title="Closed" />,
                     ]}
                 ></SectionFilters>
