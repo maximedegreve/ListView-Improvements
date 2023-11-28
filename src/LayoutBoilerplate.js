@@ -24,7 +24,9 @@ import {
     ChevronDownIcon,
     SearchIcon,
     MilestoneIcon,
+    MentionIcon,
     CodeIcon,
+    SmileyIcon,
     IssueOpenedIcon,
     MarkGithubIcon,
     GitPullRequestIcon,
@@ -320,19 +322,19 @@ function Navigation() {
             </NavList.Item>
             <NavList.Item href="#">
                 <NavList.LeadingVisual>
-                    <PersonIcon />
+                    <SmileyIcon />
                 </NavList.LeadingVisual>
                 Your issues
             </NavList.Item>
             <NavList.Item href="#" aria-current="page">
                 <NavList.LeadingVisual>
-                    <TagIcon />
+                    <PersonIcon />
                 </NavList.LeadingVisual>
                 Assigned to you
             </NavList.Item>
             <NavList.Item href="#">
                 <NavList.LeadingVisual>
-                    <TagIcon />
+                    <MentionIcon />
                 </NavList.LeadingVisual>
                 Mentioning you
             </NavList.Item>

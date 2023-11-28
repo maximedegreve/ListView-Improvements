@@ -1,5 +1,5 @@
 import { Box, Checkbox, Octicon } from '@primer/react'
-import { ChevronDownIcon } from '@primer/octicons-react'
+import { TriangleDownIcon } from '@primer/octicons-react'
 import { SectionFilterLink } from './SectionFilterLink'
 import { SectionFilters } from './SectionFilters'
 
@@ -43,7 +43,7 @@ export default function Header({ children, totalItems, selectable }) {
                     ]}
                 ></SectionFilters>
             </Box>
-            <Box sx={{ display: 'flex', gap: 3, pr: 3 }}>
+            <Box sx={{ display: 'flex', gap: 2, pr: 2 }}>
                 <FilterButton>Author</FilterButton>
                 <FilterButton>Label</FilterButton>
                 <FilterButton>Project</FilterButton>
@@ -66,7 +66,6 @@ function FilterButton({ children, onClick }) {
                 padding: 0,
                 cursor: 'pointer',
                 bg: 'canvas.subtle',
-
                 color: 'fg.muted',
                 borderRadius: 2,
                 fontWeight: 'regular',
@@ -75,15 +74,21 @@ function FilterButton({ children, onClick }) {
                 alignItems: 'center',
                 py: 1,
                 px: 2,
-                ':hover': {
-                    bg: 'btn.hoverBg',
+                transition: 'background .12s ease-out',
+                '&:hover:not([disabled])': {
+                    bg: 'actionListItem.default.hoverBg',
+                    textDecoration: 'none',
+                },
+                '&:active:not([disabled])': {
+                    bg: 'actionListItem.default.active',
+                    borderColor: 'btn.activeBorder',
                 },
             }}
             onClick={onClick}
         >
             {children}
             <Octicon
-                icon={ChevronDownIcon}
+                icon={TriangleDownIcon}
                 size={16}
                 color="fg.muted"
                 sx={{ ml: 1 }}
