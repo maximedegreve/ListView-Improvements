@@ -228,6 +228,7 @@ function Playground() {
                                                 borderBottomLeftRadius: 0,
                                                 borderTopLeftRadius: 0,
                                                 borderLeft: 0,
+                                                pl: 2,
                                             }}
                                             value="assignee:@me is:issue is:open"
                                             block
