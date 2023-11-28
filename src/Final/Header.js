@@ -43,7 +43,7 @@ export default function Header({ children, totalItems, selectable }) {
                     ]}
                 ></SectionFilters>
             </Box>
-            <Box sx={{ display: 'flex', gap: 2, pr: 2 }}>
+            <Box sx={{ display: 'flex', gap: 2, pr: 3 }}>
                 <FilterButton>Author</FilterButton>
                 <FilterButton>Label</FilterButton>
                 <FilterButton>Project</FilterButton>
