@@ -17,8 +17,8 @@ export default function Header({ children, totalItems, selectable }) {
                 borderLeftWidth: 1,
                 borderRightWidth: 1,
                 pl: 3,
-                pr: '12px',
-                py: '12px',
+                pr: 2,
+                py: 2,
                 borderBottomWidth: 0,
             }}
         >

@@ -22,6 +22,7 @@ export const SectionFilterLink = ({
             bg: 'neutral.muted',
             fontSize: 0,
             px: '6px',
+            color: !isSelected ? 'fg.muted' : 'fg.default',
             display: 'inline-block',
             fontWeight: 'semibold',
             minWidth: 20,

@@ -73,7 +73,7 @@ function Playground() {
                         </Box>
                     </Box>
                 </PageLayout.Pane>
-                <PageLayout.Header sx={{ bg: 'canvas.subtle' }}>
+                <PageLayout.Header sx={{ bg: 'canvas.inset' }}>
                     <Box
                         sx={{
                             px: 3,
@@ -128,7 +128,10 @@ function Playground() {
                     padding="none"
                     sx={{ minHeight: '100vh', pt: 4 }}
                 >
-                    <Box as="main" sx={{ maxWidth: 1400, mx: 'auto' }}>
+                    <Box
+                        as="main"
+                        sx={{ maxWidth: 1400, mx: 'auto', px: [0, 0, 2] }}
+                    >
                         <Box
                             sx={{
                                 display: 'flex',
