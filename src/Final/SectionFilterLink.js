@@ -1,4 +1,4 @@
-import { CounterLabel, Box, merge } from '@primer/react'
+import { CounterLabel, Box } from '@primer/react'
 
 /**
  * Represents a single categorical section filter. Used to allow a user to filter the ListView's list items to only

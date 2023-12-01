@@ -3,7 +3,7 @@ import { TriangleDownIcon } from '@primer/octicons-react'
 import { SectionFilterLink } from './SectionFilterLink'
 import { SectionFilters } from './SectionFilters'
 
-export default function Header({ children, totalItems, selectable }) {
+export default function Header({ children, selectable }) {
     return (
         <Box
             sx={{
@@ -16,7 +16,7 @@ export default function Header({ children, totalItems, selectable }) {
                 display: 'flex',
                 borderLeftWidth: 1,
                 borderRightWidth: 1,
-                pl: 3,
+                pl: selectable ? 3 : '12px',
                 pr: 2,
                 py: 2,
                 borderBottomWidth: 0,
@@ -38,8 +38,12 @@ export default function Header({ children, totalItems, selectable }) {
             >
                 <SectionFilters
                     links={[
-                        <SectionFilterLink isSelected count={2} title="Open" />,
-                        <SectionFilterLink count={6} title="Closed" />,
+                        <SectionFilterLink
+                            isSelected
+                            count={20}
+                            title="Open"
+                        />,
+                        <SectionFilterLink count={593} title="Closed" />,
                     ]}
                 ></SectionFilters>
             </Box>
@@ -69,10 +73,9 @@ function FilterButton({ children, onClick }) {
                 color: 'fg.muted',
                 borderRadius: 2,
                 fontWeight: 'regular',
-                height: 32,
+                lineHeight: '30px',
                 display: 'flex',
                 alignItems: 'center',
-                py: 1,
                 px: 2,
                 transition: 'background .12s ease-out',
                 '&:hover:not([disabled])': {

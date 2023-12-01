@@ -38,7 +38,7 @@ function Row({
             as="li"
             sx={{
                 display: 'grid',
-                px: 3,
+                px: selectable ? 3 : '20px',
                 position: 'relative',
                 gridTemplateColumns: 'subgrid',
                 gridColumn: ['1/3', '1/3', '1/5'],
@@ -243,7 +243,7 @@ function Row({
             <Box
                 sx={{
                     gridColumn: 2,
-                    py: 3,
+                    py: '12px',
                     display: ['none', 'none', 'block'],
                 }}
             >
@@ -258,7 +258,7 @@ function Row({
             <Box
                 sx={{
                     gridColumn: 3,
-                    py: 3,
+                    py: '12px',
                     display: ['none', 'none', 'block'],
                 }}
             >
@@ -278,7 +278,6 @@ function Row({
                     pl: 1,
                     pr: 2,
                     pointerEvents: 'none',
-                    mt: '3px',
                 }}
             >
                 {avatars.length === 0 ? (

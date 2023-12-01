@@ -38,7 +38,7 @@ function Row({
             as="li"
             sx={{
                 display: 'grid',
-                px: 3,
+                px: selectable ? 3 : '20px',
                 position: 'relative',
                 gridTemplateColumns: 'subgrid',
                 gridColumn: ['1/4', '1/4', '1/5'],

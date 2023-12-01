@@ -74,11 +74,7 @@ function Final() {
 
     return (
         <Box sx={{ width: '100%', maxWidth: 1400 }}>
-            <Header
-                checkbox={true}
-                totalItems={fetchedData?.length || 0}
-                selectable={selectable}
-            >
+            <Header checkbox={true} selectable={selectable}>
                 <SegmentedControl
                     aria-label="Mode"
                     onChange={(index) => setSelectedMode(index)}
